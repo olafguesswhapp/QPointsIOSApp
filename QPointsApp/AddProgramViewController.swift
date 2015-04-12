@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
 class AddProgramViewController: UIViewController {
-    
-    var mainVC: ViewController!
     
     @IBOutlet weak var programNameInputField: UITextField!
     @IBOutlet weak var programGoalPointsInputField: UITextField!
@@ -28,9 +27,26 @@ class AddProgramViewController: UIViewController {
     }
     
     @IBAction func AddButtonPushed(sender: UIButton) {
-        var program = ProgramModel(nr: programNrInputField.text, programName: programNameInputField.text, programGoal: programGoalPointsInputField.text.toInt()!, myCount: 0)
-        mainVC?.programs.append(program)
-        println(mainVC.programs)
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
+        let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+        program.programName = programNameInputField.text
+        program.nr = programNrInputField.text
+        program.programGoal = programGoalPointsInputField.text.toInt()!
+        program.myCount = 0
+        
+        appDelegate.saveContext()
+        
+        var request = NSFetchRequest(entityName: "ProgramModel")
+        var error:NSError? = nil
+        
+        var results:NSArray = managedObjectContext!.executeFetchRequest(request, error: &error)!
+        
+        for res in results {
+            println(res)
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

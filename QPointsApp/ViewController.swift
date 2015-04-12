@@ -7,23 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var programs:[ProgramModel] = []
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
+    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        programs = [ProgramModel(nr: "1A", programName: "Bella Italia Ice", programGoal: 3, myCount: 2), ProgramModel(nr: "2A", programName: "BeautyHair", programGoal: 5, myCount: 3)]
+        fetchedResultsController = getFetchedResultsController()
+        fetchedResultsController.delegate = self
+        fetchedResultsController.performFetch(nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,12 +38,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.identifier == "toDetailVCSegue" {
             let detailVC: DetailViewController = segue.destinationViewController as DetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisProgram = programs[indexPath!.row]
+            let thisProgram = fetchedResultsController.objectAtIndexPath(indexPath!) as ProgramModel
             detailVC.detailProgramModel = thisProgram
         }
         else if segue.identifier == "toAddProgramVCSegue" {
             let addProgramVC:AddProgramViewController = segue.destinationViewController as AddProgramViewController
-            addProgramVC.mainVC = self
         }
     }
     
@@ -50,12 +52,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     // Mark - UITableViewDataSource
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.programs.count
+        //return fetchedResultsController.sections![section].count
+        let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
     // diese Funktion wird je Anzahl Rows (siehe oben) ausgeführt - Je Row verändert sich via indexPath.row
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let thisProgram = programs[indexPath.row]
+        let thisProgram = fetchedResultsController.objectAtIndexPath(indexPath) as ProgramModel
         var cell: ProgramCell = tableView.dequeueReusableCellWithIdentifier("Cell") as ProgramCell
         cell.ProgramNameLabel.text = thisProgram.programName
         cell.PointsLabel.text = "\(thisProgram.myCount) / \(thisProgram.programGoal)"
@@ -73,6 +80,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Meine Programme"
+    }
+    
+    // NSFetchedResultsControllerDelegate
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.reloadData()
+    }
+    
+    //Helper
+    func programFetchRequest() -> NSFetchRequest {
+        let fetchRequest =  NSFetchRequest(entityName: "ProgramModel")
+        let sortDescriptor = NSSortDescriptor(key: "myCount", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return fetchRequest
+    }
+    
+    func getFetchedResultsController() -> NSFetchedResultsController {
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: programFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
     }
 
 }

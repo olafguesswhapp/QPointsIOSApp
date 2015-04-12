@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import CoreData
 
-struct ProgramModel {
-    var nr: String = ""
-    var programName: String = ""
-    var programGoal: Int = 0
-    var myCount: Int = 0
+@objc(ProgramModel)
+class ProgramModel: NSManagedObject {
+
+    @NSManaged var nr: String
+    @NSManaged var programName: String
+    @NSManaged var programGoal: NSNumber
+    @NSManaged var myCount: NSNumber
+
 }

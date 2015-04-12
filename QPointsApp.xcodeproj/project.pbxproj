@@ -16,8 +16,8 @@
 		9022F22C1ADA309B00CE2E04 /* QPointsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F22B1ADA309B00CE2E04 /* QPointsAppTests.swift */; };
 		9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2351ADA335200CE2E04 /* DetailViewController.swift */; };
 		9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2371ADA387E00CE2E04 /* ProgramCell.swift */; };
-		9022F23A1ADA423A00CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2391ADA423A00CE2E04 /* ProgramModel.swift */; };
 		9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */; };
+		9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +44,8 @@
 		9022F22B1ADA309B00CE2E04 /* QPointsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPointsAppTests.swift; sourceTree = "<group>"; };
 		9022F2351ADA335200CE2E04 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9022F2371ADA387E00CE2E04 /* ProgramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
-		9022F2391ADA423A00CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
 		9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProgramViewController.swift; sourceTree = "<group>"; };
+		9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,6 @@
 			children = (
 				9022F2121ADA309B00CE2E04 /* AppDelegate.swift */,
 				9022F2171ADA309B00CE2E04 /* ViewController.swift */,
-				9022F2391ADA423A00CE2E04 /* ProgramModel.swift */,
 				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
@@ -97,6 +96,7 @@
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
 				9022F21E1ADA309B00CE2E04 /* LaunchScreen.xib */,
 				9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */,
+				9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */,
 				9022F2101ADA309B00CE2E04 /* Supporting Files */,
 			);
 			path = QPointsApp;
@@ -230,9 +230,9 @@
 				9022F2181ADA309B00CE2E04 /* ViewController.swift in Sources */,
 				9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */,
 				9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */,
-				9022F23A1ADA423A00CE2E04 /* ProgramModel.swift in Sources */,
 				9022F2131ADA309B00CE2E04 /* AppDelegate.swift in Sources */,
 				9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */,
+				9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */,
 				9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
