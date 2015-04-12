@@ -38,7 +38,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let thisProgram = programs[indexPath!.row]
             detailVC.detailProgramModel = thisProgram
         }
+        else if segue.identifier == "toAddProgramVCSegue" {
+            let addProgramVC:AddProgramViewController = segue.destinationViewController as AddProgramViewController
+            addProgramVC.mainVC = self
+        }
     }
+    
+    @IBAction func AddProgButtonTapped(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("toAddProgramVCSegue", sender: self)
+    }
+    
     
     // Mark - UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -17,6 +17,7 @@
 		9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2351ADA335200CE2E04 /* DetailViewController.swift */; };
 		9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2371ADA387E00CE2E04 /* ProgramCell.swift */; };
 		9022F23A1ADA423A00CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2391ADA423A00CE2E04 /* ProgramModel.swift */; };
+		9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		9022F2351ADA335200CE2E04 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9022F2371ADA387E00CE2E04 /* ProgramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		9022F2391ADA423A00CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
+		9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProgramViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
+				9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */,
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
 				9022F21E1ADA309B00CE2E04 /* LaunchScreen.xib */,
 				9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */,
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9022F2181ADA309B00CE2E04 /* ViewController.swift in Sources */,
+				9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */,
 				9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */,
 				9022F23A1ADA423A00CE2E04 /* ProgramModel.swift in Sources */,
 				9022F2131ADA309B00CE2E04 /* AppDelegate.swift in Sources */,
