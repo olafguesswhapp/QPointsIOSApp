@@ -68,6 +68,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println(indexPath.row)
         performSegueWithIdentifier("toDetailVCSegue", sender: self)
     }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Meine Programme"
+    }
 
 }
 
