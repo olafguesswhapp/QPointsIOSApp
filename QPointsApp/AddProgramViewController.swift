@@ -35,6 +35,7 @@ class AddProgramViewController: UIViewController {
         program.nr = programNrInputField.text
         program.programGoal = programGoalPointsInputField.text.toInt()!
         program.myCount = 0
+        program.programStatus = "aktiviert"
         
         appDelegate.saveContext()
         

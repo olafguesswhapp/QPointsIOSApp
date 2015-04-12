@@ -5,8 +5,9 @@
         <attribute name="nr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="programGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="programName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="programStatus" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
