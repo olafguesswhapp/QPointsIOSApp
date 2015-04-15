@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="U9K-1c-AIj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7sa-xD-aOT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -65,7 +65,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="6pl-5N-s8c"/>
@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.5" y="69"/>
+            <point key="canvasLocation" x="1975.5" y="69"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="w3S-xM-6ot">
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWY-aT-3sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="-238"/>
+            <point key="canvasLocation" x="2628" y="-238"/>
         </scene>
         <!--Add Program View Controller-->
         <scene sceneID="SfI-QW-GKD">
@@ -255,23 +255,23 @@
                                     <rect key="frame" x="16" y="162" width="89" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fu5-9p-hqe">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="275" width="78" height="30"/>
-                                </variation>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notwendige Punkte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-Fe-rsn">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="246" width="151" height="21"/>
+                                    <rect key="frame" x="153" y="162" width="151" height="21"/>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fu5-9p-hqe">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="226" y="191" width="78" height="30"/>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -282,8 +282,8 @@
                                 <exclude reference="cEk-2K-rT8"/>
                                 <exclude reference="NOY-hA-lvs"/>
                                 <exclude reference="c1W-KT-3CD"/>
-                                <exclude reference="Fu5-9p-hqe"/>
                                 <exclude reference="fYq-Fe-rsn"/>
+                                <exclude reference="Fu5-9p-hqe"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -294,8 +294,8 @@
                                 <include reference="cEk-2K-rT8"/>
                                 <include reference="NOY-hA-lvs"/>
                                 <include reference="c1W-KT-3CD"/>
-                                <include reference="Fu5-9p-hqe"/>
                                 <include reference="fYq-Fe-rsn"/>
+                                <include reference="Fu5-9p-hqe"/>
                             </mask>
                         </variation>
                     </view>
@@ -310,12 +310,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCn-Nc-dtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="399"/>
+            <point key="canvasLocation" x="2628" y="406"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ISU-T1-Bzu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U9K-1c-AIj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="gAW-xK-BUk"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -330,7 +331,135 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5V-2Z-2jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364.5" y="69"/>
+            <point key="canvasLocation" x="1282.5" y="69"/>
+        </scene>
+        <!--Scan Code View Controller-->
+        <scene sceneID="VMP-AH-aHP">
+            <objects>
+                <viewController id="yKr-ku-EOL" customClass="ScanCodeViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u6Z-p3-XIi"/>
+                        <viewControllerLayoutGuide type="bottom" id="fmq-Il-WMn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NWw-yo-Cia">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please input QPoint Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uK1-LF-Pfm">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="93" width="199" height="21"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZY-Yo-ny6">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="142" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4t-8G-foY">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Senden">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="121" y="142" width="183" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ScanButtonTapped:" destination="yKr-ku-EOL" eventType="touchUpInside" id="1sk-2y-EGL"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code Response" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWb-Gf-kqU">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="211" width="288" height="185"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="uK1-LF-Pfm"/>
+                                <exclude reference="TZY-Yo-ny6"/>
+                                <exclude reference="n4t-8G-foY"/>
+                                <exclude reference="dWb-Gf-kqU"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="uK1-LF-Pfm"/>
+                                <include reference="TZY-Yo-ny6"/>
+                                <include reference="n4t-8G-foY"/>
+                                <include reference="dWb-Gf-kqU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="gd1-FO-ey2"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="CodeInputField" destination="TZY-Yo-ny6" id="Gg8-Ql-0PO"/>
+                        <outlet property="CodeResponseField" destination="dWb-Gf-kqU" id="tk3-Pt-g8F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="koK-SG-Pq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1975.5" y="741"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="y8f-Sa-nRc">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7sa-xD-aOT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="HE8-J1-WFa">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="U9K-1c-AIj" kind="relationship" relationship="viewControllers" id="ts9-Bf-vYa"/>
+                        <segue destination="EOh-BH-4yF" kind="relationship" relationship="viewControllers" id="9lW-UC-LvD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8o-Wz-6hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="451.5" y="399"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9TI-TH-W8q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EOh-BH-4yF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="PDG-1U-tJP"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="aFs-yp-aTe"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mD8-lC-vdm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yKr-ku-EOL" kind="relationship" relationship="rootViewController" id="3lm-W7-zLM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8o-nu-8V7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282.5" y="741"/>
         </scene>
     </scenes>
 </document>
