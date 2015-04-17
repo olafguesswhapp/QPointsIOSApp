@@ -12,7 +12,6 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var programStatusLabel: UILabel!
     @IBOutlet weak var programNameLabel: UILabel!
-    @IBOutlet weak var ProgramNrLabel: UILabel!
     @IBOutlet weak var ProgramPointsLabel: UILabel!
     
     var detailProgramModel: ProgramModel!
@@ -22,9 +21,13 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.programNameLabel.text = detailProgramModel.programName
-        self.ProgramNrLabel.text = detailProgramModel.nr
         self.ProgramPointsLabel.text = "\(detailProgramModel.myCount) / \(detailProgramModel.programGoal)"
         self.programStatusLabel.text = detailProgramModel.programStatus
+        // let displStartDate = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
+        // self.programStartDateLabel.text = displStartDate
+        // self.programEndDateLabel.text = detailProgramModel.programEndDate
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

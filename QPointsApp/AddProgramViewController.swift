@@ -32,8 +32,9 @@ class AddProgramViewController: UIViewController {
         let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
         let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
         program.programName = programNameInputField.text
-        program.nr = programNrInputField.text
-        program.programGoal = programGoalPointsInputField.text.toInt()!
+        program.programNr = programNrInputField.text
+        var helpInt: Int = programGoalPointsInputField.text.toInt()!
+        program.programGoal = Int16(helpInt)
         program.myCount = 0
         program.programStatus = "aktiviert"
         

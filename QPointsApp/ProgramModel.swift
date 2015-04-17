@@ -12,10 +12,12 @@ import CoreData
 @objc(ProgramModel)
 class ProgramModel: NSManagedObject {
 
-    @NSManaged var nr: String
+    @NSManaged var programNr: String
     @NSManaged var programName: String
-    @NSManaged var programGoal: NSNumber
-    @NSManaged var myCount: NSNumber
+    @NSManaged var programGoal: Int16
+    @NSManaged var myCount: Int16
     @NSManaged var programStatus: String
+//    @NSManaged var programStartDate: NSDate
+//    @NSManaged var programEndDate: NSDate
 
 }
