@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ProgramPointsLabel: UILabel!
     @IBOutlet weak var programStartDateLabel: UILabel!
     @IBOutlet weak var programEndDateLabel: UILabel!
+    @IBOutlet weak var programsFinishedQuantLabel: UILabel!
     
     var detailProgramModel: ProgramModel!
 
@@ -23,12 +24,11 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.programNameLabel.text = detailProgramModel.programName
-        self.ProgramPointsLabel.text = "\(detailProgramModel.myCount) / \(detailProgramModel.programGoal)"
+        self.ProgramPointsLabel.text = "Punkte: \(detailProgramModel.myCount) / \(detailProgramModel.programGoal)"
         self.programStatusLabel.text = detailProgramModel.programStatus
-        self.programStartDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .MediumStyle, timeStyle: .ShortStyle)
-        self.programEndDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programEndDate, dateStyle: .MediumStyle, timeStyle: .ShortStyle)
-
-        
+        self.programStartDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .MediumStyle, timeStyle: .NoStyle)
+        self.programEndDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programEndDate, dateStyle: .MediumStyle, timeStyle: .NoStyle)
+    self.programsFinishedQuantLabel.text = "Bereits Vervollständigt: \(detailProgramModel.programsFinished)"
         
     }
 

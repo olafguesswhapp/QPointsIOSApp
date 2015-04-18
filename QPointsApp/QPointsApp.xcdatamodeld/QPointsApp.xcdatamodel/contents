@@ -6,10 +6,11 @@
         <attribute name="programGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="programName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="programNr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="programsFinished" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="programStartDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="programStatus" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

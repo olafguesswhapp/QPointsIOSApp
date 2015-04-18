@@ -12,6 +12,7 @@ class ProgramCell: UITableViewCell {
 
     @IBOutlet weak var ProgramNameLabel: UILabel!
     @IBOutlet weak var PointsLabel: UILabel!
+    @IBOutlet weak var ProgramsFinishedLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

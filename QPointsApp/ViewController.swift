@@ -67,6 +67,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var cell: ProgramCell = tableView.dequeueReusableCellWithIdentifier("Cell") as ProgramCell
         cell.ProgramNameLabel.text = thisProgram.programName
         cell.PointsLabel.text = "\(thisProgram.myCount) / \(thisProgram.programGoal)"
+        println(thisProgram.programsFinished)
+        if thisProgram.programsFinished > 0 {
+            var finishedPrograms: String = ""
+            switch thisProgram.programsFinished {
+            case 1:
+                finishedPrograms = "*"
+            case 2:
+                finishedPrograms = "**"
+            case 3:
+                finishedPrograms = "***"
+            case 4:
+                finishedPrograms = "****"
+            default:
+                finishedPrograms = "*****"
+            }
+            println(finishedPrograms)
+            cell.ProgramsFinishedLabel.hidden = false
+            cell.ProgramsFinishedLabel.text = finishedPrograms
+        }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }

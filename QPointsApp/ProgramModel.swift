@@ -16,6 +16,7 @@ class ProgramModel: NSManagedObject {
     @NSManaged var programName: String
     @NSManaged var programGoal: Int16
     @NSManaged var myCount: Int16
+    @NSManaged var programsFinished: Int16
     @NSManaged var programStatus: String
     @NSManaged var programStartDate: NSDate
     @NSManaged var programEndDate: NSDate
