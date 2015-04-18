@@ -52,43 +52,45 @@ class ScanCodeViewController: UIViewController {
                 self.CodeResponseField.hidden = false
                 self.CodeResponseField.text = jsonDictionary!["message"]! as? String
             });
-            var isNewProgram: Bool = true
-            let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-            let managedObjectContext = appDelegate.managedObjectContext
-            let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
-            let fetchRequest = NSFetchRequest(entityName: "ProgramModel")
-            // Execute the fetch request, and cast the results to an array of LogItem objects
-            if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ProgramModel] {
-                
-                var index: Int
-                for index = 0; index<fetchResults.count; ++index{
-                    if fetchResults[index].programNr == jsonDictionary!["nr"]! as String {
-                        isNewProgram = false
-                        fetchResults[index].myCount += 1
-                        println(fetchResults[index].myCount)
-                        appDelegate.saveContext()
+            if jsonDictionary!["success"]! as Bool == true {
+                var isNewProgram: Bool = true
+                let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+                let managedObjectContext = appDelegate.managedObjectContext
+                let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
+                let fetchRequest = NSFetchRequest(entityName: "ProgramModel")
+                // Execute the fetch request, and cast the results to an array of LogItem objects
+                if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ProgramModel] {
+                    
+                    var index: Int
+                    for index = 0; index<fetchResults.count; ++index{
+                        if fetchResults[index].programNr == jsonDictionary!["nr"]! as String {
+                            isNewProgram = false
+                            fetchResults[index].myCount += 1
+                            println(fetchResults[index].myCount)
+                            appDelegate.saveContext()
+                        }
                     }
                 }
-            }
-            println(isNewProgram)
-            if isNewProgram == true {
-
-                let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
-                program.programNr = jsonDictionary!["nr"]! as String
-                program.programName = jsonDictionary!["name"]! as String
-                var helpInt: Int = jsonDictionary!["goalCount"]! as Int
-                program.programGoal = Int16(helpInt)
-                program.myCount = 1
-                program.programStatus = jsonDictionary!["programStatus"]! as String
-                let dateFormatter: NSDateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
-                program.programStartDate = dateFormatter.dateFromString(jsonDictionary!["startDate"]! as String)!
-                program.programEndDate = dateFormatter.dateFromString(jsonDictionary!["endDate"]! as String)!
-                println(program.programStartDate)
-                println(program.programEndDate)
-                
-                appDelegate.saveContext()
-                println(program)
+                println(isNewProgram)
+                if isNewProgram == true {
+                    
+                    let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+                    program.programNr = jsonDictionary!["nr"]! as String
+                    program.programName = jsonDictionary!["name"]! as String
+                    var helpInt: Int = jsonDictionary!["goalCount"]! as Int
+                    program.programGoal = Int16(helpInt)
+                    program.myCount = 1
+                    program.programStatus = jsonDictionary!["programStatus"]! as String
+                    let dateFormatter: NSDateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
+                    program.programStartDate = dateFormatter.dateFromString(jsonDictionary!["startDate"]! as String)!
+                    program.programEndDate = dateFormatter.dateFromString(jsonDictionary!["endDate"]! as String)!
+                    println(program.programStartDate)
+                    println(program.programEndDate)
+                    
+                    appDelegate.saveContext()
+                    println(program)
+                }
             }
         })
         task.resume()
