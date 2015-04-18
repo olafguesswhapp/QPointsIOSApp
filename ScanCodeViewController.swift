@@ -43,7 +43,6 @@ class ScanCodeViewController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        var helpDict: NSDictionary = [String : Float]()
         var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, err) -> Void in
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
@@ -81,8 +80,15 @@ class ScanCodeViewController: UIViewController {
                 program.programGoal = Int16(helpInt)
                 program.myCount = 1
                 program.programStatus = jsonDictionary!["programStatus"]! as String
+                let dateFormatter: NSDateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
+                program.programStartDate = dateFormatter.dateFromString(jsonDictionary!["startDate"]! as String)!
+                program.programEndDate = dateFormatter.dateFromString(jsonDictionary!["endDate"]! as String)!
+                println(program.programStartDate)
+                println(program.programEndDate)
                 
                 appDelegate.saveContext()
+                println(program)
             }
         })
         task.resume()

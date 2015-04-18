@@ -13,6 +13,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var programStatusLabel: UILabel!
     @IBOutlet weak var programNameLabel: UILabel!
     @IBOutlet weak var ProgramPointsLabel: UILabel!
+    @IBOutlet weak var programStartDateLabel: UILabel!
+    @IBOutlet weak var programEndDateLabel: UILabel!
     
     var detailProgramModel: ProgramModel!
 
@@ -23,9 +25,9 @@ class DetailViewController: UIViewController {
         self.programNameLabel.text = detailProgramModel.programName
         self.ProgramPointsLabel.text = "\(detailProgramModel.myCount) / \(detailProgramModel.programGoal)"
         self.programStatusLabel.text = detailProgramModel.programStatus
-        // let displStartDate = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-        // self.programStartDateLabel.text = displStartDate
-        // self.programEndDateLabel.text = detailProgramModel.programEndDate
+        self.programStartDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+        self.programEndDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programEndDate, dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+
         
         
     }

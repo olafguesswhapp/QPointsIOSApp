@@ -35,6 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "toDetailVCSegue" {
             let detailVC: DetailViewController = segue.destinationViewController as DetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
