@@ -65,8 +65,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let thisProgram = fetchedResultsController.objectAtIndexPath(indexPath) as ProgramModel
         var cell: ProgramCell = tableView.dequeueReusableCellWithIdentifier("Cell") as ProgramCell
-        cell.ProgramNameLabel.text = thisProgram.programName
-        cell.PointsLabel.text = "\(thisProgram.myCount) / \(thisProgram.programGoal)"
+        cell.programNameLabel.text = thisProgram.programName
+        cell.programCompanyLabel.text = thisProgram.programCompany
+        cell.pointsLabel.text = "\(thisProgram.myCount) / \(thisProgram.programGoal)"
         println(thisProgram.programsFinished)
         if thisProgram.programsFinished > 0 {
             var finishedPrograms: String = ""
@@ -83,8 +84,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 finishedPrograms = "*****"
             }
             println(finishedPrograms)
-            cell.ProgramsFinishedLabel.hidden = false
-            cell.ProgramsFinishedLabel.text = finishedPrograms
+            cell.programsFinishedLabel.hidden = false
+            cell.programsFinishedLabel.text = finishedPrograms
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell

@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="13F1066" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ProgramModel" representedClassName="ProgramModel" syncable="YES">
         <attribute name="myCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="programCompany" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="programEndDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="programGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="programName" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,6 +12,6 @@
         <attribute name="programStatus" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>

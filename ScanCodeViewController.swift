@@ -85,6 +85,7 @@ class ScanCodeViewController: UIViewController {
                     let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
                     program.programNr = jsonDictionary!["nr"]! as String
                     program.programName = jsonDictionary!["name"]! as String
+                    program.programCompany = jsonDictionary!["company"]! as String
                     var helpInt: Int = jsonDictionary!["goalCount"]! as Int
                     program.programGoal = Int16(helpInt)
                     program.myCount = 1

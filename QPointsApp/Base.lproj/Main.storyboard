@@ -35,13 +35,13 @@
                                                         <rect key="frame" x="11" y="5" width="178" height="20"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Shop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MY-c5-rar">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="programCompany" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MY-c5-rar">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <rect key="frame" x="11" y="25" width="28" height="14"/>
+                                                        <rect key="frame" x="11" y="25" width="200" height="14"/>
                                                     </variation>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FinishedLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xta-Pe-CJU">
@@ -84,6 +84,10 @@
                                             <outlet property="PointsLabel" destination="pAw-j6-b7p" id="Wug-Ei-1dB"/>
                                             <outlet property="ProgramNameLabel" destination="RK6-Q5-vkO" id="SlK-uA-myh"/>
                                             <outlet property="ProgramsFinishedLabel" destination="Xta-Pe-CJU" id="Md5-yp-i1e"/>
+                                            <outlet property="pointsLabel" destination="pAw-j6-b7p" id="9az-fk-yEH"/>
+                                            <outlet property="programCompanyLabel" destination="8MY-c5-rar" id="0jI-om-73I"/>
+                                            <outlet property="programNameLabel" destination="RK6-Q5-vkO" id="WbC-aM-Hr8"/>
+                                            <outlet property="programsFinishedLabel" destination="Xta-Pe-CJU" id="6Js-Eh-06A"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -211,6 +215,15 @@
                                     <rect key="frame" x="71" y="144" width="178" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="programCompanyLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMX-Ts-82n">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="288" width="181" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -223,6 +236,7 @@
                                 <exclude reference="zpZ-uv-btt"/>
                                 <exclude reference="MMe-BT-sVx"/>
                                 <exclude reference="ag4-ni-f0i"/>
+                                <exclude reference="tMX-Ts-82n"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -235,6 +249,7 @@
                                 <include reference="zpZ-uv-btt"/>
                                 <include reference="MMe-BT-sVx"/>
                                 <include reference="ag4-ni-f0i"/>
+                                <include reference="tMX-Ts-82n"/>
                             </mask>
                         </variation>
                     </view>
@@ -243,6 +258,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="ProgramPointsLabel" destination="4Qd-pM-L8n" id="Qzs-BK-fii"/>
+                        <outlet property="programCompanyLabel" destination="tMX-Ts-82n" id="5tG-GR-V87"/>
                         <outlet property="programEndDateLabel" destination="ag4-ni-f0i" id="OGn-yA-KlV"/>
                         <outlet property="programNameLabel" destination="1gN-Th-6Sj" id="lSh-u7-620"/>
                         <outlet property="programStartDateLabel" destination="MMe-BT-sVx" id="sfj-wz-lJd"/>

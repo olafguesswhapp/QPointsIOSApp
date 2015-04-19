@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var programStartDateLabel: UILabel!
     @IBOutlet weak var programEndDateLabel: UILabel!
     @IBOutlet weak var programsFinishedQuantLabel: UILabel!
+    @IBOutlet weak var programCompanyLabel: UILabel!
     
     var detailProgramModel: ProgramModel!
 
@@ -28,8 +29,8 @@ class DetailViewController: UIViewController {
         self.programStatusLabel.text = detailProgramModel.programStatus
         self.programStartDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .MediumStyle, timeStyle: .NoStyle)
         self.programEndDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programEndDate, dateStyle: .MediumStyle, timeStyle: .NoStyle)
-    self.programsFinishedQuantLabel.text = "Bereits Vervollständigt: \(detailProgramModel.programsFinished)"
-        
+        self.programsFinishedQuantLabel.text = "Bereits Vervollständigt: \(detailProgramModel.programsFinished)"
+        self.programCompanyLabel.text = detailProgramModel.programCompany
     }
 
     override func didReceiveMemoryWarning() {

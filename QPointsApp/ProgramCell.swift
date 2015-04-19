@@ -10,9 +10,10 @@ import UIKit
 
 class ProgramCell: UITableViewCell {
 
-    @IBOutlet weak var ProgramNameLabel: UILabel!
-    @IBOutlet weak var PointsLabel: UILabel!
-    @IBOutlet weak var ProgramsFinishedLabel: UILabel!
+    @IBOutlet weak var programNameLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var programsFinishedLabel: UILabel!
+    @IBOutlet weak var programCompanyLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
