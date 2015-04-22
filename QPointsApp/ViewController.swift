@@ -68,10 +68,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.programNameLabel.text = thisProgram.programName
         cell.programCompanyLabel.text = thisProgram.programCompany
         cell.pointsLabel.text = "\(thisProgram.myCount) / \(thisProgram.programGoal)"
-        println(thisProgram.programsFinished)
+        println("\(thisProgram.programName) finished Programs \(thisProgram.programsFinished)")
         if thisProgram.programsFinished > 0 {
             var finishedPrograms: String = ""
             switch thisProgram.programsFinished {
+            case 0:
+                finishedPrograms = ""
             case 1:
                 finishedPrograms = "*"
             case 2:

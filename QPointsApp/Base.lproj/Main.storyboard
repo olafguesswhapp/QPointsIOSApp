@@ -161,15 +161,6 @@
                                     <rect key="frame" x="16" y="207" width="152" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramesFinishedLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPe-vE-ekR">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="236" width="190" height="21"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLJ-BW-q8X">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -224,32 +215,46 @@
                                     <rect key="frame" x="16" y="288" width="181" height="21"/>
                                 </variation>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cf-8P-ezf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ProgramsFinishedButton">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="242" width="288" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="RedeemNowButtonTapped:" destination="9Gj-Na-sEl" eventType="touchUpInside" id="aAq-Lp-GOD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="1gN-Th-6Sj"/>
                                 <exclude reference="4Qd-pM-L8n"/>
-                                <exclude reference="ZPe-vE-ekR"/>
                                 <exclude reference="YLJ-BW-q8X"/>
                                 <exclude reference="lgo-fh-F8K"/>
                                 <exclude reference="zpZ-uv-btt"/>
                                 <exclude reference="MMe-BT-sVx"/>
                                 <exclude reference="ag4-ni-f0i"/>
                                 <exclude reference="tMX-Ts-82n"/>
+                                <exclude reference="1Cf-8P-ezf"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="1gN-Th-6Sj"/>
                                 <include reference="4Qd-pM-L8n"/>
-                                <include reference="ZPe-vE-ekR"/>
                                 <include reference="YLJ-BW-q8X"/>
                                 <include reference="lgo-fh-F8K"/>
                                 <include reference="zpZ-uv-btt"/>
                                 <include reference="MMe-BT-sVx"/>
                                 <include reference="ag4-ni-f0i"/>
                                 <include reference="tMX-Ts-82n"/>
+                                <include reference="1Cf-8P-ezf"/>
                             </mask>
                         </variation>
                     </view>
@@ -263,12 +268,126 @@
                         <outlet property="programNameLabel" destination="1gN-Th-6Sj" id="lSh-u7-620"/>
                         <outlet property="programStartDateLabel" destination="MMe-BT-sVx" id="sfj-wz-lJd"/>
                         <outlet property="programStatusLabel" destination="zpZ-uv-btt" id="dbT-lF-qsu"/>
-                        <outlet property="programsFinishedQuantLabel" destination="ZPe-vE-ekR" id="74U-9K-zgm"/>
+                        <outlet property="redeemProgramButton" destination="1Cf-8P-ezf" id="Xj3-eS-b0q"/>
+                        <segue destination="3lD-jL-CJM" kind="presentation" identifier="redeemProgramSegue" id="tRn-sf-ieh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWY-aT-3sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2626.5" y="-238"/>
+        </scene>
+        <!--Redeem View Controller-->
+        <scene sceneID="hj7-y7-Kdm">
+            <objects>
+                <viewController id="3lD-jL-CJM" customClass="RedeemViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kcn-MM-Rhe"/>
+                        <viewControllerLayoutGuide type="bottom" id="VrD-O6-7sL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mk7-EU-7N3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einlöse-Code eingeben:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgK-21-Uen">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="72" width="184" height="21"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VRc-65-tAW">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="119" width="98" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvS-oH-Oab">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Prüfen">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="119" width="176" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="VerifiyRedeemCodeButtonTapped:" destination="3lD-jL-CJM" eventType="touchUpInside" id="7oS-iu-l1w"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICC-a0-xIR">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="270" width="288" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="FinishRedeemProcessButtonTapped:" destination="3lD-jL-CJM" eventType="touchUpInside" id="9Te-m3-av7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramNameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SA8-Yg-yPR">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="28" width="288" height="21"/>
+                                </variation>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VerificationCode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHr-uE-gpb">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="204" width="228" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="MgK-21-Uen"/>
+                                <exclude reference="VRc-65-tAW"/>
+                                <exclude reference="jvS-oH-Oab"/>
+                                <exclude reference="ICC-a0-xIR"/>
+                                <exclude reference="SA8-Yg-yPR"/>
+                                <exclude reference="NHr-uE-gpb"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="MgK-21-Uen"/>
+                                <include reference="VRc-65-tAW"/>
+                                <include reference="jvS-oH-Oab"/>
+                                <include reference="ICC-a0-xIR"/>
+                                <include reference="SA8-Yg-yPR"/>
+                                <include reference="NHr-uE-gpb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="ProgramNameLabel" destination="SA8-Yg-yPR" id="u35-wz-EK4"/>
+                        <outlet property="RedeemProcessFinishedButton" destination="ICC-a0-xIR" id="5fV-hh-b79"/>
+                        <outlet property="VerificationButton" destination="jvS-oH-Oab" id="Dz5-qi-aik"/>
+                        <outlet property="VerificationCodeInputField" destination="VRc-65-tAW" id="sSE-f6-8lo"/>
+                        <outlet property="VerificationCodeLabel" destination="NHr-uE-gpb" id="tdS-yX-Vys"/>
+                        <segue destination="9Gj-Na-sEl" kind="presentation" identifier="returnDetailVCSegue" id="ZmT-fw-B8u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kf7-0E-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3312" y="-238"/>
         </scene>
         <!--Add Program View Controller-->
         <scene sceneID="SfI-QW-GKD">
@@ -547,4 +666,7 @@
             <point key="canvasLocation" x="1282.5" y="741"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="erh-BM-8jB"/>
+    </inferredMetricsTieBreakers>
 </document>

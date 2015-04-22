@@ -19,6 +19,7 @@
 		9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */; };
 		9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */; };
 		907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907084501ADC0BA5003D848C /* ScanCodeViewController.swift */; };
+		9096B0391AE6D2F80053812E /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096B0381AE6D2F80053812E /* RedeemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProgramViewController.swift; sourceTree = "<group>"; };
 		9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
 		907084501ADC0BA5003D848C /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanCodeViewController.swift; path = ../ScanCodeViewController.swift; sourceTree = "<group>"; };
+		9096B0381AE6D2F80053812E /* RedeemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				9022F2171ADA309B00CE2E04 /* ViewController.swift */,
 				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
+				9096B0381AE6D2F80053812E /* RedeemViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
 				9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */,
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
@@ -234,6 +237,7 @@
 				9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */,
 				9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */,
 				9022F2131ADA309B00CE2E04 /* AppDelegate.swift in Sources */,
+				9096B0391AE6D2F80053812E /* RedeemViewController.swift in Sources */,
 				9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */,
 				9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */,
 				907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */,

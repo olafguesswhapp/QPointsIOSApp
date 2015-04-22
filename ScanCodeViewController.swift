@@ -9,19 +9,27 @@
 import UIKit
 import CoreData
 
-class ScanCodeViewController: UIViewController {
+class ScanCodeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var CodeInputField: UITextField!
     @IBOutlet weak var CodeResponseField: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        CodeInputField.delegate = self
 
         // Do any additional setup after loading the view.
+        CodeResponseField.text = ""
+        // CodeResponseField.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField!) {    //delegate method
+        CodeResponseField.hidden = true
     }
     
     @IBAction func ScanButtonTapped(sender: UIButton) {
