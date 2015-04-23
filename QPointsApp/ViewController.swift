@@ -69,25 +69,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.programCompanyLabel.text = thisProgram.programCompany
         cell.pointsLabel.text = "\(thisProgram.myCount) / \(thisProgram.programGoal)"
         println("\(thisProgram.programName) finished Programs \(thisProgram.programsFinished)")
+        if thisProgram.programsFinished == 0 {
+            cell.programsFinishedLabel.hidden = true
+        }
         if thisProgram.programsFinished > 0 {
-            var finishedPrograms: String = ""
-            switch thisProgram.programsFinished {
-            case 0:
-                finishedPrograms = ""
-            case 1:
-                finishedPrograms = "*"
-            case 2:
-                finishedPrograms = "**"
-            case 3:
-                finishedPrograms = "***"
-            case 4:
-                finishedPrograms = "****"
-            default:
-                finishedPrograms = "*****"
-            }
-            println(finishedPrograms)
+            cell.programsFinishedLabel.backgroundColor = UIColor.blueColor()
+            cell.programsFinishedLabel.layer.masksToBounds = true
+            cell.programsFinishedLabel.textColor = UIColor.whiteColor()
+            cell.programsFinishedLabel.layer.cornerRadius = 10.0
+            cell.programsFinishedLabel.textAlignment = NSTextAlignment.Center
+            cell.programsFinishedLabel.text = String(thisProgram.programsFinished)
             cell.programsFinishedLabel.hidden = false
-            cell.programsFinishedLabel.text = finishedPrograms
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell

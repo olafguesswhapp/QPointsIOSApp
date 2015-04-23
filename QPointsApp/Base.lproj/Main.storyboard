@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--QPoints-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Xrc-L2-Ren" customClass="ProgramCell" customModule="QPointsApp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" editingAccessoryType="detailButton" id="Xrc-L2-Ren" customClass="ProgramCell" customModule="QPointsApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xrc-L2-Ren" id="8WK-Mr-rz9">
@@ -32,7 +32,7 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <rect key="frame" x="11" y="5" width="178" height="20"/>
+                                                        <rect key="frame" x="39" y="5" width="178" height="20"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="programCompany" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MY-c5-rar">
@@ -41,16 +41,16 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <rect key="frame" x="11" y="25" width="200" height="14"/>
+                                                        <rect key="frame" x="39" y="25" width="200" height="14"/>
                                                     </variation>
                                                 </label>
-                                                <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FinishedLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xta-Pe-CJU">
+                                                <label hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FinishedLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xta-Pe-CJU">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="210" y="11" width="42" height="21"/>
+                                                        <rect key="frame" x="8" y="11" width="21" height="21"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PointsLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAw-j6-b7p">
@@ -112,7 +112,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="wBV-Mg-cES">
+                    <navigationItem key="navigationItem" title="QPoints" id="wBV-Mg-cES">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bAt-Xx-GSh">
                             <connections>
                                 <action selector="AddProgButtonTapped:" destination="BYZ-38-t0r" id="GGx-bD-gdA"/>
@@ -131,9 +131,10 @@
             </objects>
             <point key="canvasLocation" x="1966.5" y="69"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Programm-->
         <scene sceneID="w3S-xM-6ot">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWY-aT-3sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="9Gj-Na-sEl" customClass="DetailViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6PU-Fl-XxC"/>
@@ -212,21 +213,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="288" width="181" height="21"/>
+                                    <rect key="frame" x="16" y="236" width="181" height="21"/>
                                 </variation>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cf-8P-ezf">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="ProgramsFinishedButton">
+                                <state key="normal" title="RedeemButton">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="242" width="288" height="30"/>
+                                    <rect key="frame" x="16" y="452" width="288" height="45"/>
                                 </variation>
                                 <connections>
-                                    <action selector="RedeemNowButtonTapped:" destination="9Gj-Na-sEl" eventType="touchUpInside" id="aAq-Lp-GOD"/>
+                                    <action selector="RedeemNowButtonTapped:" destination="9Gj-Na-sEl" eventType="touchUpInside" id="Usw-MI-2Lk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -258,7 +259,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="icS-wx-i4D"/>
+                    <navigationItem key="navigationItem" title="Programm" id="icS-wx-i4D"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -268,44 +269,42 @@
                         <outlet property="programNameLabel" destination="1gN-Th-6Sj" id="lSh-u7-620"/>
                         <outlet property="programStartDateLabel" destination="MMe-BT-sVx" id="sfj-wz-lJd"/>
                         <outlet property="programStatusLabel" destination="zpZ-uv-btt" id="dbT-lF-qsu"/>
-                        <outlet property="redeemProgramButton" destination="1Cf-8P-ezf" id="Xj3-eS-b0q"/>
-                        <segue destination="3lD-jL-CJM" kind="presentation" identifier="redeemProgramSegue" id="tRn-sf-ieh"/>
+                        <outlet property="redeemProgramButton" destination="1Cf-8P-ezf" id="Wwc-lA-BXF"/>
+                        <segue destination="h5h-1c-gAn" kind="show" identifier="redeemSegue" id="QQl-Qv-PRY"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UWY-aT-3sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2626.5" y="-238"/>
         </scene>
         <!--Redeem View Controller-->
-        <scene sceneID="hj7-y7-Kdm">
+        <scene sceneID="EHQ-c2-njE">
             <objects>
-                <viewController id="3lD-jL-CJM" customClass="RedeemViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="h5h-1c-gAn" customClass="RedeemViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kcn-MM-Rhe"/>
-                        <viewControllerLayoutGuide type="bottom" id="VrD-O6-7sL"/>
+                        <viewControllerLayoutGuide type="top" id="4Xq-AI-x9d"/>
+                        <viewControllerLayoutGuide type="bottom" id="wxs-GY-i1M"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mk7-EU-7N3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <view key="view" contentMode="scaleToFill" id="cxR-Ev-Ivk">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einlöse-Code eingeben:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgK-21-Uen">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einlöse-Code eingeben:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbZ-YM-aGS">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="72" width="184" height="21"/>
+                                    <rect key="frame" x="16" y="131" width="184" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VRc-65-tAW">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kCa-6y-p9V">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="119" width="98" height="30"/>
+                                    <rect key="frame" x="16" y="178" width="98" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvS-oH-Oab">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91k-zJ-HZG">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Prüfen">
@@ -313,81 +312,80 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="128" y="119" width="176" height="30"/>
+                                    <rect key="frame" x="128" y="178" width="176" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="VerifiyRedeemCodeButtonTapped:" destination="3lD-jL-CJM" eventType="touchUpInside" id="7oS-iu-l1w"/>
+                                    <action selector="VerifiyRedeemCodeButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="z1T-kF-7Ps"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICC-a0-xIR">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBT-oJ-F02">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="RedeemButton">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="270" width="288" height="30"/>
+                                    <rect key="frame" x="16" y="329" width="288" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="FinishRedeemProcessButtonTapped:" destination="3lD-jL-CJM" eventType="touchUpInside" id="9Te-m3-av7"/>
+                                    <action selector="FinishRedeemProcessButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="R46-m1-IYK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramNameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SA8-Yg-yPR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramNameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEH-e7-1Ii">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="28" width="288" height="21"/>
+                                    <rect key="frame" x="16" y="87" width="288" height="21"/>
                                 </variation>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VerificationCode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHr-uE-gpb">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VerificationCode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYo-pc-pKc">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="204" width="228" height="21"/>
+                                    <rect key="frame" x="16" y="263" width="228" height="21"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="MgK-21-Uen"/>
-                                <exclude reference="VRc-65-tAW"/>
-                                <exclude reference="jvS-oH-Oab"/>
-                                <exclude reference="ICC-a0-xIR"/>
-                                <exclude reference="SA8-Yg-yPR"/>
-                                <exclude reference="NHr-uE-gpb"/>
+                                <exclude reference="NbZ-YM-aGS"/>
+                                <exclude reference="kCa-6y-p9V"/>
+                                <exclude reference="91k-zJ-HZG"/>
+                                <exclude reference="uBT-oJ-F02"/>
+                                <exclude reference="tEH-e7-1Ii"/>
+                                <exclude reference="XYo-pc-pKc"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="MgK-21-Uen"/>
-                                <include reference="VRc-65-tAW"/>
-                                <include reference="jvS-oH-Oab"/>
-                                <include reference="ICC-a0-xIR"/>
-                                <include reference="SA8-Yg-yPR"/>
-                                <include reference="NHr-uE-gpb"/>
+                                <include reference="NbZ-YM-aGS"/>
+                                <include reference="kCa-6y-p9V"/>
+                                <include reference="91k-zJ-HZG"/>
+                                <include reference="uBT-oJ-F02"/>
+                                <include reference="tEH-e7-1Ii"/>
+                                <include reference="XYo-pc-pKc"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="ProgramNameLabel" destination="SA8-Yg-yPR" id="u35-wz-EK4"/>
-                        <outlet property="RedeemProcessFinishedButton" destination="ICC-a0-xIR" id="5fV-hh-b79"/>
-                        <outlet property="VerificationButton" destination="jvS-oH-Oab" id="Dz5-qi-aik"/>
-                        <outlet property="VerificationCodeInputField" destination="VRc-65-tAW" id="sSE-f6-8lo"/>
-                        <outlet property="VerificationCodeLabel" destination="NHr-uE-gpb" id="tdS-yX-Vys"/>
-                        <segue destination="9Gj-Na-sEl" kind="presentation" identifier="returnDetailVCSegue" id="ZmT-fw-B8u"/>
+                        <outlet property="ProgramNameLabel" destination="tEH-e7-1Ii" id="YDq-fc-QMg"/>
+                        <outlet property="RedeemProcessFinishedButton" destination="uBT-oJ-F02" id="OyR-uT-B1T"/>
+                        <outlet property="VerificationButton" destination="91k-zJ-HZG" id="oA2-Ii-WW2"/>
+                        <outlet property="VerificationCodeInputField" destination="kCa-6y-p9V" id="H0p-vm-ecD"/>
+                        <outlet property="VerificationCodeLabel" destination="XYo-pc-pKc" id="gGW-pg-KvC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kf7-0E-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbP-fY-ygK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3312" y="-238"/>
+            <point key="canvasLocation" x="3205.5" y="-238"/>
         </scene>
         <!--Add Program View Controller-->
         <scene sceneID="SfI-QW-GKD">
@@ -666,7 +664,4 @@
             <point key="canvasLocation" x="1282.5" y="741"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="erh-BM-8jB"/>
-    </inferredMetricsTieBreakers>
 </document>

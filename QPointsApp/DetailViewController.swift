@@ -24,11 +24,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         println("finished Programs \(detailProgramModel.programsFinished)")
-        if (detailProgramModel.programsFinished>0){
-            self.redeemProgramButton.layer.cornerRadius = 5
-            self.redeemProgramButton.setTitle("Einzulösen: \(detailProgramModel.programsFinished)", forState: UIControlState.Normal)
-            self.redeemProgramButton.hidden = false
-        }
         
         self.programNameLabel.text = detailProgramModel.programName
         self.ProgramPointsLabel.text = "Punkte: \(detailProgramModel.myCount) / \(detailProgramModel.programGoal)"
@@ -40,6 +35,15 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        println("Acchieved: ˜\(detailProgramModel.programsFinished)")
+        if detailProgramModel.programsFinished == 0 {
+            self.redeemProgramButton.hidden = true
+        }
+        if detailProgramModel.programsFinished>0 {
+            self.redeemProgramButton.layer.cornerRadius = 5
+            self.redeemProgramButton.setTitle("Punkte einlösen: \(detailProgramModel.programsFinished)", forState: UIControlState.Normal)
+            self.redeemProgramButton.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,14 +52,14 @@ class DetailViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "redeemProgramSegue" {
+        if segue.identifier == "redeemSegue" {
             let redeemVC: RedeemViewController = segue.destinationViewController as RedeemViewController
             redeemVC.redeemProgramModel = detailProgramModel
         }
     }
     
     @IBAction func RedeemNowButtonTapped(sender: UIButton) {
-        self.performSegueWithIdentifier("redeemProgramSegue", sender: self)
+        self.performSegueWithIdentifier("redeemSegue", sender: self)
     }
 
     

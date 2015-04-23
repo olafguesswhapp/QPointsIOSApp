@@ -2,14 +2,15 @@
 //  RedeemViewController.swift
 //  QPointsApp
 //
-//  Created by Olaf Peters on 21.04.15.
+//  Created by Olaf Peters on 23.04.15.
 //  Copyright (c) 2015 GuessWhapp. All rights reserved.
 //
 
 import UIKit
+import Security
 
 class RedeemViewController: UIViewController {
-
+    
     @IBOutlet weak var ProgramNameLabel: UILabel!
     @IBOutlet weak var RedeemProcessFinishedButton: UIButton!
     @IBOutlet weak var VerificationCodeLabel: UILabel!
@@ -17,7 +18,7 @@ class RedeemViewController: UIViewController {
     @IBOutlet weak var VerificationCodeInputField: UITextField!
     
     var redeemProgramModel: ProgramModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,13 +50,12 @@ class RedeemViewController: UIViewController {
     }
     
     @IBAction func FinishRedeemProcessButtonTapped(sender: UIButton) {
-        println(self.redeemProgramModel.programsFinished)
-        println("Vorher & Nachher")
         let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         self.redeemProgramModel.programsFinished -= 1
         println(self.redeemProgramModel.programsFinished)
         appDelegate.saveContext()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
+    
 
 }
