@@ -10,10 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var programStatusLabel: UILabel!
     @IBOutlet weak var programNameLabel: UILabel!
     @IBOutlet weak var ProgramPointsLabel: UILabel!
-    @IBOutlet weak var programStartDateLabel: UILabel!
     @IBOutlet weak var programEndDateLabel: UILabel!
     @IBOutlet weak var redeemProgramButton: UIButton!
     @IBOutlet weak var programCompanyLabel: UILabel!
@@ -27,8 +25,6 @@ class DetailViewController: UIViewController {
         
         self.programNameLabel.text = detailProgramModel.programName
         self.ProgramPointsLabel.text = "Punkte: \(detailProgramModel.myCount) / \(detailProgramModel.programGoal)"
-        self.programStatusLabel.text = detailProgramModel.programStatus
-        self.programStartDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programStartDate, dateStyle: .MediumStyle, timeStyle: .NoStyle)
         self.programEndDateLabel.text = NSDateFormatter.localizedStringFromDate(detailProgramModel.programEndDate, dateStyle: .MediumStyle, timeStyle: .NoStyle)
         self.programCompanyLabel.text = detailProgramModel.programCompany
     }
