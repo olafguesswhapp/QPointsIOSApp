@@ -7,7 +7,20 @@
 //
 
 import UIKit
-import Security
+
+// Monadic bind for Optionals
+infix operator >>= {associativity left}
+func >>= <A,B> (m: A?, f: A -> B?) -> B? {
+    if let x = m {return f(x)}
+    return .None
+}
+
+extension Character {
+    func utf8() -> UInt8 {
+        let utf8 = String(self).utf8
+        return utf8[utf8.startIndex]
+    }
+}
 
 class RedeemViewController: UIViewController {
     
@@ -41,8 +54,11 @@ class RedeemViewController: UIViewController {
     }
     
     @IBAction func VerifiyRedeemCodeButtonTapped(sender: UIButton) {
-        VerificationCodeLabel.text = VerificationCodeInputField.text
+        // Beispiel als Verification Code = 2T@
+        var interim = encryptKey(redeemProgramModel.programKey)(message: VerificationCodeInputField.text)
         VerificationCodeLabel.hidden = false
+        println(interim!)
+        VerificationCodeLabel.text = interim!
         VerificationButton.hidden = true
         VerificationCodeInputField.text = ""
         RedeemProcessFinishedButton.layer.cornerRadius = 5
@@ -57,5 +73,14 @@ class RedeemViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-
+    func encrypt(key:Character, c:Character) -> String? {
+        let byte = [key.utf8() ^ c.utf8()]
+        return String(bytes: byte, encoding: NSUTF8StringEncoding)
+    }
+    
+    // Curried func for convenient use with map
+    func encryptKey(key:String)(message:String) -> String? {
+        return reduce(Zip2(key, message), Optional("")) { str, c in str >>= { s in self.encrypt(c).map {s + $0} }}
+    }
+    
 }

@@ -98,6 +98,7 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
                     program.programGoal = Int16(helpInt)
                     program.myCount = 1
                     program.programStatus = jsonDictionary!["programStatus"]! as String
+                    program.programKey = jsonDictionary!["key"]! as String
                     let dateFormatter: NSDateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
                     program.programStartDate = dateFormatter.dateFromString(jsonDictionary!["startDate"]! as String)!

@@ -21,5 +21,6 @@ class ProgramModel: NSManagedObject {
     @NSManaged var programStatus: String
     @NSManaged var programStartDate: NSDate
     @NSManaged var programEndDate: NSDate
+    @NSManaged var programKey: String
 
 }
