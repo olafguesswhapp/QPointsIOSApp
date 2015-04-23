@@ -134,7 +134,6 @@
         <!--Programm-->
         <scene sceneID="w3S-xM-6ot">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UWY-aT-3sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="9Gj-Na-sEl" customClass="DetailViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6PU-Fl-XxC"/>
@@ -273,6 +272,7 @@
                         <segue destination="h5h-1c-gAn" kind="show" identifier="redeemSegue" id="QQl-Qv-PRY"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWY-aT-3sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2626.5" y="-238"/>
         </scene>
@@ -285,8 +285,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wxs-GY-i1M"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cxR-Ev-Ivk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramNameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEH-e7-1Ii">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="87" width="288" height="21"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einlöse-Code eingeben:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbZ-YM-aGS">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -318,58 +328,60 @@
                                     <action selector="VerifiyRedeemCodeButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="z1T-kF-7Ps"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VerificationCode" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYo-pc-pKc">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="263" width="288" height="40"/>
+                                </variation>
+                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBT-oJ-F02">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="RedeemButton">
+                                <state key="normal" title="Anbieter hat bestätigt!">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="329" width="288" height="30"/>
+                                    <rect key="frame" x="16" y="329" width="288" height="41"/>
                                 </variation>
                                 <connections>
                                     <action selector="FinishRedeemProcessButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="R46-m1-IYK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProgramNameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEH-e7-1Ii">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte dem Inhaber zeigen:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAx-Nk-2EX">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="87" width="288" height="21"/>
-                                </variation>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VerificationCode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYo-pc-pKc">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="263" width="228" height="21"/>
+                                    <rect key="frame" x="16" y="234" width="288" height="21"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="tEH-e7-1Ii"/>
                                 <exclude reference="NbZ-YM-aGS"/>
                                 <exclude reference="kCa-6y-p9V"/>
                                 <exclude reference="91k-zJ-HZG"/>
-                                <exclude reference="uBT-oJ-F02"/>
-                                <exclude reference="tEH-e7-1Ii"/>
                                 <exclude reference="XYo-pc-pKc"/>
+                                <exclude reference="uBT-oJ-F02"/>
+                                <exclude reference="uAx-Nk-2EX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="tEH-e7-1Ii"/>
                                 <include reference="NbZ-YM-aGS"/>
                                 <include reference="kCa-6y-p9V"/>
                                 <include reference="91k-zJ-HZG"/>
-                                <include reference="uBT-oJ-F02"/>
-                                <include reference="tEH-e7-1Ii"/>
                                 <include reference="XYo-pc-pKc"/>
+                                <include reference="uBT-oJ-F02"/>
+                                <include reference="uAx-Nk-2EX"/>
                             </mask>
                         </variation>
                     </view>
@@ -378,9 +390,11 @@
                     <connections>
                         <outlet property="ProgramNameLabel" destination="tEH-e7-1Ii" id="YDq-fc-QMg"/>
                         <outlet property="RedeemProcessFinishedButton" destination="uBT-oJ-F02" id="OyR-uT-B1T"/>
+                        <outlet property="RedeemRequestLabel" destination="uAx-Nk-2EX" id="WVT-BE-eWN"/>
                         <outlet property="VerificationButton" destination="91k-zJ-HZG" id="oA2-Ii-WW2"/>
                         <outlet property="VerificationCodeInputField" destination="kCa-6y-p9V" id="H0p-vm-ecD"/>
                         <outlet property="VerificationCodeLabel" destination="XYo-pc-pKc" id="gGW-pg-KvC"/>
+                        <outlet property="VerificationRequestLabel" destination="NbZ-YM-aGS" id="zCQ-xG-HSB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbP-fY-ygK" userLabel="First Responder" sceneMemberID="firstResponder"/>

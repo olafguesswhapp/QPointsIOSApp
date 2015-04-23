@@ -24,6 +24,8 @@ extension Character {
 
 class RedeemViewController: UIViewController {
     
+    @IBOutlet weak var RedeemRequestLabel: UILabel!
+    @IBOutlet weak var VerificationRequestLabel: UILabel!
     @IBOutlet weak var ProgramNameLabel: UILabel!
     @IBOutlet weak var RedeemProcessFinishedButton: UIButton!
     @IBOutlet weak var VerificationCodeLabel: UILabel!
@@ -54,12 +56,18 @@ class RedeemViewController: UIViewController {
     }
     
     @IBAction func VerifiyRedeemCodeButtonTapped(sender: UIButton) {
-        // Beispiel als Verification Code = 2T@
-        var interim = encryptKey(redeemProgramModel.programKey)(message: VerificationCodeInputField.text)
+        // Beispiel als Verification Code = 2T@
+        var decryptedVerification:String = encryptKey(redeemProgramModel.programKey)(message: VerificationCodeInputField.text)!
+        println(decryptedVerification)
+        VerificationCodeLabel.layer.borderColor = UIColor.blueColor().CGColor!
+        VerificationCodeLabel.layer.cornerRadius = 5
+        VerificationCodeLabel.layer.borderWidth = 1.0
+        VerificationCodeLabel.text = decryptedVerification
         VerificationCodeLabel.hidden = false
-        println(interim!)
-        VerificationCodeLabel.text = interim!
+        RedeemRequestLabel.hidden = false
         VerificationButton.hidden = true
+        VerificationRequestLabel.hidden = true
+        VerificationCodeInputField.hidden = true
         VerificationCodeInputField.text = ""
         RedeemProcessFinishedButton.layer.cornerRadius = 5
         RedeemProcessFinishedButton.hidden = false
