@@ -23,7 +23,8 @@ extension Character {
 }
 
 class RedeemViewController: UIViewController {
-    
+
+    @IBOutlet weak var RequestDeclinedButton: UIButton!
     @IBOutlet weak var RedeemRequestLabel: UILabel!
     @IBOutlet weak var VerificationRequestLabel: UILabel!
     @IBOutlet weak var ProgramNameLabel: UILabel!
@@ -40,6 +41,7 @@ class RedeemViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.ProgramNameLabel.text = redeemProgramModel.programName
         self.VerificationButton.layer.cornerRadius = 5
+        self.RequestDeclinedButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +67,7 @@ class RedeemViewController: UIViewController {
         VerificationCodeLabel.text = decryptedVerification
         VerificationCodeLabel.hidden = false
         RedeemRequestLabel.hidden = false
+        self.RequestDeclinedButton.hidden = false
         VerificationButton.hidden = true
         VerificationRequestLabel.hidden = true
         VerificationCodeInputField.hidden = true
@@ -79,6 +82,18 @@ class RedeemViewController: UIViewController {
         println(self.redeemProgramModel.programsFinished)
         appDelegate.saveContext()
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    @IBAction func RequestDeclineButtonTapped(sender: UIButton) {
+        self.VerificationCodeLabel.text = ""
+        self.VerificationCodeLabel.hidden = true
+        self.VerificationButton.hidden = true
+        self.RedeemProcessFinishedButton.hidden = true
+        self.RedeemRequestLabel.hidden = true
+        self.RequestDeclinedButton.hidden = true
+        self.VerificationRequestLabel.hidden = false
+        self.VerificationButton.hidden = false
+        self.VerificationCodeInputField.hidden = false
+        
     }
     
     func encrypt(key:Character, c:Character) -> String? {

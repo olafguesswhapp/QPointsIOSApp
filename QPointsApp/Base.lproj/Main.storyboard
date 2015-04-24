@@ -293,6 +293,15 @@
                                     <action selector="VerifiyRedeemCodeButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="z1T-kF-7Ps"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte dem Inhaber zeigen:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAx-Nk-2EX">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="234" width="288" height="21"/>
+                                </variation>
+                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VerificationCode" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYo-pc-pKc">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -310,21 +319,26 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="329" width="288" height="41"/>
+                                    <rect key="frame" x="16" y="310" width="288" height="82"/>
                                 </variation>
                                 <connections>
                                     <action selector="FinishRedeemProcessButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="R46-m1-IYK"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte dem Inhaber zeigen:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAx-Nk-2EX">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOk-VO-q5z">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Anbieter lehnt Einlösung ab">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="234" width="288" height="21"/>
+                                    <rect key="frame" x="16" y="423" width="288" height="82"/>
                                 </variation>
-                            </label>
+                                <connections>
+                                    <action selector="RequestDeclineButtonTapped:" destination="h5h-1c-gAn" eventType="touchUpInside" id="PQa-0L-O5U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -333,9 +347,10 @@
                                 <exclude reference="NbZ-YM-aGS"/>
                                 <exclude reference="kCa-6y-p9V"/>
                                 <exclude reference="91k-zJ-HZG"/>
+                                <exclude reference="uAx-Nk-2EX"/>
                                 <exclude reference="XYo-pc-pKc"/>
                                 <exclude reference="uBT-oJ-F02"/>
-                                <exclude reference="uAx-Nk-2EX"/>
+                                <exclude reference="NOk-VO-q5z"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -344,9 +359,10 @@
                                 <include reference="NbZ-YM-aGS"/>
                                 <include reference="kCa-6y-p9V"/>
                                 <include reference="91k-zJ-HZG"/>
+                                <include reference="uAx-Nk-2EX"/>
                                 <include reference="XYo-pc-pKc"/>
                                 <include reference="uBT-oJ-F02"/>
-                                <include reference="uAx-Nk-2EX"/>
+                                <include reference="NOk-VO-q5z"/>
                             </mask>
                         </variation>
                     </view>
@@ -356,6 +372,7 @@
                         <outlet property="ProgramNameLabel" destination="tEH-e7-1Ii" id="YDq-fc-QMg"/>
                         <outlet property="RedeemProcessFinishedButton" destination="uBT-oJ-F02" id="OyR-uT-B1T"/>
                         <outlet property="RedeemRequestLabel" destination="uAx-Nk-2EX" id="WVT-BE-eWN"/>
+                        <outlet property="RequestDeclinedButton" destination="NOk-VO-q5z" id="DRk-xQ-XeT"/>
                         <outlet property="VerificationButton" destination="91k-zJ-HZG" id="oA2-Ii-WW2"/>
                         <outlet property="VerificationCodeInputField" destination="kCa-6y-p9V" id="H0p-vm-ecD"/>
                         <outlet property="VerificationCodeLabel" destination="XYo-pc-pKc" id="gGW-pg-KvC"/>
