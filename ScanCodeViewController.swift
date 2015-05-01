@@ -94,7 +94,7 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
                     program.programNr = jsonDictionary!["nr"]! as String
                     program.programName = jsonDictionary!["name"]! as String
                     program.programCompany = jsonDictionary!["company"]! as String
-                    var helpInt: Int = jsonDictionary!["goalCount"]! as Int
+                    var helpInt: Int = jsonDictionary!["goalToHit"]! as Int
                     program.programGoal = Int16(helpInt)
                     program.myCount = 1
                     program.programStatus = jsonDictionary!["programStatus"]! as String

@@ -67,13 +67,14 @@ class RedeemViewController: UIViewController {
         VerificationCodeLabel.text = decryptedVerification
         VerificationCodeLabel.hidden = false
         RedeemRequestLabel.hidden = false
-        self.RequestDeclinedButton.hidden = false
+        RequestDeclinedButton.hidden = false
         VerificationButton.hidden = true
         VerificationRequestLabel.hidden = true
         VerificationCodeInputField.hidden = true
         VerificationCodeInputField.text = ""
         RedeemProcessFinishedButton.layer.cornerRadius = 5
         RedeemProcessFinishedButton.hidden = false
+        VerificationCodeInputField.resignFirstResponder()
     }
     
     @IBAction func FinishRedeemProcessButtonTapped(sender: UIButton) {
@@ -81,6 +82,7 @@ class RedeemViewController: UIViewController {
         self.redeemProgramModel.programsFinished -= 1
         println(self.redeemProgramModel.programsFinished)
         appDelegate.saveContext()
+        redeemCodes()
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func RequestDeclineButtonTapped(sender: UIButton) {
@@ -93,7 +95,6 @@ class RedeemViewController: UIViewController {
         self.VerificationRequestLabel.hidden = false
         self.VerificationButton.hidden = false
         self.VerificationCodeInputField.hidden = false
-        
     }
     
     func encrypt(key:Character, c:Character) -> String? {
@@ -106,4 +107,30 @@ class RedeemViewController: UIViewController {
         return reduce(Zip2(key, message), Optional("")) { str, c in str >>= { s in self.encrypt(c).map {s + $0} }}
     }
     
+    func redeemCodes()-> Void {
+        // Prepare API Redeem Post request
+        var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicoderedeem")!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        var params = [
+        "user" : "j2@guesswhapp.de",
+        "programNr" : redeemProgramModel.programNr,
+        "programGoal" : String(redeemProgramModel.programGoal)
+        ]
+        var error: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        // API Redeem Post request
+        var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, err) -> Void in
+            var conversionError: NSError?
+            var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
+            println(jsonDictionary!)
+            var answer:String = jsonDictionary!["message"]! as String
+            println("Answer from WebServer to Redeem Request: \(answer)")
+            println(jsonDictionary!["success"]! as Bool)
+        })
+        task.resume()
+    }
 }
