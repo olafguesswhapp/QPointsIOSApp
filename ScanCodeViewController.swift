@@ -33,19 +33,45 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func ScanButtonTapped(sender: UIButton) {
-        requestProgramData(CodeInputField.text)
+        setReconciliationList()
         CodeInputField.endEditing(true)
         CodeInputField.text = ""
     }
     
-    func requestProgramData(scannedCode: String) {
+    func setReconciliationList()->Void {
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("ReconciliationModel", inManagedObjectContext: managedObjectContext!)
+        let reconTask = ReconciliationModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+        reconTask.reconStatus = false
+        reconTask.reconType = 1 // 1 = Scanned Code Request
+        reconTask.reconUser = "j2@guesswhapp.de"
+        reconTask.reconProgramNr = ""
+        reconTask.reconProgramGoalToHit = 0
+        reconTask.reconQpInput = CodeInputField.text
+        // values currently not available:
+        reconTask.reconSuccess = false
+        reconTask.reconMessage = ""
+        
+        println("Reconciliation-Type \(reconTask.reconType) with ScanCode \(reconTask.reconQpInput)")
+        appDelegate.saveContext()
+        
+        // if Internet available ...
+        verifiyScannedCode(reconTask.managedObjectContext!)
+    }
+    
+    func verifiyScannedCode(context: NSManagedObjectContext) {
+        let fetchRequest = NSFetchRequest(entityName: "ReconciliationModel")
+        var requestError: NSError?
+        let response = context.executeFetchRequest(fetchRequest, error: &requestError) as [ReconciliationModel!]
+        let reconTask = (response as NSArray).lastObject as ReconciliationModel
         // Prepare API Post request
         var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicodecheck")!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
         var params = [
-            "user" : "j2@guesswhapp.de",
-            "qpInput" : scannedCode // new scanned code
+            "user" : reconTask.reconUser,
+            "qpInput" : reconTask.reconQpInput
         ]
         var error: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
@@ -110,6 +136,6 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         })
-        task.resume()
+        // task.resume()
     }
 }

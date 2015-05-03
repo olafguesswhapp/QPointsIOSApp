@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 // Monadic bind for Optionals
 infix operator >>= {associativity left}
@@ -82,7 +83,7 @@ class RedeemViewController: UIViewController {
         self.redeemProgramModel.programsFinished -= 1
         println(self.redeemProgramModel.programsFinished)
         appDelegate.saveContext()
-        redeemCodes()
+        setReconciliationList()
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func RequestDeclineButtonTapped(sender: UIButton) {
@@ -107,15 +108,43 @@ class RedeemViewController: UIViewController {
         return reduce(Zip2(key, message), Optional("")) { str, c in str >>= { s in self.encrypt(c).map {s + $0} }}
     }
     
-    func redeemCodes()-> Void {
+    func setReconciliationList()->Void {
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("ReconciliationModel", inManagedObjectContext: managedObjectContext!)
+        let reconTask = ReconciliationModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+        reconTask.reconStatus = false
+        reconTask.reconType = 2 // 2 = Redeem Request
+        reconTask.reconUser = "j2@guesswhapp.de"
+        reconTask.reconProgramNr = redeemProgramModel.programNr
+        reconTask.reconProgramGoalToHit = redeemProgramModel.programGoal
+        reconTask.reconQpInput = ""
+        // values currently not available:
+        reconTask.reconSuccess = false
+        reconTask.reconMessage = ""
+        
+        println(reconTask.reconUser)
+        println("this is the created reconTaskModell Entity")
+        
+        appDelegate.saveContext()
+        
+        // if Internet available ...
+        redeemCodes(reconTask.managedObjectContext!)
+    }
+    
+    func redeemCodes(context: NSManagedObjectContext)-> Void {
+        let fetchRequest = NSFetchRequest(entityName: "ReconciliationModel")
+        var requestError: NSError?
+        let response = context.executeFetchRequest(fetchRequest, error: &requestError) as [ReconciliationModel!]
+        let reconTask = (response as NSArray).lastObject as ReconciliationModel
         // Prepare API Redeem Post request
         var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicoderedeem")!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
         var params = [
-        "user" : "j2@guesswhapp.de",
-        "programNr" : redeemProgramModel.programNr,
-        "programGoal" : String(redeemProgramModel.programGoal)
+        "user" : reconTask.reconUser,
+        "programNr" : reconTask.reconProgramNr,
+        "programGoal" : String(reconTask.reconProgramGoalToHit)
         ]
         var error: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
@@ -127,10 +156,20 @@ class RedeemViewController: UIViewController {
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             println(jsonDictionary!)
-            var answer:String = jsonDictionary!["message"]! as String
-            println("Answer from WebServer to Redeem Request: \(answer)")
-            println(jsonDictionary!["success"]! as Bool)
+            if jsonDictionary!["success"]! as Bool == true{
+                var answer:String = jsonDictionary!["message"]! as String
+                println(answer)
+                context.deleteObject(reconTask)
+                var savingError: NSError?
+                if context.save(&savingError){
+                    println("Successfully deleted the last Reconciliation Task")
+                    } else {
+                    if let error = savingError{
+                        println("Failed to delete the last Reconciliation Task. Error = \(error)")
+                    }
+                }
+            }
         })
-        task.resume()
+//        task.resume()
     }
 }

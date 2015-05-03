@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9008461C1AF3C0D700A45349 /* ReconciliationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */; };
 		9022F2131ADA309B00CE2E04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2121ADA309B00CE2E04 /* AppDelegate.swift */; };
 		9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */; };
 		9022F2181ADA309B00CE2E04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2171ADA309B00CE2E04 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReconciliationModel.swift; sourceTree = "<group>"; };
 		9022F20D1ADA309B00CE2E04 /* QPointsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QPointsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9022F2111ADA309B00CE2E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9022F2121ADA309B00CE2E04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
 				9022F21E1ADA309B00CE2E04 /* LaunchScreen.xib */,
 				9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */,
+				9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */,
 				9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */,
 				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				9022F2101ADA309B00CE2E04 /* Supporting Files */,
@@ -241,6 +244,7 @@
 				9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */,
 				9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */,
 				907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */,
+				9008461C1AF3C0D700A45349 /* ReconciliationModel.swift in Sources */,
 				9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
