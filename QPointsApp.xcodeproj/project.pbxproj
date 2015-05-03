@@ -20,6 +20,7 @@
 		9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */; };
 		9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */; };
 		907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907084501ADC0BA5003D848C /* ScanCodeViewController.swift */; };
+		9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092BDA81AF6569C00085D4A /* QPLibrary.swift */; };
 		90D4FA8F1AE8C4BE002C7A1E /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProgramViewController.swift; sourceTree = "<group>"; };
 		9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
 		907084501ADC0BA5003D848C /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanCodeViewController.swift; path = ../ScanCodeViewController.swift; sourceTree = "<group>"; };
+		9092BDA81AF6569C00085D4A /* QPLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLibrary.swift; sourceTree = "<group>"; };
 		90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 			children = (
 				9022F2121ADA309B00CE2E04 /* AppDelegate.swift */,
 				9022F2171ADA309B00CE2E04 /* ViewController.swift */,
+				9092BDA81AF6569C00085D4A /* QPLibrary.swift */,
 				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */,
 				9022F2181ADA309B00CE2E04 /* ViewController.swift in Sources */,
 				9022F23C1ADA738C00CE2E04 /* AddProgramViewController.swift in Sources */,
 				9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */,

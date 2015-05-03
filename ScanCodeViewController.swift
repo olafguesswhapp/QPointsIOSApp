@@ -33,109 +33,13 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func ScanButtonTapped(sender: UIButton) {
-        setReconciliationList()
+        var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: "j2@guesswhapp.de",setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: CodeInputField.text)
+        
         CodeInputField.endEditing(true)
         CodeInputField.text = ""
+        
+        // If Internet Available
+        self.APIPostRequest(reconTask,apiType: 1)
     }
     
-    func setReconciliationList()->Void {
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        let managedObjectContext = appDelegate.managedObjectContext
-        let entityDescription = NSEntityDescription.entityForName("ReconciliationModel", inManagedObjectContext: managedObjectContext!)
-        let reconTask = ReconciliationModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
-        reconTask.reconStatus = false
-        reconTask.reconType = 1 // 1 = Scanned Code Request
-        reconTask.reconUser = "j2@guesswhapp.de"
-        reconTask.reconProgramNr = ""
-        reconTask.reconProgramGoalToHit = 0
-        reconTask.reconQpInput = CodeInputField.text
-        // values currently not available:
-        reconTask.reconSuccess = false
-        reconTask.reconMessage = ""
-        
-        println("Reconciliation-Type \(reconTask.reconType) with ScanCode \(reconTask.reconQpInput)")
-        appDelegate.saveContext()
-        
-        // if Internet available ...
-        verifiyScannedCode(reconTask.managedObjectContext!)
-    }
-    
-    func verifiyScannedCode(context: NSManagedObjectContext) {
-        let fetchRequest = NSFetchRequest(entityName: "ReconciliationModel")
-        var requestError: NSError?
-        let response = context.executeFetchRequest(fetchRequest, error: &requestError) as [ReconciliationModel!]
-        let reconTask = (response as NSArray).lastObject as ReconciliationModel
-        // Prepare API Post request
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicodecheck")!)
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        var params = [
-            "user" : reconTask.reconUser,
-            "qpInput" : reconTask.reconQpInput
-        ]
-        var error: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        // API Post request
-        var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, err) -> Void in
-            var conversionError: NSError?
-            var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
-            println(jsonDictionary!)
-            dispatch_async(dispatch_get_main_queue(),{
-                self.CodeResponseField.hidden = false
-                self.CodeResponseField.text = jsonDictionary!["message"]! as? String
-            });
-            // handle API response only if code is valid - success = true
-            if jsonDictionary!["success"]! as Bool == true {
-                var isNewProgram: Bool = true
-                // prepare core data comparison
-                let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-                let managedObjectContext = appDelegate.managedObjectContext
-                let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
-                let fetchRequest = NSFetchRequest(entityName: "ProgramModel")
-                if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ProgramModel] {
-                    var index: Int
-                    // run through all already avaiable Programes and check if new code is part of one of those Programes
-                    for index = 0; index<fetchResults.count; ++index{
-                        if fetchResults[index].programNr == jsonDictionary!["nr"]! as String {
-                            // code belongs to an already available Program
-                            isNewProgram = false
-                            fetchResults[index].myCount += 1 // Increase Code Counter
-                            // Check if latest Code completes Goal
-                            if fetchResults[index].myCount == fetchResults[index].programGoal {
-                                fetchResults[index].myCount = 0
-                                fetchResults[index].programsFinished += 1
-                            }
-                            println("Counter: \(fetchResults[index].myCount) and finished \(fetchResults[index].programsFinished)")
-                            appDelegate.saveContext()
-                        }
-                    }
-                }
-                println(isNewProgram)
-                if isNewProgram == true {
-                    // new Code is 1st scanned code of a new Programe - import information from Programe and save in core data
-                    let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
-                    program.programNr = jsonDictionary!["nr"]! as String
-                    program.programName = jsonDictionary!["name"]! as String
-                    program.programCompany = jsonDictionary!["company"]! as String
-                    var helpInt: Int = jsonDictionary!["goalToHit"]! as Int
-                    program.programGoal = Int16(helpInt)
-                    program.myCount = 1
-                    program.programStatus = jsonDictionary!["programStatus"]! as String
-                    program.programKey = jsonDictionary!["key"]! as String
-                    let dateFormatter: NSDateFormatter = NSDateFormatter()
-                    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
-                    program.programStartDate = dateFormatter.dateFromString(jsonDictionary!["startDate"]! as String)!
-                    program.programEndDate = dateFormatter.dateFromString(jsonDictionary!["endDate"]! as String)!
-                    println(program.programStartDate)
-                    println(program.programEndDate)
-                    appDelegate.saveContext()
-                    println(program)
-                }
-            }
-        })
-        // task.resume()
-    }
 }
