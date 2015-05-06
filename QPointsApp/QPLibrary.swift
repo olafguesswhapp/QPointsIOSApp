@@ -82,7 +82,7 @@ extension UIViewController {
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             println(jsonDictionary!)
             completionHandler2(apiMessage: jsonDictionary!["message"]! as String)
-            self.deleteReconTask(reconTask)
+            self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
             if apiType==1 {
                 self.processResponseScannedCode(jsonDictionary!)
             }

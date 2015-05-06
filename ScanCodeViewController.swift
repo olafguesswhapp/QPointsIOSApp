@@ -46,7 +46,6 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
                 self.CodeResponseField.hidden = false
                 self.CodeResponseField.text = apiMessage
             });
-            println("ich bin im completionHanler2")
         }
     }
     

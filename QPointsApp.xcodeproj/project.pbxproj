@@ -103,12 +103,12 @@
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
 				90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */,
 				9022F23B1ADA738C00CE2E04 /* AddProgramViewController.swift */,
+				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
 				9022F21E1ADA309B00CE2E04 /* LaunchScreen.xib */,
 				9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */,
 				9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */,
 				9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */,
-				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				9022F2101ADA309B00CE2E04 /* Supporting Files */,
 			);
 			path = QPointsApp;
