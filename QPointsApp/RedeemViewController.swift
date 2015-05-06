@@ -86,7 +86,9 @@ class RedeemViewController: UIViewController {
         var reconTask: ReconciliationModel = self.setReconciliationList(2,setRecLiUser: "j2@guesswhapp.de",setRecLiProgNr: redeemProgramModel.programNr,setRecLiGoalToHit: redeemProgramModel.programGoal, setRecLiQPCode: "")
         self.navigationController?.popViewControllerAnimated(true)
         // if Internet available ...
-        self.APIPostRequest(reconTask,apiType: 2)
+        self.APIPostRequest(reconTask,apiType: 2){
+            (apiMessage: String) in
+        }
     }
     @IBAction func RequestDeclineButtonTapped(sender: UIButton) {
         self.VerificationCodeLabel.text = ""

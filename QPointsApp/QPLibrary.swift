@@ -46,7 +46,7 @@ extension UIViewController {
         }
     }
     
-    func APIPostRequest(reconTask: ReconciliationModel, apiType: Int16) {
+    func APIPostRequest(reconTask: ReconciliationModel, apiType: Int16, completionHandler2: (apiMessage: String) -> Void) {
         // Prepare API Post request
         var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicodecheck")!)
         var params = [
@@ -81,9 +81,8 @@ extension UIViewController {
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             println(jsonDictionary!)
-            if jsonDictionary!["success"]! as Bool == true {
-                self.deleteReconTask(reconTask)
-            }
+            completionHandler2(apiMessage: jsonDictionary!["message"]! as String)
+            self.deleteReconTask(reconTask)
             if apiType==1 {
                 self.processResponseScannedCode(jsonDictionary!)
             }

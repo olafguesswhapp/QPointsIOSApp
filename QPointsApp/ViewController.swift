@@ -135,11 +135,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 case 1:
                     println("\(counter). Check scanned Code")
                     println(reconTask.reconUser + " " + reconTask.reconQpInput)
-                    self.APIPostRequest(reconTask,apiType: 1)
+                    self.APIPostRequest(reconTask,apiType: 1){
+                        (apiMessage: String) in
+                    }
                 case 2:
                     println("\(counter). Check redeemed Program")
                     println(reconTask.reconUser + " " + reconTask.reconProgramNr + " " + String(reconTask.reconProgramGoalToHit))
-                    self.APIPostRequest(reconTask,apiType: 2)
+                    self.APIPostRequest(reconTask,apiType: 2){
+                        (apiMessage: String) in
+                    }
                 default:
                     println("not a valid Task")
                 }

@@ -35,11 +35,19 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func ScanButtonTapped(sender: UIButton) {
         var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: "j2@guesswhapp.de",setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: CodeInputField.text)
         
+        
         CodeInputField.endEditing(true)
         CodeInputField.text = ""
         
         // If Internet Available
-        self.APIPostRequest(reconTask,apiType: 1)
+        self.APIPostRequest(reconTask,apiType: 1){
+            (apiMessage: String) in
+            dispatch_async(dispatch_get_main_queue(),{
+                self.CodeResponseField.hidden = false
+                self.CodeResponseField.text = apiMessage
+            });
+            println("ich bin im completionHanler2")
+        }
     }
     
 }
