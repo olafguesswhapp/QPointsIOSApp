@@ -649,35 +649,217 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoginSeite" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7T-GX-ZX9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Willkommen zu QPoints" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7T-GX-ZX9">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="41" y="106" width="82" height="21"/>
+                                    <rect key="frame" x="16" y="101" width="183" height="21"/>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UserEmail" borderStyle="roundedRect" placeholder="Bitte Email eingeben" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bzR-E3-JrZ">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="150" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UserPassword" borderStyle="roundedRect" placeholder="Bitte Passwort eingeben" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-PI-0iK">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="188" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qih-z7-sQO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="247" width="90" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="LoginBtnTapped:" destination="Cua-2W-bB7" eventType="touchUpInside" id="Anc-I4-fEs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMs-YS-7PD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Konto anlegen">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="195" y="247" width="109" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="CreateAccountBtnTapped:" destination="Cua-2W-bB7" eventType="touchUpInside" id="auY-gF-zFU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="O7T-GX-ZX9"/>
+                                <exclude reference="bzR-E3-JrZ"/>
+                                <exclude reference="XcD-PI-0iK"/>
+                                <exclude reference="qih-z7-sQO"/>
+                                <exclude reference="uMs-YS-7PD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="O7T-GX-ZX9"/>
+                                <include reference="bzR-E3-JrZ"/>
+                                <include reference="XcD-PI-0iK"/>
+                                <include reference="qih-z7-sQO"/>
+                                <include reference="uMs-YS-7PD"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="FJg-7t-pMC"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="CreateAccountButton" destination="uMs-YS-7PD" id="jv2-dn-10C"/>
+                        <outlet property="LoginButton" destination="qih-z7-sQO" id="J1S-OD-bgu"/>
+                        <outlet property="UserEmailTextField" destination="bzR-E3-JrZ" id="iB6-cA-OKK"/>
+                        <outlet property="UserPasswordTextField" destination="XcD-PI-0iK" id="4Nl-mV-61T"/>
+                        <segue destination="7sa-xD-aOT" kind="presentation" identifier="loginSuccessfulSegue" id="W4V-Qg-YX5"/>
+                        <segue destination="5zP-kx-29e" kind="presentation" identifier="createAccountSegue" id="pkD-9X-XKn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjH-h9-Pd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1369.5" y="1047"/>
+            <point key="canvasLocation" x="1282.5" y="1447"/>
+        </scene>
+        <!--Create Account View Controller-->
+        <scene sceneID="4l4-Fb-51r">
+            <objects>
+                <viewController id="5zP-kx-29e" customClass="CreateAccountViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RUY-rp-0c0"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Ie-kG-Umm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nod-gE-yCb">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UserPassword1" borderStyle="roundedRect" placeholder="Bitte Passwort eingeben" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gg2-qk-hKl">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="194" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UserPassword2" borderStyle="roundedRect" placeholder="Bitte Passwort wiederholen" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qea-8M-SSh">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="232" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QPoint Konto erstellen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRN-tj-cxd">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="99" width="173" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF6-zs-VXU">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Konto erstellen">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="297" width="126" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="CreateAccountBtnTapped:" destination="5zP-kx-29e" eventType="touchUpInside" id="uPd-Z7-dQx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew5-gj-3er">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="226" y="297" width="78" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="CancelBtnTapped:" destination="5zP-kx-29e" eventType="touchUpInside" id="71c-Fe-VNP"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InputResponse" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-dg-yNQ">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="350" width="288" height="63"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UserEmail" borderStyle="roundedRect" placeholder="Bitte gültige Email eingeben" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzM-1Y-Je4">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="146" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="gg2-qk-hKl"/>
+                                <exclude reference="qea-8M-SSh"/>
+                                <exclude reference="GRN-tj-cxd"/>
+                                <exclude reference="JF6-zs-VXU"/>
+                                <exclude reference="ew5-gj-3er"/>
+                                <exclude reference="cPu-dg-yNQ"/>
+                                <exclude reference="yzM-1Y-Je4"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="gg2-qk-hKl"/>
+                                <include reference="qea-8M-SSh"/>
+                                <include reference="GRN-tj-cxd"/>
+                                <include reference="JF6-zs-VXU"/>
+                                <include reference="ew5-gj-3er"/>
+                                <include reference="cPu-dg-yNQ"/>
+                                <include reference="yzM-1Y-Je4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="CancelButton" destination="ew5-gj-3er" id="XYV-vP-xqw"/>
+                        <outlet property="CreateAccountButton" destination="JF6-zs-VXU" id="RrZ-eF-ejk"/>
+                        <outlet property="InputResponseLabel" destination="cPu-dg-yNQ" id="4jz-a7-eIC"/>
+                        <outlet property="Password1TextField" destination="gg2-qk-hKl" id="cwK-YN-fMe"/>
+                        <outlet property="Password2TextField" destination="qea-8M-SSh" id="zEP-4t-h4l"/>
+                        <outlet property="UserEmailTextField" destination="yzM-1Y-Je4" id="ffX-hc-oC0"/>
+                        <segue destination="7sa-xD-aOT" kind="presentation" identifier="createdAccountSuccessfulSegue" id="SSl-Cb-YJB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4uW-0N-dfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2200.5" y="1447"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9TI-TH-W8q">
@@ -719,7 +901,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcr-wf-DVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="451.5" y="1047"/>
+            <point key="canvasLocation" x="451.5" y="1447"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SSl-Cb-YJB"/>
+    </inferredMetricsTieBreakers>
 </document>
