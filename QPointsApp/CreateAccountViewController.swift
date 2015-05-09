@@ -40,13 +40,26 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         if UserEmailTextField.text != nil && Password1TextField.text != nil {
             if (self.isValidEmail(UserEmailTextField.text) as Bool == true) {
                 if Password1TextField.text == Password2TextField.text {
-                    NSUserDefaults.standardUserDefaults().setObject(UserEmailTextField.text, forKey: USERMAIL_KEY)
-                    NSUserDefaults.standardUserDefaults().setObject(Password1TextField.text, forKey: PASSWORD_KEY)
-                    NSUserDefaults.standardUserDefaults().synchronize()
-                    println("Username: \(NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String)")
-                    println("Passwort: \(NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as String)")
-                    performSegueWithIdentifier("createdAccountSuccessfulSegue", sender: self)
-                }else {
+                    var reconTask: ReconciliationModel = self.setReconciliationList(4,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: Password1TextField.text)
+                    // if Internet available ...
+                    self.APIPostRequest(reconTask,apiType: 4){
+                        (apiMessage: String) in
+                        if (apiMessage == "Willkommen bei QPoints - vielen Dank für das Einrichten eines neuen Kontos") {
+                            var interimPW:String = reconTask.reconPassword
+                            dispatch_async(dispatch_get_main_queue(),{
+                                NSUserDefaults.standardUserDefaults().setObject(reconTask.reconUser, forKey: USERMAIL_KEY)
+                                NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                println("Username: \(NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String)")
+                                println("Passwort: \(NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as String)")
+                                self.performSegueWithIdentifier("createdAccountSuccessfulSegue", sender: self)
+                            });
+                        } else {
+                            self.InputResponseLabel.text = apiMessage
+                            self.InputResponseLabel.hidden = false
+                        }
+                    }
+                } else {
                     InputResponseLabel.text = "Bitte wiederholen Sie das Passwort im dritten Eingabe-Feld"
                     InputResponseLabel.hidden = false
                 }
@@ -60,7 +73,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func CancelBtnTapped(sender: UIButton) {
+    @IBAction func CancelCreateAccountTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

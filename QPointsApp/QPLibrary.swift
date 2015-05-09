@@ -73,6 +73,12 @@ extension UIViewController {
                 "userEmail" : reconTask.reconUser,
                 "password" : reconTask.reconPassword
             ]
+        case 4:
+            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicreateaccount")!)
+            params = [
+                "userEmail" : reconTask.reconUser,
+                "password" : reconTask.reconPassword
+            ]
         default:
             request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/api")!)
         }

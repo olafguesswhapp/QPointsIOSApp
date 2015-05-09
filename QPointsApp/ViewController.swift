@@ -147,6 +147,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.APIPostRequest(reconTask,apiType: 3){
                         (apiMessage: String) in
                     }
+                case 4:
+                    println("\(counter). Create User Account")
+                    println(reconTask.reconUser + " " + reconTask.reconPassword)
+                    self.APIPostRequest(reconTask,apiType: 4){
+                        (apiMessage: String) in
+                    }
                 default:
                     println("not a valid Task")
                 }
