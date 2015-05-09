@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+let USERMAIL_KEY = "userMailKey"
+let PASSWORD_KEY = "passwordKey"
+let HASLAUNCHEDONCE_KEY = "hasLaunchedOnce"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if (NSUserDefaults.standardUserDefaults().boolForKey(HASLAUNCHEDONCE_KEY) == false ) {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: HASLAUNCHEDONCE_KEY)
+            NSUserDefaults.standardUserDefaults().synchronize()
+            var exampleViewController: LoginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as LoginViewController
+            self.window?.rootViewController = exampleViewController
+        } else {
+            var myPointsTBController: UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("MyPointsTabBarController") as UITabBarController
+            self.window?.rootViewController = myPointsTBController
+        }
+        
+        
+        self.window?.makeKeyAndVisible()
         return true
     }
 
