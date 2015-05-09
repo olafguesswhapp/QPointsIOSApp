@@ -13,7 +13,7 @@ import CoreData
 extension UIViewController {
     
     // put a new ScanCode or RedeemCode Task firt into ReconciliationList (delete the Task after reconciliation with webserver)
-    func setReconciliationList(setRecLiType:Int16,setRecLiUser: String,setRecLiProgNr: String,setRecLiGoalToHit: Int16, setRecLiQPCode: String)->ReconciliationModel {
+    func setReconciliationList(setRecLiType:Int16,setRecLiUser: String,setRecLiProgNr: String,setRecLiGoalToHit: Int16, setRecLiQPCode: String, setRecLiPW: String)->ReconciliationModel {
         let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         let managedObjectContext = appDelegate.managedObjectContext
         let entityDescription = NSEntityDescription.entityForName("ReconciliationModel", inManagedObjectContext: managedObjectContext!)
@@ -25,6 +25,7 @@ extension UIViewController {
         reconTask.reconProgramNr = setRecLiProgNr
         reconTask.reconProgramGoalToHit = setRecLiGoalToHit
         reconTask.reconQpInput = setRecLiQPCode
+        reconTask.reconPassword = setRecLiPW
         // values currently not available:
         reconTask.reconSuccess = false
         reconTask.reconMessage = ""
@@ -65,6 +66,12 @@ extension UIViewController {
                 "user" : reconTask.reconUser,
                 "programNr" : reconTask.reconProgramNr,
                 "programGoal" : String(reconTask.reconProgramGoalToHit)
+            ]
+        case 3:
+            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicheckuser")!)
+            params = [
+                "userEmail" : reconTask.reconUser,
+                "password" : reconTask.reconPassword
             ]
         default:
             request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/api")!)

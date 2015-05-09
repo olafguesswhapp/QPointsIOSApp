@@ -20,5 +20,5 @@ class ReconciliationModel: NSManagedObject {
     @NSManaged var reconProgramNr: String
     @NSManaged var reconProgramGoalToHit: Int16
     @NSManaged var reconQpInput: String
-
+    @NSManaged var reconPassword: String
 }

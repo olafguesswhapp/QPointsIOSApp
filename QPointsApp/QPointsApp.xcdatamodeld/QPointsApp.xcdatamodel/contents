@@ -14,6 +14,7 @@
     </entity>
     <entity name="ReconciliationModel" representedClassName="ReconciliationModel" syncable="YES">
         <attribute name="reconMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reconPassword" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reconProgramGoalToHit" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="reconProgramNr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reconQpInput" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +25,6 @@
     </entity>
     <elements>
         <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="195"/>
-        <element name="ReconciliationModel" positionX="-63" positionY="54" width="128" height="163"/>
+        <element name="ReconciliationModel" positionX="-63" positionY="54" width="128" height="180"/>
     </elements>
 </model>
