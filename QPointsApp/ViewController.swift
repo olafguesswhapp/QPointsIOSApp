@@ -45,13 +45,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let thisProgram = fetchedResultsController.objectAtIndexPath(indexPath!) as ProgramModel
             detailVC.detailProgramModel = thisProgram
         }
-        else if segue.identifier == "toAddProgramVCSegue" {
-            let addProgramVC:AddProgramViewController = segue.destinationViewController as AddProgramViewController
-        }
     }
     
     @IBAction func AddProgButtonTapped(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("toAddProgramVCSegue", sender: self)
+        
     }
     
     

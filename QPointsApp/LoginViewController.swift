@@ -8,8 +8,9 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var LoginResponseLabel: UILabel!
     @IBOutlet weak var CreateAccountButton: UIButton!
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var UserPasswordTextField: UITextField!
@@ -28,6 +29,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidBeginEditing(textField: UITextField!) {
+        LoginResponseLabel.hidden = true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loginSuccessfulSegue" {
             
@@ -38,10 +43,17 @@ class LoginViewController: UIViewController {
         let savedUserEmail = NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String
         let savedPassword = NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as String
         
-        if UserEmailTextField.text == savedUserEmail && UserPasswordTextField.text == savedPassword {
-            performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
+        if (self.isValidEmail(UserEmailTextField.text) as Bool == true){
+            if UserEmailTextField.text == savedUserEmail && UserPasswordTextField.text == savedPassword {
+                performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
+            } else {
+                self.LoginResponseLabel.text = "Bitte überprüfen Sie Ihre Eingabe (Email oder Passwort ist falsch)"
+                self.LoginResponseLabel.hidden = false
+            }
+        } else {
+            self.LoginResponseLabel.text = "Bitte geben Sie eine gültige Email-Adresse ein"
+            self.LoginResponseLabel.hidden = false
         }
-
     }
 
     @IBAction func CreateAccountBtnTapped(sender: UIButton) {

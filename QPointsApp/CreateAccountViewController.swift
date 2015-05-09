@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var InputResponseLabel: UILabel!
     @IBOutlet weak var UserEmailTextField: UITextField!
@@ -29,12 +29,16 @@ class CreateAccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidBeginEditing(textField: UITextField!) {
+        InputResponseLabel.hidden = true
+    }
+    
     @IBAction func CreateAccountBtnTapped(sender: UIButton) {
         println("\(UserEmailTextField.text)")
         println(Password1TextField.text)
         println(Password2TextField.text)
         if UserEmailTextField.text != nil && Password1TextField.text != nil {
-            if (isValidEmail(UserEmailTextField.text) as Bool == true) {
+            if (self.isValidEmail(UserEmailTextField.text) as Bool == true) {
                 if Password1TextField.text == Password2TextField.text {
                     NSUserDefaults.standardUserDefaults().setObject(UserEmailTextField.text, forKey: USERMAIL_KEY)
                     NSUserDefaults.standardUserDefaults().setObject(Password1TextField.text, forKey: PASSWORD_KEY)
@@ -47,7 +51,7 @@ class CreateAccountViewController: UIViewController {
                     InputResponseLabel.hidden = false
                 }
             } else {
-                InputResponseLabel.text = "Bitte geben Sie die Email im richtigen Format ein name@Host-Name.Top-Level-Domain z.B. max@mustermann.com"
+                InputResponseLabel.text = "Bitte geben Sie die Email im richtigen Format ein\nname@Host-Name.Top-Level-Domain\n\nz.B.\n\nmax@mustermann.com"
                 InputResponseLabel.hidden = false
             }
         } else {
@@ -60,12 +64,4 @@ class CreateAccountViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        
-        if let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx) {
-            return emailTest.evaluateWithObject(testStr)
-        }
-        return false
-    }
 }
