@@ -34,7 +34,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func CreateAccountBtnTapped(sender: UIButton) {
-        self.view.endEditing(true)
         println("\(UserEmailTextField.text)")
         println(Password1TextField.text)
         println(Password2TextField.text)

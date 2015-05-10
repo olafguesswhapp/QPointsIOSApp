@@ -33,7 +33,7 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func ScanButtonTapped(sender: UIButton) {
-        var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: "j2@guesswhapp.de",setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: CodeInputField.text, setRecLiPW: "")
+        var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: CodeInputField.text, setRecLiPW: "")
         
         
         CodeInputField.endEditing(true)
