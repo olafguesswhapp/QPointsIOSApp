@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var LoginResponseLabel: UILabel!
     @IBOutlet weak var CreateAccountButton: UIButton!
@@ -42,20 +42,28 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         LoginResponseLabel.hidden = true
     }
     
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loginSuccessfulSegue" {
-            
+        }
+        if segue.identifier == "newUserPopoverSegue" {
+            let popoverViewController = segue.destinationViewController as UIViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverViewController.popoverPresentationController!.delegate = self
         }
     }
     
     @IBAction func LoginBtnTapped(sender: UIButton) {
+        self.view.endEditing(true)
         if (self.isValidEmail(UserEmailTextField.text) as Bool == true){
             if (NSUserDefaults.standardUserDefaults().boolForKey(HASBEENVERIFIED_KEY) == true) {
                 if UserEmailTextField.text == self.savedUserEmail && UserPasswordTextField.text == self.savedPassword {
                     self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
                 } else {
-                    self.LoginResponseLabel.text = "Bitte überprüfen Sie Ihre Eingabe (Email oder Passwort ist falsch)"
-                    self.LoginResponseLabel.hidden = false
+                    self.performSegueWithIdentifier("newUserPopoverSegue", sender: self)
                 }
             } else {
                 var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text)
@@ -74,8 +82,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                             self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
                         });
                     } else {
-                        self.LoginResponseLabel.text = apiMessage
-                        self.LoginResponseLabel.hidden = false
+                        dispatch_async(dispatch_get_main_queue(),{
+                            self.LoginResponseLabel.text = apiMessage + "\n\n Drücken Sie auf 'Konto anlegen' um sich neu anzumelden"
+                            self.LoginResponseLabel.hidden = false
+                        });
                     }
                 }
             }
