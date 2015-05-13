@@ -43,11 +43,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                     var reconTask: ReconciliationModel = self.setReconciliationList(4,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: Password1TextField.text)
                     // if Internet available ...
                     self.APIPostRequest(reconTask,apiType: 4){
-                        (apiMessage: String) in
+                        (ResponseDict: NSDictionary) in
+                        var apiMessage: String = ResponseDict["message"] as String
                         if (apiMessage == "Willkommen bei QPoints - vielen Dank für das Einrichten eines neuen Kontos") {
                             var interimPW:String = reconTask.reconPassword
+                            var interimUser: String = reconTask.reconUser
                             dispatch_async(dispatch_get_main_queue(),{
-                                NSUserDefaults.standardUserDefaults().setObject(reconTask.reconUser, forKey: USERMAIL_KEY)
+                                NSUserDefaults.standardUserDefaults().setObject(interimUser, forKey: USERMAIL_KEY)
                                 NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 println("Username: \(NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String)")

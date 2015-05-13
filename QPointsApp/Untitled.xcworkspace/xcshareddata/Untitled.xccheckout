@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>66A90618-5D34-418E-8104-7D39D3D2ED8E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Untitled</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CBC51DDD5E2CB226FE957BA520615A58C0DE538F</key>
+		<string>https://github.com/olafguesswhapp/QPointsIOSApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>QPointsApp/Untitled.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CBC51DDD5E2CB226FE957BA520615A58C0DE538F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/olafguesswhapp/QPointsIOSApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CBC51DDD5E2CB226FE957BA520615A58C0DE538F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CBC51DDD5E2CB226FE957BA520615A58C0DE538F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>QPointsApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

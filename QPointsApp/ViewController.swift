@@ -133,25 +133,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     println("\(counter). Check scanned Code")
                     println(reconTask.reconUser + " " + reconTask.reconQpInput)
                     self.APIPostRequest(reconTask,apiType: 1){
-                        (apiMessage: String) in
+                        (responseDict: NSDictionary) in
                     }
                 case 2:
                     println("\(counter). Check redeemed Program")
                     println(reconTask.reconUser + " " + reconTask.reconProgramNr + " " + String(reconTask.reconProgramGoalToHit))
                     self.APIPostRequest(reconTask,apiType: 2){
-                        (apiMessage: String) in
+                        (responseDict: NSDictionary) in
                     }
                 case 3:
                     println("\(counter). Check User Account")
                     println(reconTask.reconUser + " " + reconTask.reconPassword)
                     self.APIPostRequest(reconTask,apiType: 3){
-                        (apiMessage: String) in
+                        (responseDict: NSDictionary) in
                     }
                 case 4:
                     println("\(counter). Create User Account")
                     println(reconTask.reconUser + " " + reconTask.reconPassword)
                     self.APIPostRequest(reconTask,apiType: 4){
-                        (apiMessage: String) in
+                        (responseDict: NSDictionary) in
                     }
                 default:
                     println("not a valid Task")

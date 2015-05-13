@@ -87,7 +87,7 @@ class RedeemViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
         // if Internet available ...
         self.APIPostRequest(reconTask,apiType: 2){
-            (apiMessage: String) in
+            (responseDict: NSDictionary) in
         }
     }
     @IBAction func RequestDeclineButtonTapped(sender: UIButton) {

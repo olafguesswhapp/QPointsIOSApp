@@ -47,7 +47,29 @@ extension UIViewController {
         }
     }
     
-    func APIPostRequest(reconTask: ReconciliationModel, apiType: Int16, completionHandler2: (apiMessage: String) -> Void) {
+    func deleteProgramData(responseData: NSDictionary)->Void{
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
+        let fetchRequest = NSFetchRequest(entityName: "ProgramModel")
+        fetchRequest.includesPropertyValues = false
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ProgramModel]{
+            for result in fetchResults {
+                managedObjectContext?.deleteObject(result)
+            }
+        }
+        var savingError: NSError?
+        if managedObjectContext!.save(&savingError){
+            println("Successfully deleted the entities in Program Model")
+        } else {
+            if let error = savingError{
+                println("Failed to delete the entities in Program Model . Error = \(error)")
+            }
+        }
+        importProgramData(responseData)
+    }
+    
+    func APIPostRequest(reconTask: ReconciliationModel, apiType: Int16, completionHandler2: (responseDict: NSDictionary) -> Void) {
         // Prepare API Post request
         var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicodecheck")!)
         var params = [
@@ -92,13 +114,12 @@ extension UIViewController {
         // API Post request
         var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, err) -> Void in
             var conversionError: NSError?
-            var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
-            println(jsonDictionary!)
-            completionHandler2(apiMessage: jsonDictionary!["message"]! as String)
-            self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
+            var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: &conversionError) as? NSDictionary
+            completionHandler2(responseDict: jsonDictionary!)
             if apiType==1 {
                 self.processResponseScannedCode(jsonDictionary!)
             }
+            self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
         })
         task.resume()
     }
@@ -152,6 +173,30 @@ extension UIViewController {
                 println(program)
             }
         }
+    }
+    
+    func importProgramData(responseDict:NSDictionary)->Void{
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
+        for var index = 0; index < responseDict["programData"]!.count; index++ {
+            let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+            program.programNr = responseDict["programData"]![index].objectForKey("programNr")! as String
+            program.programName = responseDict["programData"]![index].objectForKey("programName")! as String
+            program.programCompany = responseDict["programData"]![index].objectForKey("programCompany")! as String
+            program.programGoal = Int16(responseDict["programData"]![index].objectForKey("programGoal")! as Int)
+            program.myCount = Int16(responseDict["programData"]![index].objectForKey("myCount")! as Int)
+            program.programsFinished = Int16(responseDict["programData"]![index].objectForKey("ProgramsFinished")! as Int)
+            program.programStatus = responseDict["programData"]![index].objectForKey("programStatus")! as String
+            program.programKey = responseDict["programData"]![index].objectForKey("programKey")! as String
+            let dateFormatter: NSDateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
+            program.programStartDate = dateFormatter.dateFromString(responseDict["programData"]![index].objectForKey("programStartDate")! as String)!
+            program.programEndDate = dateFormatter.dateFromString(responseDict["programData"]![index].objectForKey("programEndDate")! as String)!
+            println(program)
+            appDelegate.saveContext()
+        }
+        
     }
     
     func isValidEmail(testStr:String) -> Bool {

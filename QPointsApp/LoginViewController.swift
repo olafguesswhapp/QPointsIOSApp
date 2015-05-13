@@ -69,16 +69,19 @@ class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresen
                 var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text)
                 // if Internet available ...
                 self.APIPostRequest(reconTask,apiType: 3){
-                    (apiMessage: String) in
+                    (responseDict: NSDictionary) in
+                    var apiMessage:String = responseDict["message"] as String
                     if (apiMessage == "User-Email und Passwort sind verifiziert. Willkommen") {
                         var interimPW:String = reconTask.reconPassword
+                        var interimUser:String = reconTask.reconUser
                         dispatch_async(dispatch_get_main_queue(),{
-                            println(reconTask.reconUser)
+                            println(interimUser)
                             println(interimPW)
-                            NSUserDefaults.standardUserDefaults().setObject(reconTask.reconUser, forKey: USERMAIL_KEY)
+                            NSUserDefaults.standardUserDefaults().setObject(interimUser, forKey: USERMAIL_KEY)
                             NSUserDefaults.standardUserDefaults().setBool(true, forKey: HASBEENVERIFIED_KEY)
                             NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
                             NSUserDefaults.standardUserDefaults().synchronize()
+                            self.deleteProgramData(responseDict)
                             self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
                         });
                     } else {

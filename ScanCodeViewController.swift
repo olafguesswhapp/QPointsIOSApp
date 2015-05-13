@@ -41,8 +41,9 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
         
         // If Internet Available
         self.APIPostRequest(reconTask,apiType: 1){
-            (apiMessage: String) in
+            (responseDict: NSDictionary) in
             dispatch_async(dispatch_get_main_queue(),{
+                var apiMessage:String = responseDict["message"] as String
                 self.CodeResponseField.hidden = false
                 self.CodeResponseField.text = apiMessage
             });
