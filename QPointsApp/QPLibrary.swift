@@ -66,7 +66,9 @@ extension UIViewController {
                 println("Failed to delete the entities in Program Model . Error = \(error)")
             }
         }
-        importProgramData(responseData)
+        if (responseData.objectForKey("programData") != nil) {
+            self.importProgramData(responseData)
+        }
     }
     
     func APIPostRequest(reconTask: ReconciliationModel, apiType: Int16, completionHandler2: (responseDict: NSDictionary) -> Void) {
