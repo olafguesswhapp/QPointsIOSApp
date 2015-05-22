@@ -66,7 +66,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresen
                     self.performSegueWithIdentifier("newUserPopoverSegue", sender: self)
                 }
             } else {
-                var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text)
+                var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text, setRecLiGender: 0)
                 // if Internet available ...
                 self.APIPostRequest(reconTask,apiType: 3){
                     (responseDict: NSDictionary) in

@@ -116,6 +116,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="organize" id="bAt-Xx-GSh">
                             <connections>
                                 <action selector="AddProgButtonTapped:" destination="BYZ-38-t0r" id="GGx-bD-gdA"/>
+                                <segue destination="oCw-Jd-RPa" kind="show" identifier="showProfileSegue" id="YPT-3J-Ru9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -129,6 +130,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1966.5" y="69"/>
+        </scene>
+        <!--Profil-->
+        <scene sceneID="WiB-5k-dHt">
+            <objects>
+                <viewController id="oCw-Jd-RPa" customClass="ProfileViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fcn-ZL-SD7"/>
+                        <viewControllerLayoutGuide type="bottom" id="YsY-VJ-mY4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sfp-gJ-T6F">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Neues Passwort eingeben" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHW-P9-aw0">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="129" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Neues Passwort wiederholen" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7o-hO-w9r">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="167" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYD-pU-95e">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Neues Profil Speichern">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="441" width="288" height="60"/>
+                                </variation>
+                                <connections>
+                                    <action selector="SaveProfileUpdateBtnTapped:" destination="oCw-Jd-RPa" eventType="touchUpInside" id="3is-LJ-dJ3"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOB-l0-Jdc" userLabel="UserGenderPicker View">
+                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="173" width="288" height="162"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="oCw-Jd-RPa" id="Xbc-YV-UW9"/>
+                                    <outlet property="delegate" destination="oCw-Jd-RPa" id="frD-i2-Puh"/>
+                                </connections>
+                            </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserEmail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKw-9b-nTe" userLabel="UserEmailTextField">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="91" width="288" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wHW-P9-aw0"/>
+                                <exclude reference="a7o-hO-w9r"/>
+                                <exclude reference="lYD-pU-95e"/>
+                                <exclude reference="GOB-l0-Jdc"/>
+                                <exclude reference="IKw-9b-nTe"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="wHW-P9-aw0"/>
+                                <include reference="a7o-hO-w9r"/>
+                                <include reference="lYD-pU-95e"/>
+                                <include reference="GOB-l0-Jdc"/>
+                                <include reference="IKw-9b-nTe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Profil" id="qTP-Gd-k46">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="IgF-fr-VcD">
+                            <connections>
+                                <action selector="LogoutBtnTapped:" destination="oCw-Jd-RPa" id="8nN-JZ-Ssm"/>
+                                <segue destination="Cua-2W-bB7" kind="presentation" identifier="LogoutSegue" id="g3n-Xe-VLa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="SaveProfileUpdateButton" destination="lYD-pU-95e" id="Rlu-x0-Zc3"/>
+                        <outlet property="UserEmailTextField" destination="IKw-9b-nTe" id="SSO-SK-QMC"/>
+                        <outlet property="UserGenderPicker" destination="GOB-l0-Jdc" id="PIs-e7-r2M"/>
+                        <outlet property="UserPasswordTextField1" destination="wHW-P9-aw0" id="1qj-ni-0PH"/>
+                        <outlet property="UserPasswordTextField2" destination="a7o-hO-w9r" id="p9E-7j-sem"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xeU-xa-LTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1966.5" y="-648"/>
         </scene>
         <!--Programm-->
         <scene sceneID="w3S-xM-6ot">
@@ -644,7 +749,7 @@
                         <viewControllerLayoutGuide type="bottom" id="daS-Zu-ybX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="re1-wR-cMz">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopoverMessage" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rt-bP-S2a">
@@ -884,5 +989,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="W4V-Qg-YX5"/>
+        <segue reference="g3n-Xe-VLa"/>
     </inferredMetricsTieBreakers>
 </document>

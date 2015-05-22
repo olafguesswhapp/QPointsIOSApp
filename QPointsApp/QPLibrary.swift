@@ -13,7 +13,7 @@ import CoreData
 extension UIViewController {
     
     // put a new ScanCode or RedeemCode Task firt into ReconciliationList (delete the Task after reconciliation with webserver)
-    func setReconciliationList(setRecLiType:Int16,setRecLiUser: String,setRecLiProgNr: String,setRecLiGoalToHit: Int16, setRecLiQPCode: String, setRecLiPW: String)->ReconciliationModel {
+    func setReconciliationList(setRecLiType:Int16,setRecLiUser: String,setRecLiProgNr: String,setRecLiGoalToHit: Int16, setRecLiQPCode: String, setRecLiPW: String, setRecLiGender: Int16)->ReconciliationModel {
         let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         let managedObjectContext = appDelegate.managedObjectContext
         let entityDescription = NSEntityDescription.entityForName("ReconciliationModel", inManagedObjectContext: managedObjectContext!)
@@ -26,9 +26,10 @@ extension UIViewController {
         reconTask.reconProgramGoalToHit = setRecLiGoalToHit
         reconTask.reconQpInput = setRecLiQPCode
         reconTask.reconPassword = setRecLiPW
+        reconTask.reconGender = setRecLiGender
         // values currently not available:
         reconTask.reconSuccess = false
-        reconTask.reconMessage = ""
+        reconTask.reconOptional = ""
         println("Reconciliation-Type \(reconTask.reconType) with ScanCode \(reconTask.reconQpInput) or ProgramNr \(reconTask.reconProgramNr)")
         appDelegate.saveContext()
         return reconTask
@@ -75,19 +76,19 @@ extension UIViewController {
         // Prepare API Post request
         var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicodecheck")!)
         var params = [
-            "user" : reconTask.reconUser,
+            "userEmail" : reconTask.reconUser,
             "qpInput" : ""
         ]
         switch apiType {
         case 1:
             params = [
-                "user" : reconTask.reconUser,
+                "userEmail" : reconTask.reconUser,
                 "qpInput" : reconTask.reconQpInput
             ]
         case 2:
             request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicoderedeem")!)
             params = [
-                "user" : reconTask.reconUser,
+                "userEmail" : reconTask.reconUser,
                 "programNr" : reconTask.reconProgramNr,
                 "programGoal" : String(reconTask.reconProgramGoalToHit)
             ]
@@ -102,6 +103,14 @@ extension UIViewController {
             params = [
                 "userEmail" : reconTask.reconUser,
                 "password" : reconTask.reconPassword
+            ]
+        case 5:
+            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apiupdateuser")!)
+            params = [
+                "userEmail" : reconTask.reconUser,
+                "passwordOld" : reconTask.reconPassword,
+                "passwordNew" :reconTask.reconQpInput,
+                "gender" : String(reconTask.reconGender)
             ]
         default:
             request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/api")!)

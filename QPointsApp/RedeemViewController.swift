@@ -83,7 +83,7 @@ class RedeemViewController: UIViewController {
         self.redeemProgramModel.programsFinished -= 1
         println(self.redeemProgramModel.programsFinished)
         appDelegate.saveContext()
-        var reconTask: ReconciliationModel = self.setReconciliationList(2,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String, setRecLiProgNr: redeemProgramModel.programNr,setRecLiGoalToHit: redeemProgramModel.programGoal, setRecLiQPCode: "", setRecLiPW: "")
+        var reconTask: ReconciliationModel = self.setReconciliationList(2,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String, setRecLiProgNr: redeemProgramModel.programNr,setRecLiGoalToHit: redeemProgramModel.programGoal, setRecLiQPCode: "", setRecLiPW: "", setRecLiGender: 0)
         self.navigationController?.popViewControllerAnimated(true)
         // if Internet available ...
         self.APIPostRequest(reconTask,apiType: 2){

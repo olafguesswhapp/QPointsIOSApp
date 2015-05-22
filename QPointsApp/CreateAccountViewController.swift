@@ -40,7 +40,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         if UserEmailTextField.text != nil && Password1TextField.text != nil {
             if (self.isValidEmail(UserEmailTextField.text) as Bool == true) {
                 if Password1TextField.text == Password2TextField.text {
-                    var reconTask: ReconciliationModel = self.setReconciliationList(4,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: Password1TextField.text)
+                    var reconTask: ReconciliationModel = self.setReconciliationList(4,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: Password1TextField.text, setRecLiGender: 0)
                     // if Internet available ...
                     self.APIPostRequest(reconTask,apiType: 4){
                         (ResponseDict: NSDictionary) in

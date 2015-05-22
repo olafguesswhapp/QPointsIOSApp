@@ -15,10 +15,11 @@ class ReconciliationModel: NSManagedObject {
     @NSManaged var reconType: Int16
     @NSManaged var reconStatus: Bool
     @NSManaged var reconSuccess: Bool
-    @NSManaged var reconMessage: String
+    @NSManaged var reconOptional: String
     @NSManaged var reconUser: String
     @NSManaged var reconProgramNr: String
     @NSManaged var reconProgramGoalToHit: Int16
     @NSManaged var reconQpInput: String
     @NSManaged var reconPassword: String
+    @NSManaged var reconGender: Int16
 }
