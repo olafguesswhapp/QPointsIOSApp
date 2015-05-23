@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
+    
+    var controller:UIAlertController?
 
     @IBOutlet weak var UserEmailTextField: UITextField!
 
@@ -21,6 +23,14 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        controller = UIAlertController(title: "Warnung", message: "Bitte stellen Sie sicher, dass beide Passwort Eingaben identisch eingegeben werden", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Done",
+            style: UIAlertActionStyle.Default,
+            handler: {(paramAction:UIAlertAction!) in
+                println("The Done button was tapped")
+        })
+        controller!.addAction(action)
 
         // Do any additional setup after loading the view.
         UserEmailTextField.text = NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as? String
@@ -64,9 +74,10 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
             }
+            self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            self.presentViewController(controller!, animated: true, completion: nil)
         }
-        
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // UIPicker
