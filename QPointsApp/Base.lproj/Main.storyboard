@@ -731,95 +731,11 @@
                         <outlet property="UserPasswordTextField" destination="XcD-PI-0iK" id="4Nl-mV-61T"/>
                         <segue destination="7sa-xD-aOT" kind="presentation" identifier="loginSuccessfulSegue" id="W4V-Qg-YX5"/>
                         <segue destination="5zP-kx-29e" kind="presentation" identifier="createAccountSegue" id="pkD-9X-XKn"/>
-                        <segue destination="fei-lc-RKn" kind="popoverPresentation" identifier="newUserPopoverSegue" popoverAnchorView="O7T-GX-ZX9" id="WYC-u1-8Sw">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjH-h9-Pd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282.5" y="1447"/>
-        </scene>
-        <!--Popover View Controller-->
-        <scene sceneID="MB8-cl-Jp6">
-            <objects>
-                <viewController id="fei-lc-RKn" customClass="PopoverViewController" customModule="QPointsApp" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="j7f-b5-PXa"/>
-                        <viewControllerLayoutGuide type="bottom" id="daS-Zu-ybX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="re1-wR-cMz">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="240"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopoverMessage" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rt-bP-S2a">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="15" y="8" width="218" height="186"/>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o5-2i-cBJ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="New User">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="202" width="89" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="newUserBtnTapped:" destination="fei-lc-RKn" eventType="touchUpInside" id="TrA-cD-9eQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uc-y6-eoe">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="174" y="202" width="60" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="CancelBtnTapped:" destination="fei-lc-RKn" eventType="touchUpInside" id="wd7-aV-Fhu"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="1Rt-bP-S2a"/>
-                                <exclude reference="0o5-2i-cBJ"/>
-                                <exclude reference="2Uc-y6-eoe"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="1Rt-bP-S2a"/>
-                                <include reference="0o5-2i-cBJ"/>
-                                <include reference="2Uc-y6-eoe"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="250" height="240"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="240"/>
-                    <connections>
-                        <outlet property="CancelBtn" destination="2Uc-y6-eoe" id="ggF-ex-4gD"/>
-                        <outlet property="PopoverMessageLabel" destination="1Rt-bP-S2a" id="3FZ-2G-xmB"/>
-                        <outlet property="newUserBtn" destination="0o5-2i-cBJ" id="tmF-VH-tH0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aho-QE-i1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1230" y="1964"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="4l4-Fb-51r">

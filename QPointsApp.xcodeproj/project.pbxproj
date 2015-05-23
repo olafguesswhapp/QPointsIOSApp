@@ -23,7 +23,6 @@
 		9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092BDA81AF6569C00085D4A /* QPLibrary.swift */; };
 		90A458A71AFCF70500EB0F1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A458A61AFCF70500EB0F1E /* LoginViewController.swift */; };
 		90C6A8831AFDF04700D96E2B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6A8821AFDF04700D96E2B /* CreateAccountViewController.swift */; };
-		90C6A8851AFE782C00D96E2B /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6A8841AFE782C00D96E2B /* PopoverViewController.swift */; };
 		90D4FA8F1AE8C4BE002C7A1E /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,6 @@
 		9092BDA81AF6569C00085D4A /* QPLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLibrary.swift; sourceTree = "<group>"; };
 		90A458A61AFCF70500EB0F1E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		90C6A8821AFDF04700D96E2B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
-		90C6A8841AFE782C00D96E2B /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +108,6 @@
 				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				906482A31B0B591B00E0545A /* ProfileViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
-				90C6A8841AFE782C00D96E2B /* PopoverViewController.swift */,
 				90C6A8821AFDF04700D96E2B /* CreateAccountViewController.swift */,
 				90A458A61AFCF70500EB0F1E /* LoginViewController.swift */,
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
@@ -250,7 +247,6 @@
 			files = (
 				90A458A71AFCF70500EB0F1E /* LoginViewController.swift in Sources */,
 				9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */,
-				90C6A8851AFE782C00D96E2B /* PopoverViewController.swift in Sources */,
 				9022F2181ADA309B00CE2E04 /* ViewController.swift in Sources */,
 				906482A41B0B591B00E0545A /* ProfileViewController.swift in Sources */,
 				9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */,

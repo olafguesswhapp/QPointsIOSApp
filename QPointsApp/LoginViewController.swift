@@ -8,7 +8,10 @@
 
 import UIKit
 
-class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate {
+    
+    var controller:UIAlertController?
+    var alertController:UIAlertController?
 
     @IBOutlet weak var LoginResponseLabel: UILabel!
     @IBOutlet weak var CreateAccountButton: UIButton!
@@ -21,6 +24,29 @@ class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresen
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        controller = UIAlertController(title: "Warnung", message: "Auf diesem Gerät waren Sie bisher mit einer anderen User-Email angemeldet.\n\nWollen Sie sich als neuer User anmelden und die auf diesem Gerät gespeicherten Punkte löschen?\nDann drücken Sie bitte unten auf 'New User' und loggen Sie sich erneut ein.", preferredStyle: .ActionSheet)
+        let actionNewUser = UIAlertAction(title: "New User",
+            style: UIAlertActionStyle.Destructive,
+            handler: {(paramAction:UIAlertAction!) in
+                println("The New User button was tapped")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: HASBEENVERIFIED_KEY)
+                NSUserDefaults.standardUserDefaults().synchronize()
+        })
+        let actionCancel = UIAlertAction(title: "Cancel",
+            style: UIAlertActionStyle.Default,
+            handler: {(paramAction:UIAlertAction!) in
+        })
+        controller!.addAction(actionNewUser)
+        controller!.addAction(actionCancel)
+        
+        alertController = UIAlertController(title: "Warnung", message: "Das Passwort stimmt ist nicht richtig. Bitte versuchen Sie es erneut", preferredStyle: .Alert)
+        let actionAlert = UIAlertAction(title: "Done",
+            style: UIAlertActionStyle.Default,
+            handler: {(paramAction:UIAlertAction!) in
+                println("The Done button was tapped")
+        })
+        alertController!.addAction(actionAlert)
 
         // Do any additional setup after loading the view.
         self.LoginButton.layer.cornerRadius = 5
@@ -42,17 +68,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresen
         LoginResponseLabel.hidden = true
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loginSuccessfulSegue" {
-        }
-        if segue.identifier == "newUserPopoverSegue" {
-            let popoverViewController = segue.destinationViewController as UIViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            popoverViewController.popoverPresentationController!.delegate = self
         }
     }
     
@@ -60,10 +77,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresen
         self.view.endEditing(true)
         if (self.isValidEmail(UserEmailTextField.text) as Bool == true){
             if (NSUserDefaults.standardUserDefaults().boolForKey(HASBEENVERIFIED_KEY) == true) {
-                if UserEmailTextField.text == self.savedUserEmail && UserPasswordTextField.text == self.savedPassword {
-                    self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
+                if UserEmailTextField.text == self.savedUserEmail {
+                    if UserPasswordTextField.text == self.savedPassword {
+                        self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
+                    } else {
+                        self.presentViewController(alertController!, animated: true, completion: nil)
+                    }
                 } else {
-                    self.performSegueWithIdentifier("newUserPopoverSegue", sender: self)
+                    self.presentViewController(controller!, animated: true, completion: nil)
                 }
             } else {
                 var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text, setRecLiGender: 0)
@@ -86,7 +107,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, UIPopoverPresen
                         });
                     } else {
                         dispatch_async(dispatch_get_main_queue(),{
-                            self.LoginResponseLabel.text = apiMessage + "\n\n Drücken Sie auf 'Konto anlegen' um sich neu anzumelden"
+                            self.LoginResponseLabel.text = apiMessage + "\n\n   Drücken Sie auf 'Konto anlegen' um sich neu anzumelden"
                             self.LoginResponseLabel.hidden = false
                         });
                     }
