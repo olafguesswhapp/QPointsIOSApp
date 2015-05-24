@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        controller = UIAlertController(title: "Warnung", message: "Bitte stellen Sie sicher, dass beide Passwort Eingaben identisch eingegeben werden", preferredStyle: .Alert)
+        controller = UIAlertController(title: "Warnung", message: "Bitte stellen Sie sicher, dass beide Passwort Eingaben identisch sind", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Done",
             style: UIAlertActionStyle.Default,
             handler: {(paramAction:UIAlertAction!) in
@@ -40,6 +40,7 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
         UserGenderPicker.dataSource = self
         UserGenderPicker.delegate = self
         self.SaveProfileUpdateButton.layer.cornerRadius = 5
+        UserGenderPicker.selectRow(NSUserDefaults.standardUserDefaults().objectForKey(USERGENDER_KEY) as Int, inComponent: 0, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -71,6 +72,7 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
                 } else {
                     println("Update of Profile successfull")
                     NSUserDefaults.standardUserDefaults().setObject(reconTask.reconQpInput, forKey: PASSWORD_KEY)
+                    NSUserDefaults.standardUserDefaults().setInteger(self.UserGenderPicker.selectedRowInComponent(0), forKey: USERGENDER_KEY)
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
             }

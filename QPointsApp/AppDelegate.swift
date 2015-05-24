@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 
 let USERMAIL_KEY = "userMailKey"
-let PASSWORD_KEY = "UserPasswordKey"
-let HASLAUNCHEDONCE_KEY = "hasLaunchedOnce"
-let HASBEENVERIFIED_KEY = "hasBeenVerified"
+let PASSWORD_KEY = "userPasswordKey"
+let USERGENDER_KEY = "userGenderKey"
+let HASLAUNCHEDONCE_KEY = "hasLaunchedOnceKey"
+let HASBEENVERIFIED_KEY = "hasBeenVerifiedKey"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -113,7 +113,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="QPoints" id="wBV-Mg-cES">
-                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="bAt-Xx-GSh">
+                        <barButtonItem key="rightBarButtonItem" image="ProfileIcon" id="bAt-Xx-GSh">
                             <connections>
                                 <action selector="AddProgButtonTapped:" destination="BYZ-38-t0r" id="GGx-bD-gdA"/>
                                 <segue destination="oCw-Jd-RPa" kind="show" identifier="showProfileSegue" id="YPT-3J-Ru9"/>
@@ -131,7 +131,7 @@
             </objects>
             <point key="canvasLocation" x="1966.5" y="69"/>
         </scene>
-        <!--Profil-->
+        <!--Profile View Controller-->
         <scene sceneID="WiB-5k-dHt">
             <objects>
                 <viewController id="oCw-Jd-RPa" customClass="ProfileViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +212,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Profil" id="qTP-Gd-k46">
+                    <navigationItem key="navigationItem" id="qTP-Gd-k46">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="IgF-fr-VcD">
                             <connections>
                                 <action selector="LogoutBtnTapped:" destination="oCw-Jd-RPa" id="8nN-JZ-Ssm"/>
@@ -487,11 +487,11 @@
             </objects>
             <point key="canvasLocation" x="3205.5" y="-238"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--QPoints-->
         <scene sceneID="ISU-T1-Bzu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U9K-1c-AIj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="gAW-xK-BUk"/>
+                    <tabBarItem key="tabBarItem" title="QPoints" image="QPointListIcon" id="gAW-xK-BUk"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -860,11 +860,11 @@
             </objects>
             <point key="canvasLocation" x="2005.5" y="1447"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scan-->
         <scene sceneID="9TI-TH-W8q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EOh-BH-4yF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="PDG-1U-tJP"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="QPointsBarBtn" id="PDG-1U-tJP"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="aFs-yp-aTe"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -903,6 +903,11 @@
             <point key="canvasLocation" x="451.5" y="1447"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ProfileIcon" width="16" height="16"/>
+        <image name="QPointListIcon" width="16" height="14"/>
+        <image name="QPointsBarBtn" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="W4V-Qg-YX5"/>
         <segue reference="g3n-Xe-VLa"/>

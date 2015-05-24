@@ -92,6 +92,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 self.APIPostRequest(reconTask,apiType: 3){
                     (responseDict: NSDictionary) in
                     var apiMessage:String = responseDict["message"] as String
+                    var apiGender:Int = responseDict["gender"] as Int
                     if (apiMessage == "User-Email und Passwort sind verifiziert. Willkommen") {
                         var interimPW:String = reconTask.reconPassword
                         var interimUser:String = reconTask.reconUser
@@ -99,6 +100,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                             println(interimUser)
                             println(interimPW)
                             NSUserDefaults.standardUserDefaults().setObject(interimUser, forKey: USERMAIL_KEY)
+                            NSUserDefaults.standardUserDefaults().setInteger(apiGender, forKey: USERGENDER_KEY)
                             NSUserDefaults.standardUserDefaults().setBool(true, forKey: HASBEENVERIFIED_KEY)
                             NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
                             NSUserDefaults.standardUserDefaults().synchronize()
