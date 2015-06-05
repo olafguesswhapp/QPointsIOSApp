@@ -28,12 +28,12 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldDidBeginEditing(textField: UITextField!) {    //delegate method
+    func textFieldDidBeginEditing(textField: UITextField) {    //delegate method
         CodeResponseField.hidden = true
     }
     
     @IBAction func ScanButtonTapped(sender: UIButton) {
-        var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: CodeInputField.text, setRecLiPW: "", setRecLiGender: 0)
+        var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: CodeInputField.text, setRecLiPW: "", setRecLiGender: 0)
         
         
         CodeInputField.endEditing(true)
@@ -43,7 +43,7 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
         self.APIPostRequest(reconTask,apiType: 1){
             (responseDict: NSDictionary) in
             dispatch_async(dispatch_get_main_queue(),{
-                var apiMessage:String = responseDict["message"] as String
+                var apiMessage:String = responseDict["message"]as! String
                 self.CodeResponseField.hidden = false
                 self.CodeResponseField.text = apiMessage
             });

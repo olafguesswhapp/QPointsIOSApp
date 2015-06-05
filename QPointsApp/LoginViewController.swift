@@ -53,8 +53,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.CreateAccountButton.layer.cornerRadius = 5
         
         if (NSUserDefaults.standardUserDefaults().boolForKey(HASBEENVERIFIED_KEY) == true) {
-            savedUserEmail = NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String
-            savedPassword = NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as String
+            savedUserEmail = NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String
+            savedPassword = NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as! String
             println("Has been logged in as \(savedUserEmail)")
         }
     }
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldDidBeginEditing(textField: UITextField!) {
+    func textFieldDidBeginEditing(textField: UITextField) {
         LoginResponseLabel.hidden = true
     }
     
@@ -91,9 +91,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 // if Internet available ...
                 self.APIPostRequest(reconTask,apiType: 3){
                     (responseDict: NSDictionary) in
-                    var apiMessage:String = responseDict["message"] as String
-                    var apiGender:Int = responseDict["gender"] as Int
-                    if (apiMessage == "User-Email und Passwort sind verifiziert. Willkommen") {
+                    var apiMessage:String = responseDict["message"] as! String
+                    var apiSuccess:Bool = responseDict["success"] as! Bool
+                    if (apiSuccess == true) {
+                        var apiGender:Int = responseDict["gender"] as! Int
                         var interimPW:String = reconTask.reconPassword
                         var interimUser:String = reconTask.reconUser
                         dispatch_async(dispatch_get_main_queue(),{

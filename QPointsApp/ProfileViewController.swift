@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
         UserGenderPicker.dataSource = self
         UserGenderPicker.delegate = self
         self.SaveProfileUpdateButton.layer.cornerRadius = 5
-        UserGenderPicker.selectRow(NSUserDefaults.standardUserDefaults().objectForKey(USERGENDER_KEY) as Int, inComponent: 0, animated: true)
+        UserGenderPicker.selectRow(NSUserDefaults.standardUserDefaults().objectForKey(USERGENDER_KEY) as! Int, inComponent: 0, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -61,14 +61,14 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     @IBAction func SaveProfileUpdateBtnTapped(sender: UIButton) {
         if (self.UserPasswordTextField1.text == self.UserPasswordTextField2.text){
             var gender: Int16 = Int16(UserGenderPicker.selectedRowInComponent(0))
-            var reconTask: ReconciliationModel = self.setReconciliationList(5, setRecLiUser: UserEmailTextField.text, setRecLiProgNr: "", setRecLiGoalToHit: 0, setRecLiQPCode: UserPasswordTextField2.text, setRecLiPW: NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as String, setRecLiGender: gender)
+            var reconTask: ReconciliationModel = self.setReconciliationList(5, setRecLiUser: UserEmailTextField.text, setRecLiProgNr: "", setRecLiGoalToHit: 0, setRecLiQPCode: UserPasswordTextField2.text, setRecLiPW: NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as! String, setRecLiGender: gender)
             println(reconTask)
             self.APIPostRequest(reconTask,apiType: 5){
                 (responseDict: NSDictionary) in
                 
-                if (responseDict["success"] as Bool == false) {
+                if (responseDict["success"] as! Bool == false) {
                     println("Update of User Profile not successful according to Server")
-                    println(responseDict["message"] as String)
+                    println(responseDict["message"] as! String)
                 } else {
                     println("Update of Profile successfull")
                     NSUserDefaults.standardUserDefaults().setObject(reconTask.reconQpInput, forKey: PASSWORD_KEY)

@@ -14,7 +14,7 @@ extension UIViewController {
     
     // put a new ScanCode or RedeemCode Task firt into ReconciliationList (delete the Task after reconciliation with webserver)
     func setReconciliationList(setRecLiType:Int16,setRecLiUser: String,setRecLiProgNr: String,setRecLiGoalToHit: Int16, setRecLiQPCode: String, setRecLiPW: String, setRecLiGender: Int16)->ReconciliationModel {
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let managedObjectContext = appDelegate.managedObjectContext
         let entityDescription = NSEntityDescription.entityForName("ReconciliationModel", inManagedObjectContext: managedObjectContext!)
         let reconTask = ReconciliationModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
@@ -49,7 +49,7 @@ extension UIViewController {
     }
     
     func deleteProgramData(responseData: NSDictionary)->Void{
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let managedObjectContext = appDelegate.managedObjectContext
         let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
         let fetchRequest = NSFetchRequest(entityName: "ProgramModel")
@@ -74,7 +74,7 @@ extension UIViewController {
     
     func APIPostRequest(reconTask: ReconciliationModel, apiType: Int16, completionHandler2: (responseDict: NSDictionary) -> Void) {
         // Prepare API Post request
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicodecheck")!)
+        var request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/apicodecheck")!)
         var params = [
             "userEmail" : reconTask.reconUser,
             "qpInput" : ""
@@ -86,26 +86,26 @@ extension UIViewController {
                 "qpInput" : reconTask.reconQpInput
             ]
         case 2:
-            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicoderedeem")!)
+            request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/apicoderedeem")!)
             params = [
                 "userEmail" : reconTask.reconUser,
                 "programNr" : reconTask.reconProgramNr,
                 "programGoal" : String(reconTask.reconProgramGoalToHit)
             ]
         case 3:
-            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicheckuser")!)
+            request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/apicheckuser")!)
             params = [
                 "userEmail" : reconTask.reconUser,
                 "password" : reconTask.reconPassword
             ]
         case 4:
-            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apicreateaccount")!)
+            request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/apicreateaccount")!)
             params = [
                 "userEmail" : reconTask.reconUser,
                 "password" : reconTask.reconPassword
             ]
         case 5:
-            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/apiupdateuser")!)
+            request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/apiupdateuser")!)
             params = [
                 "userEmail" : reconTask.reconUser,
                 "passwordOld" : reconTask.reconPassword,
@@ -113,7 +113,7 @@ extension UIViewController {
                 "gender" : String(reconTask.reconGender)
             ]
         default:
-            request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000/api")!)
+            request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/api")!)
         }
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -137,10 +137,10 @@ extension UIViewController {
     
     func processResponseScannedCode (jsonDictionary: NSDictionary)->Void{
         // handle API response only if code is valid - success = true
-        if jsonDictionary["success"]! as Bool == true {
+        if jsonDictionary["success"]! as! Bool == true {
             var isNewProgram: Bool = true
             // prepare core data comparison
-            let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+            let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             let managedObjectContext = appDelegate.managedObjectContext
             let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
             let fetchRequest = NSFetchRequest(entityName: "ProgramModel")
@@ -148,7 +148,7 @@ extension UIViewController {
                 var index: Int
                 // run through all already avaiable Programes and check if new code is part of one of those Programes
                 for index = 0; index<fetchResults.count; ++index{
-                    if fetchResults[index].programNr == jsonDictionary["nr"]! as String {
+                    if fetchResults[index].programNr == jsonDictionary["nr"]! as! String {
                         // code belongs to an already available Program
                         isNewProgram = false
                         fetchResults[index].myCount += 1 // Increase Code Counter
@@ -166,18 +166,18 @@ extension UIViewController {
             if isNewProgram == true {
                 // new Code is 1st scanned code of a new Programe - import information from Programe and save in core data
                 let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
-                program.programNr = jsonDictionary["nr"]! as String
-                program.programName = jsonDictionary["name"]! as String
-                program.programCompany = jsonDictionary["company"]! as String
-                var helpInt: Int = jsonDictionary["goalToHit"]! as Int
+                program.programNr = jsonDictionary["nr"]! as! String
+                program.programName = jsonDictionary["name"]! as! String
+                program.programCompany = jsonDictionary["company"]! as! String
+                var helpInt: Int = jsonDictionary["goalToHit"]! as! Int
                 program.programGoal = Int16(helpInt)
                 program.myCount = 1
-                program.programStatus = jsonDictionary["programStatus"]! as String
-                program.programKey = jsonDictionary["key"]! as String
+                program.programStatus = jsonDictionary["programStatus"]! as! String
+                program.programKey = jsonDictionary["key"]! as! String
                 let dateFormatter: NSDateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
-                program.programStartDate = dateFormatter.dateFromString(jsonDictionary["startDate"]! as String)!
-                program.programEndDate = dateFormatter.dateFromString(jsonDictionary["endDate"]! as String)!
+                program.programStartDate = dateFormatter.dateFromString(jsonDictionary["startDate"]! as! String)!
+                program.programEndDate = dateFormatter.dateFromString(jsonDictionary["endDate"]! as! String)!
                 println(program.programStartDate)
                 println(program.programEndDate)
                 appDelegate.saveContext()
@@ -187,23 +187,23 @@ extension UIViewController {
     }
     
     func importProgramData(responseDict:NSDictionary)->Void{
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let managedObjectContext = appDelegate.managedObjectContext
         let entityDescription = NSEntityDescription.entityForName("ProgramModel", inManagedObjectContext: managedObjectContext!)
         for var index = 0; index < responseDict["programData"]!.count; index++ {
             let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
-            program.programNr = responseDict["programData"]![index].objectForKey("programNr")! as String
-            program.programName = responseDict["programData"]![index].objectForKey("programName")! as String
-            program.programCompany = responseDict["programData"]![index].objectForKey("programCompany")! as String
-            program.programGoal = Int16(responseDict["programData"]![index].objectForKey("programGoal")! as Int)
-            program.myCount = Int16(responseDict["programData"]![index].objectForKey("myCount")! as Int)
-            program.programsFinished = Int16(responseDict["programData"]![index].objectForKey("ProgramsFinished")! as Int)
-            program.programStatus = responseDict["programData"]![index].objectForKey("programStatus")! as String
-            program.programKey = responseDict["programData"]![index].objectForKey("programKey")! as String
+            program.programNr = responseDict["programData"]![index].objectForKey("programNr")! as! String
+            program.programName = responseDict["programData"]![index].objectForKey("programName")! as! String
+            program.programCompany = responseDict["programData"]![index].objectForKey("programCompany")! as! String
+            program.programGoal = Int16(responseDict["programData"]![index].objectForKey("programGoal")! as! Int)
+            program.myCount = Int16(responseDict["programData"]![index].objectForKey("myCount")! as! Int)
+            program.programsFinished = Int16(responseDict["programData"]![index].objectForKey("ProgramsFinished")! as! Int)
+            program.programStatus = responseDict["programData"]![index].objectForKey("programStatus")! as! String
+            program.programKey = responseDict["programData"]![index].objectForKey("programKey")! as! String
             let dateFormatter: NSDateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
-            program.programStartDate = dateFormatter.dateFromString(responseDict["programData"]![index].objectForKey("programStartDate")! as String)!
-            program.programEndDate = dateFormatter.dateFromString(responseDict["programData"]![index].objectForKey("programEndDate")! as String)!
+            program.programStartDate = dateFormatter.dateFromString(responseDict["programData"]![index].objectForKey("programStartDate")! as! String)!
+            program.programEndDate = dateFormatter.dateFromString(responseDict["programData"]![index].objectForKey("programEndDate")! as! String)!
             println(program)
             appDelegate.saveContext()
         }
@@ -213,8 +213,9 @@ extension UIViewController {
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         
-        if let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx) {
-            return emailTest.evaluateWithObject(testStr)
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if emailTest.evaluateWithObject(testStr) {
+            return true
         }
         return false
     }

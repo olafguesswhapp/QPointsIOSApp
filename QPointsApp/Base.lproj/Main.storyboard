@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--QPoints-->
@@ -140,6 +140,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YsY-VJ-mY4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sfp-gJ-T6F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Neues Passwort eingeben" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHW-P9-aw0">
@@ -508,10 +509,10 @@
             </objects>
             <point key="canvasLocation" x="1282.5" y="69"/>
         </scene>
-        <!--Scan Code View Controller-->
+        <!--InputCode View Controller-->
         <scene sceneID="VMP-AH-aHP">
             <objects>
-                <viewController id="yKr-ku-EOL" customClass="ScanCodeViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yKr-ku-EOL" userLabel="InputCode View Controller" customClass="ScanCodeViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u6Z-p3-XIi"/>
                         <viewControllerLayoutGuide type="bottom" id="fmq-Il-WMn"/>
@@ -596,6 +597,27 @@
             </objects>
             <point key="canvasLocation" x="2893.5" y="741"/>
         </scene>
+        <!--Scan Barcode-->
+        <scene sceneID="4TK-O7-77i">
+            <objects>
+                <viewController id="hZJ-0W-UMU" customClass="BarCodeScanViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iLr-Ks-XlZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="CzL-a1-cX0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vIP-Zd-nRN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scan Barcode" id="ui4-OH-TXQ"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kob-UZ-yj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2893.5" y="1470"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y8f-Sa-nRc">
             <objects>
@@ -611,6 +633,7 @@
                     <connections>
                         <segue destination="U9K-1c-AIj" kind="relationship" relationship="viewControllers" id="ts9-Bf-vYa"/>
                         <segue destination="EOh-BH-4yF" kind="relationship" relationship="viewControllers" id="9lW-UC-LvD"/>
+                        <segue destination="8PQ-6M-zRf" kind="relationship" relationship="viewControllers" id="sq2-lp-yTu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8o-Wz-6hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -735,7 +758,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjH-h9-Pd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282.5" y="1447"/>
+            <point key="canvasLocation" x="1072.5" y="1959"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="4l4-Fb-51r">
@@ -858,12 +881,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uW-0N-dfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2005.5" y="1447"/>
+            <point key="canvasLocation" x="1750.5" y="1959"/>
         </scene>
-        <!--Scan-->
+        <!--InputCodeNavigation Controller-->
         <scene sceneID="9TI-TH-W8q">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EOh-BH-4yF" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EOh-BH-4yF" userLabel="InputCodeNavigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scan" image="QPointsBarBtn" id="PDG-1U-tJP"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="aFs-yp-aTe"/>
@@ -882,10 +905,10 @@
             </objects>
             <point key="canvasLocation" x="2200.5" y="741"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--LoginNavigation Controller-->
         <scene sceneID="FqG-5M-Gh9">
             <objects>
-                <navigationController storyboardIdentifier="LoginNavController" automaticallyAdjustsScrollViewInsets="NO" id="969-6R-uRw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavController" automaticallyAdjustsScrollViewInsets="NO" id="969-6R-uRw" userLabel="LoginNavigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -900,16 +923,37 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcr-wf-DVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="451.5" y="1447"/>
+            <point key="canvasLocation" x="460.5" y="1959"/>
+        </scene>
+        <!--BarCodeScanNavigation Controller-->
+        <scene sceneID="Mwx-7f-4wU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8PQ-6M-zRf" userLabel="BarCodeScanNavigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="Vx0-HU-xwJ"/>
+                    <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Ii-up-xFq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hZJ-0W-UMU" kind="relationship" relationship="rootViewController" id="lf0-Am-qAq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nP4-lO-Qyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2200.5" y="1470"/>
         </scene>
     </scenes>
     <resources>
         <image name="ProfileIcon" width="16" height="16"/>
         <image name="QPointListIcon" width="16" height="14"/>
-        <image name="QPointsBarBtn" width="30" height="30"/>
+        <image name="QPointsBarBtn" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="21q-9h-9qO"/>
         <segue reference="W4V-Qg-YX5"/>
-        <segue reference="g3n-Xe-VLa"/>
     </inferredMetricsTieBreakers>
 </document>

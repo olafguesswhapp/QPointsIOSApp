@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 // Monadic bind for Optionals
-infix operator >>= {associativity left}
-func >>= <A,B> (m: A?, f: A -> B?) -> B? {
-    if let x = m {return f(x)}
-    return .None
-}
-
+//infix operator >>= {associativity left}
+//func >>= <A,B> (m: A?, f: A -> B?) -> B? {
+//    if let x = m {return f(x)}
+//    return .None
+//}
+//
 extension Character {
     func utf8() -> UInt8 {
         let utf8 = String(self).utf8
@@ -53,19 +53,19 @@ class RedeemViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "returnDetailVCSegue" {
-            let detailVC: DetailViewController = segue.destinationViewController as DetailViewController
+            let detailVC: DetailViewController = segue.destinationViewController as! DetailViewController
             detailVC.detailProgramModel = redeemProgramModel
         }
     }
     
     @IBAction func VerifiyRedeemCodeButtonTapped(sender: UIButton) {
         // Beispiel als Verification Code = 2T@
-        var decryptedVerification:String = encryptKey(redeemProgramModel.programKey)(message: VerificationCodeInputField.text)!
-        println(decryptedVerification)
+//        var decryptedVerification:String = encryptKey(redeemProgramModel.programKey)(message: VerificationCodeInputField.text)!
+//        println(decryptedVerification)
         VerificationCodeLabel.layer.borderColor = UIColor.blueColor().CGColor!
         VerificationCodeLabel.layer.cornerRadius = 5
         VerificationCodeLabel.layer.borderWidth = 1.0
-        VerificationCodeLabel.text = decryptedVerification
+        VerificationCodeLabel.text = redeemProgramModel.programKey //decryptedVerification
         VerificationCodeLabel.hidden = false
         RedeemRequestLabel.hidden = false
         RequestDeclinedButton.hidden = false
@@ -79,11 +79,11 @@ class RedeemViewController: UIViewController {
     }
     
     @IBAction func FinishRedeemProcessButtonTapped(sender: UIButton) {
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         self.redeemProgramModel.programsFinished -= 1
         println(self.redeemProgramModel.programsFinished)
         appDelegate.saveContext()
-        var reconTask: ReconciliationModel = self.setReconciliationList(2,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String, setRecLiProgNr: redeemProgramModel.programNr,setRecLiGoalToHit: redeemProgramModel.programGoal, setRecLiQPCode: "", setRecLiPW: "", setRecLiGender: 0)
+        var reconTask: ReconciliationModel = self.setReconciliationList(2,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String, setRecLiProgNr: redeemProgramModel.programNr,setRecLiGoalToHit: redeemProgramModel.programGoal, setRecLiQPCode: "", setRecLiPW: "", setRecLiGender: 0)
         self.navigationController?.popViewControllerAnimated(true)
         // if Internet available ...
         self.APIPostRequest(reconTask,apiType: 2){
@@ -102,14 +102,14 @@ class RedeemViewController: UIViewController {
         self.VerificationCodeInputField.hidden = false
     }
     
-    func encrypt(key:Character, c:Character) -> String? {
-        let byte = [key.utf8() ^ c.utf8()]
-        return String(bytes: byte, encoding: NSUTF8StringEncoding)
-    }
+//    func encrypt(key:Character, c:Character) -> String? {
+//        let byte = [key.utf8() ^ c.utf8()]
+//        return String(bytes: byte, encoding: NSUTF8StringEncoding)
+//    }
     
     // Curried func for convenient use with map
-    func encryptKey(key:String)(message:String) -> String? {
-        return reduce(Zip2(key, message), Optional("")) { str, c in str >>= { s in self.encrypt(c).map {s + $0} }}
-    }
+//    func encryptKey(key:String)(message:String) -> String? {
+//        return reduce(Zip2(key, message), Optional("")) { str, c in str >>= { s in self.encrypt(c).map {s + $0} }}
+//    }
     
 }

@@ -29,7 +29,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldDidBeginEditing(textField: UITextField!) {
+    func textFieldDidBeginEditing(textField: UITextField) {
         InputResponseLabel.hidden = true
     }
     
@@ -44,7 +44,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                     // if Internet available ...
                     self.APIPostRequest(reconTask,apiType: 4){
                         (ResponseDict: NSDictionary) in
-                        var apiMessage: String = ResponseDict["message"] as String
+                        var apiMessage: String = ResponseDict["message"] as! String
                         if (apiMessage == "Willkommen bei QPoints - vielen Dank für das Einrichten eines neuen Kontos") {
                             var interimPW:String = reconTask.reconPassword
                             var interimUser: String = reconTask.reconUser
@@ -52,8 +52,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                                 NSUserDefaults.standardUserDefaults().setObject(interimUser, forKey: USERMAIL_KEY)
                                 NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
                                 NSUserDefaults.standardUserDefaults().synchronize()
-                                println("Username: \(NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as String)")
-                                println("Passwort: \(NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as String)")
+                                println("Username: \(NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String)")
+                                println("Passwort: \(NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as! String)")
                                 self.performSegueWithIdentifier("createdAccountSuccessfulSegue", sender: self)
                             });
                         } else {

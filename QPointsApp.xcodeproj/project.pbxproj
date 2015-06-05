@@ -24,6 +24,7 @@
 		90A458A71AFCF70500EB0F1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A458A61AFCF70500EB0F1E /* LoginViewController.swift */; };
 		90C6A8831AFDF04700D96E2B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6A8821AFDF04700D96E2B /* CreateAccountViewController.swift */; };
 		90D4FA8F1AE8C4BE002C7A1E /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */; };
+		90E772151B11C177007D4B2C /* BarCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E772141B11C177007D4B2C /* BarCodeScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		90A458A61AFCF70500EB0F1E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		90C6A8821AFDF04700D96E2B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
+		90E772141B11C177007D4B2C /* BarCodeScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCodeScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				906482A31B0B591B00E0545A /* ProfileViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
+				90E772141B11C177007D4B2C /* BarCodeScanViewController.swift */,
 				90C6A8821AFDF04700D96E2B /* CreateAccountViewController.swift */,
 				90A458A61AFCF70500EB0F1E /* LoginViewController.swift */,
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
@@ -194,6 +197,7 @@
 				TargetAttributes = {
 					9022F20C1ADA309B00CE2E04 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = BJPU5BM29M;
 					};
 					9022F2241ADA309B00CE2E04 = {
 						CreatedOnToolsVersion = 6.2;
@@ -253,6 +257,7 @@
 				90C6A8831AFDF04700D96E2B /* CreateAccountViewController.swift in Sources */,
 				9022F2131ADA309B00CE2E04 /* AppDelegate.swift in Sources */,
 				90D4FA8F1AE8C4BE002C7A1E /* RedeemViewController.swift in Sources */,
+				90E772151B11C177007D4B2C /* BarCodeScanViewController.swift in Sources */,
 				9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */,
 				9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */,
 				907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */,
@@ -333,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -370,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,9 +387,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QPointsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -392,9 +400,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QPointsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

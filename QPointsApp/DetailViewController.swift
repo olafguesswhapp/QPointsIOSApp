@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "redeemSegue" {
-            let redeemVC: RedeemViewController = segue.destinationViewController as RedeemViewController
+            let redeemVC: RedeemViewController = segue.destinationViewController as! RedeemViewController
             redeemVC.redeemProgramModel = detailProgramModel
         }
     }

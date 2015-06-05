@@ -15,6 +15,8 @@ let USERGENDER_KEY = "userGenderKey"
 let HASLAUNCHEDONCE_KEY = "hasLaunchedOnceKey"
 let HASBEENVERIFIED_KEY = "hasBeenVerifiedKey"
 
+let baseUrl = "http://qpoints.schedar.uberspace.de" // "http://localhost:3000"  "http://qpoints.schedar.uberspace.de"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -34,10 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (NSUserDefaults.standardUserDefaults().boolForKey(HASLAUNCHEDONCE_KEY) == false ) {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: HASLAUNCHEDONCE_KEY)
             NSUserDefaults.standardUserDefaults().synchronize()
-            var exampleViewController: LoginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as LoginViewController
+            var exampleViewController: LoginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
             self.window?.rootViewController = exampleViewController
         } else {
-            var myPointsTBController: UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("MyPointsTabBarController") as UITabBarController
+            var myPointsTBController: UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("MyPointsTabBarController") as! UITabBarController
             self.window?.rootViewController = myPointsTBController
         }
         
@@ -75,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.cosmopolitanbeatsociety.QPointsApp" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
