@@ -12,6 +12,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     var controller:UIAlertController?
     var alertController:UIAlertController?
+    var noInternetController:UIAlertController?
 
     @IBOutlet weak var LoginResponseLabel: UILabel!
     @IBOutlet weak var CreateAccountButton: UIButton!
@@ -24,6 +25,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("Internet? \(Reachability.isConnectedToNetwork())")
         
         controller = UIAlertController(title: "Warnung", message: "Auf diesem Gerät waren Sie bisher mit einer anderen User-Email angemeldet.\n\nWollen Sie sich als neuer User anmelden und die auf diesem Gerät gespeicherten Punkte löschen?\nDann drücken Sie bitte unten auf 'New User' und loggen Sie sich erneut ein.", preferredStyle: .ActionSheet)
         let actionNewUser = UIAlertAction(title: "New User",
@@ -87,33 +90,47 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     self.presentViewController(controller!, animated: true, completion: nil)
                 }
             } else {
-                var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text, setRecLiGender: 0)
-                // if Internet available ...
-                self.APIPostRequest(reconTask,apiType: 3){
-                    (responseDict: NSDictionary) in
-                    var apiMessage:String = responseDict["message"] as! String
-                    var apiSuccess:Bool = responseDict["success"] as! Bool
-                    if (apiSuccess == true) {
-                        var apiGender:Int = responseDict["gender"] as! Int
-                        var interimPW:String = reconTask.reconPassword
-                        var interimUser:String = reconTask.reconUser
-                        dispatch_async(dispatch_get_main_queue(),{
-                            println(interimUser)
-                            println(interimPW)
-                            NSUserDefaults.standardUserDefaults().setObject(interimUser, forKey: USERMAIL_KEY)
-                            NSUserDefaults.standardUserDefaults().setInteger(apiGender, forKey: USERGENDER_KEY)
-                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: HASBEENVERIFIED_KEY)
-                            NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
-                            NSUserDefaults.standardUserDefaults().synchronize()
-                            self.deleteProgramData(responseDict)
-                            self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
-                        });
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(),{
-                            self.LoginResponseLabel.text = apiMessage + "\n\n   Drücken Sie auf 'Konto anlegen' um sich neu anzumelden"
-                            self.LoginResponseLabel.hidden = false
-                        });
+
+                // If Internet vorhanden
+                if Reachability.isConnectedToNetwork() {
+                    var reconTask: ReconciliationModel = self.setReconciliationList(3,setRecLiUser: UserEmailTextField.text,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: UserPasswordTextField.text, setRecLiGender: 0)
+                    
+                    // if Internet available ...
+                    self.APIPostRequest(reconTask,apiType: 3){
+                        (responseDict: NSDictionary) in
+                        var apiMessage:String = responseDict["message"] as! String
+                        var apiSuccess:Bool = responseDict["success"] as! Bool
+                        if (apiSuccess == true) {
+                            var apiGender:Int = responseDict["gender"] as! Int
+                            var interimPW:String = reconTask.reconPassword
+                            var interimUser:String = reconTask.reconUser
+                            dispatch_async(dispatch_get_main_queue(),{
+                                println(interimUser)
+                                println(interimPW)
+                                NSUserDefaults.standardUserDefaults().setObject(interimUser, forKey: USERMAIL_KEY)
+                                NSUserDefaults.standardUserDefaults().setInteger(apiGender, forKey: USERGENDER_KEY)
+                                NSUserDefaults.standardUserDefaults().setBool(true, forKey: HASBEENVERIFIED_KEY)
+                                NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                self.deleteProgramData(responseDict)
+                                self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
+                            });
+                        } else {
+                            dispatch_async(dispatch_get_main_queue(),{
+                                self.LoginResponseLabel.text = apiMessage + "\n\n   Drücken Sie auf 'Konto anlegen' um sich neu anzumelden"
+                                self.LoginResponseLabel.hidden = false
+                            });
+                        }
                     }
+                } else {
+                    self.noInternetController = UIAlertController(title: "QPoint Login", message: "Bitte versuche es erneut sobald Du wieder eine Internet Verbindung hergestellt hast", preferredStyle: .Alert)
+                    let actionAlert = UIAlertAction(title: "Ok",
+                        style: UIAlertActionStyle.Default,
+                        handler: {(paramAction:UIAlertAction!) in
+                            println("The Ok button was tapped")
+                    })
+                    self.noInternetController!.addAction(actionAlert)
+                    self.presentViewController(self.noInternetController!, animated: true, completion: nil)
                 }
             }
         } else {

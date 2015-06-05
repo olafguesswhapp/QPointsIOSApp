@@ -40,13 +40,15 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
         CodeInputField.text = ""
         
         // If Internet Available
-        self.APIPostRequest(reconTask,apiType: 1){
-            (responseDict: NSDictionary) in
-            dispatch_async(dispatch_get_main_queue(),{
-                var apiMessage:String = responseDict["message"]as! String
-                self.CodeResponseField.hidden = false
-                self.CodeResponseField.text = apiMessage
-            });
+        if Reachability.isConnectedToNetwork() {
+            self.APIPostRequest(reconTask,apiType: 1){
+                (responseDict: NSDictionary) in
+                dispatch_async(dispatch_get_main_queue(),{
+                    var apiMessage:String = responseDict["message"]as! String
+                    self.CodeResponseField.hidden = false
+                    self.CodeResponseField.text = apiMessage
+                });
+            }
         }
     }
     

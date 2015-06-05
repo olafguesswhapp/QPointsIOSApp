@@ -85,10 +85,14 @@ class RedeemViewController: UIViewController {
         appDelegate.saveContext()
         var reconTask: ReconciliationModel = self.setReconciliationList(2,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String, setRecLiProgNr: redeemProgramModel.programNr,setRecLiGoalToHit: redeemProgramModel.programGoal, setRecLiQPCode: "", setRecLiPW: "", setRecLiGender: 0)
         self.navigationController?.popViewControllerAnimated(true)
+        
         // if Internet available ...
-        self.APIPostRequest(reconTask,apiType: 2){
-            (responseDict: NSDictionary) in
+        if Reachability.isConnectedToNetwork() {
+            self.APIPostRequest(reconTask,apiType: 2){
+                (responseDict: NSDictionary) in
+            }
         }
+
     }
     @IBAction func RequestDeclineButtonTapped(sender: UIButton) {
         self.VerificationCodeLabel.text = ""

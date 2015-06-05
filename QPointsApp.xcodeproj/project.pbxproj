@@ -18,6 +18,7 @@
 		9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2351ADA335200CE2E04 /* DetailViewController.swift */; };
 		9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2371ADA387E00CE2E04 /* ProgramCell.swift */; };
 		9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */; };
+		902F69ED1B217FF000E6BE37 /* InternetRechable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69EC1B217FF000E6BE37 /* InternetRechable.swift */; };
 		906482A41B0B591B00E0545A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906482A31B0B591B00E0545A /* ProfileViewController.swift */; };
 		907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907084501ADC0BA5003D848C /* ScanCodeViewController.swift */; };
 		9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092BDA81AF6569C00085D4A /* QPLibrary.swift */; };
@@ -53,6 +54,7 @@
 		9022F2351ADA335200CE2E04 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9022F2371ADA387E00CE2E04 /* ProgramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
+		902F69EC1B217FF000E6BE37 /* InternetRechable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetRechable.swift; sourceTree = "<group>"; };
 		906482A31B0B591B00E0545A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		907084501ADC0BA5003D848C /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanCodeViewController.swift; path = ../ScanCodeViewController.swift; sourceTree = "<group>"; };
 		9092BDA81AF6569C00085D4A /* QPLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLibrary.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
 				90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */,
+				902F69EC1B217FF000E6BE37 /* InternetRechable.swift */,
 				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				906482A31B0B591B00E0545A /* ProfileViewController.swift */,
 				9022F2191ADA309B00CE2E04 /* Main.storyboard */,
@@ -261,6 +264,7 @@
 				9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */,
 				9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */,
 				907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */,
+				902F69ED1B217FF000E6BE37 /* InternetRechable.swift in Sources */,
 				9008461C1AF3C0D700A45349 /* ReconciliationModel.swift in Sources */,
 				9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */,
 			);

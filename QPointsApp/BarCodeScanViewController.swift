@@ -16,6 +16,7 @@ class BarCodeScanViewController: UIViewController, AVCaptureMetadataOutputObject
     var highlightView   : UIView = UIView()
     
     var messageController:UIAlertController?
+    var noInternetController: UIAlertController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,23 +122,37 @@ class BarCodeScanViewController: UIViewController, AVCaptureMetadataOutputObject
             var reconTask: ReconciliationModel = self.setReconciliationList(1,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: detectionString, setRecLiPW: "", setRecLiGender: 0)
             
             // If Internet Available
-            self.APIPostRequest(reconTask,apiType: 1){
-                (responseDict: NSDictionary) in
-                dispatch_async(dispatch_get_main_queue(),{
-                    var apiMessage:String = responseDict["message"]as! String
-                    self.messageController = UIAlertController(title: "QPoint Scan", message: apiMessage, preferredStyle: .Alert)
-                    let actionAlert = UIAlertAction(title: "Ok",
-                        style: UIAlertActionStyle.Default,
-                        handler: {(paramAction:UIAlertAction!) in
-                            self.view.sendSubviewToBack(self.highlightView)
-                            self.session.startRunning()
-                            println("The Done button was tapped")
-                    })
-                    self.messageController!.addAction(actionAlert)
-                    self.presentViewController(self.messageController!, animated: true, completion: nil)
-                    println(apiMessage)
-                });
+            if Reachability.isConnectedToNetwork(){
+                self.APIPostRequest(reconTask,apiType: 1){
+                    (responseDict: NSDictionary) in
+                    dispatch_async(dispatch_get_main_queue(),{
+                        var apiMessage:String = responseDict["message"]as! String
+                        self.messageController = UIAlertController(title: "QPoint Scan", message: apiMessage, preferredStyle: .Alert)
+                        let actionAlert = UIAlertAction(title: "Ok",
+                            style: UIAlertActionStyle.Default,
+                            handler: {(paramAction:UIAlertAction!) in
+                                self.view.sendSubviewToBack(self.highlightView)
+                                self.session.startRunning()
+                                println("The Done button was tapped")
+                        })
+                        self.messageController!.addAction(actionAlert)
+                        self.presentViewController(self.messageController!, animated: true, completion: nil)
+                        println(apiMessage)
+                    });
+                }
+            } else {
+                self.noInternetController = UIAlertController(title: "QPoint Scan", message: "Der gescannte QPoint wird überprüft sobald Du wieder eine Internet Verbindung hergestellt hast", preferredStyle: .Alert)
+                let actionAlert = UIAlertAction(title: "Ok",
+                    style: UIAlertActionStyle.Default,
+                    handler: {(paramAction:UIAlertAction!) in
+                        self.view.sendSubviewToBack(self.highlightView)
+                        self.session.startRunning()
+                        println("The Done button was tapped")
+                })
+                self.noInternetController!.addAction(actionAlert)
+                self.presentViewController(self.noInternetController!, animated: true, completion: nil)
             }
+            
         } else {
             println("")
             self.view.sendSubviewToBack(self.highlightView)

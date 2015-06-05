@@ -63,17 +63,21 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
             var gender: Int16 = Int16(UserGenderPicker.selectedRowInComponent(0))
             var reconTask: ReconciliationModel = self.setReconciliationList(5, setRecLiUser: UserEmailTextField.text, setRecLiProgNr: "", setRecLiGoalToHit: 0, setRecLiQPCode: UserPasswordTextField2.text, setRecLiPW: NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as! String, setRecLiGender: gender)
             println(reconTask)
-            self.APIPostRequest(reconTask,apiType: 5){
-                (responseDict: NSDictionary) in
-                
-                if (responseDict["success"] as! Bool == false) {
-                    println("Update of User Profile not successful according to Server")
-                    println(responseDict["message"] as! String)
-                } else {
-                    println("Update of Profile successfull")
-                    NSUserDefaults.standardUserDefaults().setObject(reconTask.reconQpInput, forKey: PASSWORD_KEY)
-                    NSUserDefaults.standardUserDefaults().setInteger(self.UserGenderPicker.selectedRowInComponent(0), forKey: USERGENDER_KEY)
-                    NSUserDefaults.standardUserDefaults().synchronize()
+            
+            // If Internet vorhanden
+            if Reachability.isConnectedToNetwork() {
+                self.APIPostRequest(reconTask,apiType: 5){
+                    (responseDict: NSDictionary) in
+                    
+                    if (responseDict["success"] as! Bool == false) {
+                        println("Update of User Profile not successful according to Server")
+                        println(responseDict["message"] as! String)
+                    } else {
+                        println("Update of Profile successfull")
+                        NSUserDefaults.standardUserDefaults().setObject(reconTask.reconQpInput, forKey: PASSWORD_KEY)
+                        NSUserDefaults.standardUserDefaults().setInteger(self.UserGenderPicker.selectedRowInComponent(0), forKey: USERGENDER_KEY)
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                    }
                 }
             }
             self.navigationController?.popViewControllerAnimated(true)

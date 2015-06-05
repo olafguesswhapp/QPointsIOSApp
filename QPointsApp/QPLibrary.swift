@@ -126,11 +126,13 @@ extension UIViewController {
         var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, err) -> Void in
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: &conversionError) as? NSDictionary
-            completionHandler2(responseDict: jsonDictionary!)
-            if apiType==1 {
-                self.processResponseScannedCode(jsonDictionary!)
+            if jsonDictionary != nil {
+                completionHandler2(responseDict: jsonDictionary!)
+                if apiType==1 {
+                    self.processResponseScannedCode(jsonDictionary!)
+                }
+                self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
             }
-            self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
         })
         task.resume()
     }

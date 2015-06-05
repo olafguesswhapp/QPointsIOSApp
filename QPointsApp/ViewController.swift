@@ -28,8 +28,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(animated: Bool) {
+
+        println("Internet? \(Reachability.isConnectedToNetwork())")
         super.viewDidAppear(animated)
-        checkReconciliationTasks()
+        if Reachability.isConnectedToNetwork() {
+            checkReconciliationTasks()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,11 +50,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             detailVC.detailProgramModel = thisProgram
         }
     }
-    
-    @IBAction func AddProgButtonTapped(sender: UIBarButtonItem) {
-        
-    }
-    
     
     // Mark - UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -151,6 +150,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     println("\(counter). Create User Account")
                     println(reconTask.reconUser + " " + reconTask.reconPassword)
                     self.APIPostRequest(reconTask,apiType: 4){
+                        (responseDict: NSDictionary) in
+                    }
+                case 5:
+                    println("\(counter). Update User Account")
+                    println(reconTask.reconUser + " " + String(reconTask.reconGender))
+                    self.APIPostRequest(reconTask,apiType: 5){
                         (responseDict: NSDictionary) in
                     }
                 default:
