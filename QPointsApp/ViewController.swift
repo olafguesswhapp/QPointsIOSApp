@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections!.count
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return fetchedResultsController.sections![section].count
         let sectionInfo = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
@@ -156,6 +157,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     println("\(counter). Update User Account")
                     println(reconTask.reconUser + " " + String(reconTask.reconGender))
                     self.APIPostRequest(reconTask,apiType: 5){
+                        (responseDict: NSDictionary) in
+                    }
+                case 6:
+                    println("\(counter). Request News")
+                    println(reconTask.reconUser + " " + String(reconTask.reconPassword))
+                    self.APIPostRequest(reconTask,apiType: 6){
                         (responseDict: NSDictionary) in
                     }
                 default:

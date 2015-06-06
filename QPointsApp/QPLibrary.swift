@@ -112,6 +112,12 @@ extension UIViewController {
                 "passwordNew" :reconTask.reconQpInput,
                 "gender" : String(reconTask.reconGender)
             ]
+        case 6:
+            request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/apinewsfeed")!)
+            params = [
+                "userEmail" : reconTask.reconUser,
+                "password" : reconTask.reconPassword
+            ]
         default:
             request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/api")!)
         }
@@ -130,6 +136,9 @@ extension UIViewController {
                 completionHandler2(responseDict: jsonDictionary!)
                 if apiType==1 {
                     self.processResponseScannedCode(jsonDictionary!)
+                }
+                if apiType == 6 {
+                    self.importNewsData(jsonDictionary!)
                 }
                 self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
             }
@@ -164,7 +173,6 @@ extension UIViewController {
                     }
                 }
             }
-            println(isNewProgram)
             if isNewProgram == true {
                 // new Code is 1st scanned code of a new Programe - import information from Programe and save in core data
                 let program = ProgramModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
@@ -209,7 +217,39 @@ extension UIViewController {
             println(program)
             appDelegate.saveContext()
         }
+    }
+    
+    func importNewsData(responseDict: NSDictionary)->Void{
+        if responseDict["success"]! as! Bool == true {
+            let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let managedObjectContext = appDelegate.managedObjectContext
+            let entityDescription = NSEntityDescription.entityForName("MessageModel", inManagedObjectContext: managedObjectContext!)
+            for var index = 0; index < responseDict["newsFeed"]!.count; index++ {
+                let message = MessageModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+                message.newsTitle = responseDict["newsFeed"]![index].objectForKey("newsTitle")! as! String
+                message.newsMessage = responseDict["newsFeed"]![index].objectForKey("newsMessage")! as! String
+                message.programName = responseDict["newsFeed"]![index].objectForKey("programName")! as! String
+                message.programCompany = responseDict["newsFeed"]![index].objectForKey("company")! as! String
+                let dateFormatter: NSDateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
+                message.newsDeadline = dateFormatter.dateFromString(responseDict["newsFeed"]![index].objectForKey("newsDeadline")! as! String)!
+                message.newsStatus = false
+                println("neue Nachricht wird gespeichert:")
+                println(message)
+                appDelegate.saveContext()
+            }
+        }
+    }
+    
+    func requestNewsData()->Void{
+        var reconTask: ReconciliationModel = self.setReconciliationList(6,setRecLiUser: NSUserDefaults.standardUserDefaults().objectForKey(USERMAIL_KEY) as! String,setRecLiProgNr: "",setRecLiGoalToHit: 0, setRecLiQPCode: "", setRecLiPW: NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as! String, setRecLiGender: 0)
         
+        // If Internet Available
+        if Reachability.isConnectedToNetwork() {
+            self.APIPostRequest(reconTask,apiType: 6){
+                (responseDict: NSDictionary) in
+            }
+        }
     }
     
     func isValidEmail(testStr:String) -> Bool {

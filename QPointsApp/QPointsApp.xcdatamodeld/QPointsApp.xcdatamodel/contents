@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="13F1077" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MessageModel" representedClassName="MessageModel" syncable="YES">
+        <attribute name="newsDeadline" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="newsMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newsStatus" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="newsTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="programCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="programName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ProgramModel" representedClassName="ProgramModel" syncable="YES">
         <attribute name="myCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="programCompany" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,5 +35,6 @@
     <elements>
         <element name="ProgramModel" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="ReconciliationModel" positionX="-63" positionY="54" width="128" height="195"/>
+        <element name="MessageModel" positionX="-63" positionY="90" width="128" height="135"/>
     </elements>
 </model>

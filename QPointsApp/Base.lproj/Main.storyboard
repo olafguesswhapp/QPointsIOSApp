@@ -618,6 +618,177 @@
             </objects>
             <point key="canvasLocation" x="2893.5" y="1470"/>
         </scene>
+        <!--MessagesView Controller-->
+        <scene sceneID="cjS-yo-Jls">
+            <objects>
+                <viewController id="J14-4F-pcV" userLabel="MessagesView Controller" customClass="MessagesViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2yF-tQ-A5x"/>
+                        <viewControllerLayoutGuide type="bottom" id="SZW-O1-NkY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LPz-hU-9T3">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="c2R-Sn-drf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="MessageCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="75" id="Dgz-It-ctB" customClass="MessageCell" customModule="QPointsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dgz-It-ctB" id="Pcw-N5-TFQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="newsTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7V-oW-4vY">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="programName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gg-nS-4C8">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="8" y="45" width="304" height="21"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="Z7V-oW-4vY"/>
+                                                    <exclude reference="0gg-nS-4C8"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="Z7V-oW-4vY"/>
+                                                    <include reference="0gg-nS-4C8"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newsTitleLable" destination="Z7V-oW-4vY" id="Eov-kJ-hYe"/>
+                                            <outlet property="programNameLabel" destination="0gg-nS-4C8" id="9qH-vG-orN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="J14-4F-pcV" id="JrO-6I-CZN"/>
+                                    <outlet property="delegate" destination="J14-4F-pcV" id="g7U-vb-EUa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="c2R-Sn-drf"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="c2R-Sn-drf"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="News" id="f5M-8J-p7I"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="MessageTableView" destination="c2R-Sn-drf" id="o2r-TV-wUw"/>
+                        <segue destination="vOO-Jj-WUu" kind="show" identifier="showMessageDetailSegue" id="YnF-72-6ju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3JF-zu-agc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2893.5" y="2139"/>
+        </scene>
+        <!--MessageDetailView Controller-->
+        <scene sceneID="sCp-sZ-Irc">
+            <objects>
+                <viewController id="vOO-Jj-WUu" userLabel="MessageDetailView Controller" customClass="MessageDetailViewController" customModule="QPointsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8OR-2W-pe8"/>
+                        <viewControllerLayoutGuide type="bottom" id="NwL-Cb-82w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MLY-ke-VN8">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="newsTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb2-LB-S8j">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="132" width="288" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="newsMessage" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqG-TD-a1o">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="161" width="288" height="113"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="programName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlJ-Q5-mfH">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="72" width="288" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="programCompany" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-tc-k4q">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="101" width="288" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Nb2-LB-S8j"/>
+                                <exclude reference="BqG-TD-a1o"/>
+                                <exclude reference="tlJ-Q5-mfH"/>
+                                <exclude reference="BD5-tc-k4q"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Nb2-LB-S8j"/>
+                                <include reference="BqG-TD-a1o"/>
+                                <include reference="tlJ-Q5-mfH"/>
+                                <include reference="BD5-tc-k4q"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="newsMessageLabel" destination="BqG-TD-a1o" id="BOo-67-1GP"/>
+                        <outlet property="newsTitleLabel" destination="Nb2-LB-S8j" id="JDR-UE-JUn"/>
+                        <outlet property="programCompanyLabel" destination="BD5-tc-k4q" id="gsg-hv-FOL"/>
+                        <outlet property="programNameLabel" destination="tlJ-Q5-mfH" id="cdf-Rn-Uur"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72g-Zw-vAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3448.5" y="2134"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y8f-Sa-nRc">
             <objects>
@@ -634,6 +805,7 @@
                         <segue destination="U9K-1c-AIj" kind="relationship" relationship="viewControllers" id="ts9-Bf-vYa"/>
                         <segue destination="EOh-BH-4yF" kind="relationship" relationship="viewControllers" id="9lW-UC-LvD"/>
                         <segue destination="8PQ-6M-zRf" kind="relationship" relationship="viewControllers" id="sq2-lp-yTu"/>
+                        <segue destination="juJ-ff-VnL" kind="relationship" relationship="viewControllers" id="0ei-7c-jnh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8o-Wz-6hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -758,7 +930,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjH-h9-Pd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.5" y="1959"/>
+            <point key="canvasLocation" x="973.5" y="2497"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="4l4-Fb-51r">
@@ -881,7 +1053,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uW-0N-dfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1750.5" y="1959"/>
+            <point key="canvasLocation" x="1561.5" y="2497"/>
         </scene>
         <!--InputCodeNavigation Controller-->
         <scene sceneID="9TI-TH-W8q">
@@ -923,7 +1095,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcr-wf-DVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460.5" y="1959"/>
+            <point key="canvasLocation" x="409.5" y="2497"/>
         </scene>
         <!--BarCodeScanNavigation Controller-->
         <scene sceneID="Mwx-7f-4wU">
@@ -946,6 +1118,27 @@
             </objects>
             <point key="canvasLocation" x="2200.5" y="1470"/>
         </scene>
+        <!--MessagesNavigation Controller-->
+        <scene sceneID="0r9-oK-Unk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="juJ-ff-VnL" userLabel="MessagesNavigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="tBJ-3j-2rq"/>
+                    <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wnV-VR-oqr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J14-4F-pcV" kind="relationship" relationship="rootViewController" id="zZW-k8-jq8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NUB-ek-raP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2200.5" y="2139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ProfileIcon" width="16" height="16"/>
@@ -953,7 +1146,7 @@
         <image name="QPointsBarBtn" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="21q-9h-9qO"/>
         <segue reference="W4V-Qg-YX5"/>
+        <segue reference="21q-9h-9qO"/>
     </inferredMetricsTieBreakers>
 </document>

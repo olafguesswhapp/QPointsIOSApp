@@ -19,6 +19,11 @@
 		9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2371ADA387E00CE2E04 /* ProgramCell.swift */; };
 		9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */; };
 		902F69ED1B217FF000E6BE37 /* InternetRechable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69EC1B217FF000E6BE37 /* InternetRechable.swift */; };
+		902F69EF1B21E32500E6BE37 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69EE1B21E32500E6BE37 /* MessageViewController.swift */; };
+		902F69F11B21E64F00E6BE37 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69F01B21E64F00E6BE37 /* MessageModel.swift */; };
+		902F69F31B21E9F200E6BE37 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69F21B21E9F200E6BE37 /* MessageCell.swift */; };
+		902F69F51B23198E00E6BE37 /* messgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69F41B23198E00E6BE37 /* messgModel.swift */; };
+		902F69F71B231DB000E6BE37 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F69F61B231DB000E6BE37 /* MessageDetailViewController.swift */; };
 		906482A41B0B591B00E0545A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906482A31B0B591B00E0545A /* ProfileViewController.swift */; };
 		907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907084501ADC0BA5003D848C /* ScanCodeViewController.swift */; };
 		9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092BDA81AF6569C00085D4A /* QPLibrary.swift */; };
@@ -55,6 +60,11 @@
 		9022F2371ADA387E00CE2E04 /* ProgramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramModel.swift; sourceTree = "<group>"; };
 		902F69EC1B217FF000E6BE37 /* InternetRechable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetRechable.swift; sourceTree = "<group>"; };
+		902F69EE1B21E32500E6BE37 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		902F69F01B21E64F00E6BE37 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageModel.swift; path = ../MessageModel.swift; sourceTree = "<group>"; };
+		902F69F21B21E9F200E6BE37 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		902F69F41B23198E00E6BE37 /* messgModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messgModel.swift; sourceTree = "<group>"; };
+		902F69F61B231DB000E6BE37 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		906482A31B0B591B00E0545A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		907084501ADC0BA5003D848C /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanCodeViewController.swift; path = ../ScanCodeViewController.swift; sourceTree = "<group>"; };
 		9092BDA81AF6569C00085D4A /* QPLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLibrary.swift; sourceTree = "<group>"; };
@@ -105,8 +115,12 @@
 			children = (
 				9022F2121ADA309B00CE2E04 /* AppDelegate.swift */,
 				9022F2171ADA309B00CE2E04 /* ViewController.swift */,
+				902F69EE1B21E32500E6BE37 /* MessageViewController.swift */,
+				902F69F41B23198E00E6BE37 /* messgModel.swift */,
+				902F69F61B231DB000E6BE37 /* MessageDetailViewController.swift */,
 				9092BDA81AF6569C00085D4A /* QPLibrary.swift */,
 				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
+				902F69F21B21E9F200E6BE37 /* MessageCell.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
 				90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */,
 				902F69EC1B217FF000E6BE37 /* InternetRechable.swift */,
@@ -119,6 +133,7 @@
 				9022F21C1ADA309B00CE2E04 /* Images.xcassets */,
 				9022F21E1ADA309B00CE2E04 /* LaunchScreen.xib */,
 				9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */,
+				902F69F01B21E64F00E6BE37 /* MessageModel.swift */,
 				9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */,
 				9022F23D1ADA9C4600CE2E04 /* ProgramModel.swift */,
 				9022F2101ADA309B00CE2E04 /* Supporting Files */,
@@ -262,11 +277,16 @@
 				90D4FA8F1AE8C4BE002C7A1E /* RedeemViewController.swift in Sources */,
 				90E772151B11C177007D4B2C /* BarCodeScanViewController.swift in Sources */,
 				9022F2361ADA335200CE2E04 /* DetailViewController.swift in Sources */,
+				902F69F11B21E64F00E6BE37 /* MessageModel.swift in Sources */,
 				9022F23E1ADA9C4600CE2E04 /* ProgramModel.swift in Sources */,
 				907084511ADC0BA5003D848C /* ScanCodeViewController.swift in Sources */,
+				902F69F51B23198E00E6BE37 /* messgModel.swift in Sources */,
 				902F69ED1B217FF000E6BE37 /* InternetRechable.swift in Sources */,
 				9008461C1AF3C0D700A45349 /* ReconciliationModel.swift in Sources */,
+				902F69EF1B21E32500E6BE37 /* MessageViewController.swift in Sources */,
+				902F69F71B231DB000E6BE37 /* MessageDetailViewController.swift in Sources */,
 				9022F2381ADA387E00CE2E04 /* ProgramCell.swift in Sources */,
+				902F69F31B21E9F200E6BE37 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
