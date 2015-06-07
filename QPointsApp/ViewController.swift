@@ -32,7 +32,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println("Internet? \(Reachability.isConnectedToNetwork())")
         super.viewDidAppear(animated)
         if Reachability.isConnectedToNetwork() {
-            checkReconciliationTasks()
+            self.checkReconciliationTasks()
+        } else {
+            NewsOfReconciliationTasks()
         }
     }
 
@@ -118,7 +120,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return fetchedResultsController
     }
     
-    
     func checkReconciliationTasks()->Void {
         let fetchRequest = NSFetchRequest(entityName: "ReconciliationModel")
         var requestError: NSError?
@@ -169,6 +170,62 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     println("not a valid Task")
                 }
             }
+        } else {
+            println("No open Task in ReconciliationModel")
+        }
+        tableView.reloadData()
+    }
+    
+    func NewsOfReconciliationTasks()->Void {
+        let fetchRequest = NSFetchRequest(entityName: "ReconciliationModel")
+        var requestError: NSError?
+        let response = managedObjectContext.executeFetchRequest(fetchRequest, error: &requestError) as! [ReconciliationModel!]
+        if response.count>0 {
+            var newsTaskMessage:String = "Sobald Deine Internet Verbindung wieder hergestellt ist wird folgendes geprüft"
+            println("Tasks to be reported to News:")
+            var counter:Int = 0
+            for (reconTask) in response {
+                counter++
+                switch reconTask.reconType {
+                case 1:
+                    println("\(counter). Check scanned Code")
+                    newsTaskMessage += "\n\(counter). Gescannten QPoint prüfen"
+                case 2:
+                    println("\(counter). Check redeemed Program")
+                    newsTaskMessage += "\n\(counter). QPoints einlösen von Program \(reconTask.reconProgramNr)"
+                case 3:
+                    println("\(counter). Check User Account")
+                    newsTaskMessage += "\n\(counter). User-Login prüfen \(reconTask.reconUser)"
+                case 4:
+                    println("\(counter). Create User Account")
+                    newsTaskMessage += "\n(counter). User anlegen \(reconTask.reconUser)"
+                case 5:
+                    println("\(counter). Update User Account")
+                    newsTaskMessage += "\n\(counter). User Profil speichern \(reconTask.reconUser)"
+                case 6:
+                    println("\(counter). Request News")
+                    newsTaskMessage += "\n\(counter). Neue Nachrichten anfragen"
+                default:
+                    println("not a valid Task")
+                    newsTaskMessage += "\n\(counter). Keine gültige Task"
+                }
+            }
+            let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let managedObjectContext = appDelegate.managedObjectContext
+            let entityDescription = NSEntityDescription.entityForName("MessageModel", inManagedObjectContext: managedObjectContext!)
+            let message = MessageModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+            message.newsTitle = "Wird aktualisiert sobald Internet Verbindung steht"
+            message.newsMessage = newsTaskMessage
+            message.programName = "Interne Meldung"
+            message.programCompany = "QPoints"
+//            let today = NSDate()
+//            let dateFormatter: NSDateFormatter = NSDateFormatter()
+//            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
+//            message.newsDeadline = ""
+            message.newsStatus = false
+            println("neue Nachricht wird gespeichert:")
+            println(message)
+            appDelegate.saveContext()
         } else {
             println("No open Task in ReconciliationModel")
         }
