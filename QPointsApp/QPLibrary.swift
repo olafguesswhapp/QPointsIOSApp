@@ -283,5 +283,23 @@ extension UIViewController {
             }
         }
     }
+    
+    func createInternalMessage(responseDict: NSDictionary)->Void{
+        if responseDict["success"]! as! Bool == true {
+            let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let managedObjectContext = appDelegate.managedObjectContext
+            let entityDescription = NSEntityDescription.entityForName("MessageModel", inManagedObjectContext: managedObjectContext!)
+                let message = MessageModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
+                message.newsTitle = "Super! Gescannter QPoint wurde bestätigt!"
+                message.newsMessage = responseDict["message"]! as! String
+                message.programName = responseDict["name"]! as! String
+                message.programCompany = responseDict["company"]! as! String
+                message.newsDate = NSDate()
+                message.newsStatus = false
+                println("neue interne Nachricht wird gespeichert:")
+                println(message)
+                appDelegate.saveContext()
+        }
+    }
 
 }

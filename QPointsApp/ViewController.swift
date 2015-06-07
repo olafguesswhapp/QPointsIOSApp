@@ -137,6 +137,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     println(reconTask.reconUser + " " + reconTask.reconQpInput)
                     self.APIPostRequest(reconTask,apiType: 1){
                         (responseDict: NSDictionary) in
+                        self.createInternalMessage(responseDict)
                     }
                 case 2:
                     println("\(counter). Check redeemed Program")
