@@ -181,8 +181,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var requestError: NSError?
         let response = managedObjectContext.executeFetchRequest(fetchRequest, error: &requestError) as! [ReconciliationModel!]
         if response.count>0 {
-            var newsTaskMessage:String = "Sobald Deine Internet Verbindung wieder hergestellt ist wird folgendes geprüft"
-            println("Tasks to be reported to News:")
+            var newsTaskMessage:String = "Bei Internet-Verbindung nachzuholen"
             var counter:Int = 0
             for (reconTask) in response {
                 counter++
@@ -204,7 +203,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     newsTaskMessage += "\n\(counter). User Profil speichern \(reconTask.reconUser)"
                 case 6:
                     println("\(counter). Request News")
-                    newsTaskMessage += "\n\(counter). Neue Nachrichten anfragen"
+//                    newsTaskMessage += "\n\(counter). Neue Nachrichten anfragen"
                 default:
                     println("not a valid Task")
                     newsTaskMessage += "\n\(counter). Keine gültige Task"
@@ -218,10 +217,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             message.newsMessage = newsTaskMessage
             message.programName = "Interne Meldung"
             message.programCompany = "QPoints"
-//            let today = NSDate()
-//            let dateFormatter: NSDateFormatter = NSDateFormatter()
-//            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
-//            message.newsDeadline = ""
+            message.newsDate = NSDate()
             message.newsStatus = false
             println("neue Nachricht wird gespeichert:")
             println(message)

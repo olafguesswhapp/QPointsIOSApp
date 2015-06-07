@@ -10,6 +10,7 @@ import UIKit
 
 class MessageCell: UITableViewCell {
 
+    @IBOutlet weak var newsDateLabel: UILabel!
     @IBOutlet weak var newsTitleLable: UILabel!
     @IBOutlet weak var programNameLabel: UILabel!
     

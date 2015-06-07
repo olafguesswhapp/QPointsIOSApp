@@ -28,6 +28,11 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.CodeResponseField.hidden = true
+        self.CodeResponseField.text = ""
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {    //delegate method
         CodeResponseField.hidden = true
     }
@@ -49,6 +54,9 @@ class ScanCodeViewController: UIViewController, UITextFieldDelegate {
                     self.CodeResponseField.text = apiMessage
                 });
             }
+        } else {
+            self.CodeResponseField.hidden = false
+            self.CodeResponseField.text = "Der QPoint Code wird verifiziert sobald die Internet Verbindung wieder hergestellt ist"
         }
     }
     

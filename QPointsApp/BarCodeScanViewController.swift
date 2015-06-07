@@ -141,16 +141,19 @@ class BarCodeScanViewController: UIViewController, AVCaptureMetadataOutputObject
                     });
                 }
             } else {
-                self.noInternetController = UIAlertController(title: "QPoint Scan", message: "Der gescannte QPoint wird überprüft sobald Du wieder eine Internet Verbindung hergestellt hast", preferredStyle: .Alert)
-                let actionAlert = UIAlertAction(title: "Ok",
-                    style: UIAlertActionStyle.Default,
-                    handler: {(paramAction:UIAlertAction!) in
-                        self.view.sendSubviewToBack(self.highlightView)
-                        self.session.startRunning()
-                        println("The Done button was tapped")
+                dispatch_async(dispatch_get_main_queue(),{
+                    println("keine Internet Verbindung vorhanden")
+                    self.noInternetController = UIAlertController(title: "QPoint Scan", message: "Der gescannte QPoint wird überprüft sobald Du wieder eine Internet Verbindung hergestellt hast", preferredStyle: .Alert)
+                    let actionAlert = UIAlertAction(title: "Ok",
+                        style: UIAlertActionStyle.Default,
+                        handler: {(paramAction:UIAlertAction!) in
+                            self.view.sendSubviewToBack(self.highlightView)
+                            self.session.startRunning()
+                            println("The Done button was tapped")
+                    })
+                    self.noInternetController!.addAction(actionAlert)
+                    self.presentViewController(self.noInternetController!, animated: true, completion: nil)
                 })
-                self.noInternetController!.addAction(actionAlert)
-                self.presentViewController(self.noInternetController!, animated: true, completion: nil)
             }
             
         } else {

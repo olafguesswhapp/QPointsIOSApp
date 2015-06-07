@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
+class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate, UITextFieldDelegate {
     
     var controller:UIAlertController?
 
@@ -41,6 +41,8 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
         UserGenderPicker.delegate = self
         self.SaveProfileUpdateButton.layer.cornerRadius = 5
         UserGenderPicker.selectRow(NSUserDefaults.standardUserDefaults().objectForKey(USERGENDER_KEY) as! Int, inComponent: 0, animated: true)
+        
+        self.UserPasswordTextField2.delegate = self
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -61,6 +63,7 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     @IBAction func SaveProfileUpdateBtnTapped(sender: UIButton) {
         if (self.UserPasswordTextField1.text == self.UserPasswordTextField2.text){
             var gender: Int16 = Int16(UserGenderPicker.selectedRowInComponent(0))
+            NSUserDefaults.standardUserDefaults().setInteger(UserGenderPicker.selectedRowInComponent(0), forKey: USERGENDER_KEY)
             var reconTask: ReconciliationModel = self.setReconciliationList(5, setRecLiUser: UserEmailTextField.text, setRecLiProgNr: "", setRecLiGoalToHit: 0, setRecLiQPCode: UserPasswordTextField2.text, setRecLiPW: NSUserDefaults.standardUserDefaults().objectForKey(PASSWORD_KEY) as! String, setRecLiGender: gender)
             println(reconTask)
             
@@ -99,6 +102,11 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String {
         return userGender[row]
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }

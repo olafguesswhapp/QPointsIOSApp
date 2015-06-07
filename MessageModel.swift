@@ -16,7 +16,7 @@ class MessageModel: NSManagedObject {
     @NSManaged var programCompany: String
     @NSManaged var newsTitle: String
     @NSManaged var newsMessage: String
-    @NSManaged var newsDeadline: NSDate
+    @NSManaged var newsDate: NSDate
     @NSManaged var newsStatus: Bool
 
 }

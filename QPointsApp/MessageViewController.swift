@@ -73,6 +73,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         var cell: MessageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
         cell.newsTitleLable.text = thisMessage.newsTitle
         cell.programNameLabel.text = thisMessage.programName
+        let printDate =  NSDateFormatter.localizedStringFromDate(thisMessage.newsDate,
+            dateStyle: .ShortStyle,
+            timeStyle: .NoStyle)
+        cell.newsDateLabel.text = printDate
         return cell
     }
     

@@ -232,7 +232,7 @@ extension UIViewController {
                 message.programCompany = responseDict["newsFeed"]![index].objectForKey("company")! as! String
                 let dateFormatter: NSDateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
-                message.newsDeadline = dateFormatter.dateFromString(responseDict["newsFeed"]![index].objectForKey("newsDeadline")! as! String)!
+                message.newsDate = dateFormatter.dateFromString(responseDict["newsFeed"]![index].objectForKey("newsDate")! as! String)!
                 message.newsStatus = false
                 println("neue Nachricht wird gespeichert:")
                 println(message)
