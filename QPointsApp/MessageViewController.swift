@@ -34,7 +34,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         fetchedResultsController.performFetch(nil)
         
         self.MessageTableView.addSubview(self.refreshControl)
-
         self.MessageTableView.reloadData()
     }
     
@@ -73,10 +72,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         var cell: MessageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
         cell.newsTitleLable.text = thisMessage.newsTitle
         cell.programNameLabel.text = thisMessage.programName
-        let printDate =  NSDateFormatter.localizedStringFromDate(thisMessage.newsDate,
-            dateStyle: .ShortStyle,
-            timeStyle: .NoStyle)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yy" // superset of OP's format
+        let printDate = dateFormatter.stringFromDate(NSDate())
         cell.newsDateLabel.text = printDate
+        println(thisMessage)
         return cell
     }
     

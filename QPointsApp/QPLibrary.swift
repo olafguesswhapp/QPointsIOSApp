@@ -231,7 +231,7 @@ extension UIViewController {
                 message.programName = responseDict["newsFeed"]![index].objectForKey("programName")! as! String
                 message.programCompany = responseDict["newsFeed"]![index].objectForKey("company")! as! String
                 let dateFormatter: NSDateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'Z'"
+                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH:mm:ss"
                 message.newsDate = dateFormatter.dateFromString(responseDict["newsFeed"]![index].objectForKey("newsDate")! as! String)!
                 message.newsStatus = false
                 println("neue Nachricht wird gespeichert:")
@@ -260,6 +260,28 @@ extension UIViewController {
             return true
         }
         return false
+    }
+    
+    func deleteInternalMessages(){
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("MessageModel", inManagedObjectContext: managedObjectContext!)
+        let fetchRequest = NSFetchRequest(entityName: "MessageModel")
+        fetchRequest.predicate = NSPredicate(format: "programName == %@", "Interne Meldung")
+        fetchRequest.includesPropertyValues = false
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [MessageModel]{
+            for result in fetchResults {
+                managedObjectContext?.deleteObject(result)
+            }
+        }
+        var savingError: NSError?
+        if managedObjectContext!.save(&savingError){
+            println("Successfully deleted the Internal Messages in MessageModel")
+        } else {
+            if let error = savingError{
+                println("Failed to delete the internal Mesages in MessageModel . Error = \(error)")
+            }
+        }
     }
 
 }

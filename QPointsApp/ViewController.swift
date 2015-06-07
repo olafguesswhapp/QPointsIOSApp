@@ -33,7 +33,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidAppear(animated)
         if Reachability.isConnectedToNetwork() {
             self.checkReconciliationTasks()
+            self.deleteInternalMessages()
         } else {
+            self.deleteInternalMessages()
             NewsOfReconciliationTasks()
         }
     }
@@ -174,6 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             println("No open Task in ReconciliationModel")
         }
         tableView.reloadData()
+        
     }
     
     func NewsOfReconciliationTasks()->Void {
