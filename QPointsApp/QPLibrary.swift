@@ -10,7 +10,18 @@ import Foundation
 import UIKit
 import CoreData
 
-extension UIViewController {
+class QPColors {
+    static let dunkelBlau: UIColor = UIColor(red: 0.0/255.0, green: 109.0/255.0, blue: 143.0/255.0, alpha: 1.0)
+    static let mittelGruen: UIColor = UIColor(red: 125.0/255.0, green: 205.0/255.0, blue: 67.0/255.0, alpha: 1.0)
+    static let hellGruen: UIColor = UIColor(red: 155.0/255.0, green: 218.0/255.0, blue: 112.0/255.0, alpha: 1.0)
+    static let dunkelRot: UIColor = UIColor(red: 255.0/255.0, green: 43.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+    static let hellRot: UIColor = UIColor(red: 255.0/255.0, green: 64.0/255.0, blue: 79.0/255.0, alpha: 0.5)
+    static let dunkelBraun: UIColor = UIColor(red: 122.0/255.0, green: 20.0/255.0, blue: 39.0/255.0, alpha: 1.0)
+    static let hellBlau: UIColor = UIColor(red: 0.0/255.0, green: 150.0/255.0, blue: 166.0/255.0, alpha: 1.0)
+    static let mittelBlau: UIColor = UIColor(red: 1.0/255.0, green: 87.0/255.0, blue: 122.0/255.0, alpha: 1.0)
+}
+
+extension UIViewController: NSURLSessionDelegate {
     
     // put a new ScanCode or RedeemCode Task firt into ReconciliationList (delete the Task after reconciliation with webserver)
     func setReconciliationList(setRecLiType:Int16,setRecLiUser: String,setRecLiProgNr: String,setRecLiGoalToHit: Int16, setRecLiQPCode: String, setRecLiPW: String, setRecLiGender: Int16)->ReconciliationModel {
@@ -48,6 +59,19 @@ extension UIViewController {
         }
     }
     
+    func deleteMessage(message: MessageModel)->Void{
+        var context:NSManagedObjectContext = message.managedObjectContext!
+        context.deleteObject(message)
+        var savingError: NSError?
+        if context.save(&savingError){
+            println("Successfully deleted the Reconciliation Task")
+        } else {
+            if let error = savingError{
+                println("Failed to delete the Reconciliation Task. Error = \(error)")
+            }
+        }
+    }
+    
     func deleteProgramData(responseData: NSDictionary)->Void{
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let managedObjectContext = appDelegate.managedObjectContext
@@ -69,6 +93,26 @@ extension UIViewController {
         }
         if (responseData.objectForKey("programData") != nil) {
             self.importProgramData(responseData)
+        }
+    }
+    func deleteMessageData()->Void{
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("MessageModel", inManagedObjectContext: managedObjectContext!)
+        let fetchRequest = NSFetchRequest(entityName: "MessageModel")
+        fetchRequest.includesPropertyValues = false
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [MessageModel]{
+            for result in fetchResults {
+                managedObjectContext?.deleteObject(result)
+            }
+        }
+        var savingError: NSError?
+        if managedObjectContext!.save(&savingError){
+            println("Successfully deleted the entities in Message Model")
+        } else {
+            if let error = savingError{
+                println("Failed to delete the entities in Program Model . Error = \(error)")
+            }
         }
     }
     
@@ -121,7 +165,9 @@ extension UIViewController {
         default:
             request = NSMutableURLRequest(URL: NSURL(string: baseUrl + "/api")!)
         }
-        let session = NSURLSession.sharedSession()
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        // var session =  NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
         var error: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
@@ -143,7 +189,7 @@ extension UIViewController {
                 self.deleteReconTask(reconTask) // CHECK OB WIRKLICH IMMER RECON GELÖSCHT WERDEN SOLL
             }
         })
-        task.resume()
+        task.resume() // OK
     }
     
     func processResponseScannedCode (jsonDictionary: NSDictionary)->Void{
@@ -179,6 +225,11 @@ extension UIViewController {
                 program.programNr = jsonDictionary["nr"]! as! String
                 program.programName = jsonDictionary["name"]! as! String
                 program.programCompany = jsonDictionary["company"]! as! String
+                program.address1 = jsonDictionary["address1"]! as! String
+                program.address2 = jsonDictionary["address2"]! as! String
+                program.zip = jsonDictionary["zip"]! as! String
+                program.city = jsonDictionary["city"]! as! String
+                program.phone = jsonDictionary["phone"]! as! String
                 var helpInt: Int = jsonDictionary["goalToHit"]! as! Int
                 program.programGoal = Int16(helpInt)
                 program.myCount = 1
@@ -205,6 +256,11 @@ extension UIViewController {
             program.programNr = responseDict["programData"]![index].objectForKey("programNr")! as! String
             program.programName = responseDict["programData"]![index].objectForKey("programName")! as! String
             program.programCompany = responseDict["programData"]![index].objectForKey("programCompany")! as! String
+            program.address1 = responseDict["programData"]![index].objectForKey("address1")! as! String
+            program.address2 = responseDict["programData"]![index].objectForKey("address2")! as! String
+            program.zip = responseDict["programData"]![index].objectForKey("zip")! as! String
+            program.city = responseDict["programData"]![index].objectForKey("city")! as! String
+            program.phone = responseDict["programData"]![index].objectForKey("phone")! as! String
             program.programGoal = Int16(responseDict["programData"]![index].objectForKey("programGoal")! as! Int)
             program.myCount = Int16(responseDict["programData"]![index].objectForKey("myCount")! as! Int)
             program.programsFinished = Int16(responseDict["programData"]![index].objectForKey("ProgramsFinished")! as! Int)

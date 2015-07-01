@@ -11,12 +11,16 @@ import CoreData
 
 class ScanCodeViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var sendBTN: UIButton!
     @IBOutlet weak var CodeInputField: UITextField!
     @IBOutlet weak var CodeResponseField: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CodeInputField.delegate = self
+        self.view.backgroundColor = QPColors.hellBlau
+        self.sendBTN.backgroundColor = QPColors.dunkelRot
+        self.sendBTN.layer.cornerRadius = 5
+        self.CodeInputField.delegate = self
 
         // Do any additional setup after loading the view.
         CodeResponseField.text = ""

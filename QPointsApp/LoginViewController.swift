@@ -10,10 +10,12 @@ import UIKit
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
+    
     var controller:UIAlertController?
     var alertController:UIAlertController?
     var noInternetController:UIAlertController?
 
+    @IBOutlet weak var qpointsImageView: UIImageView!
     @IBOutlet weak var LoginResponseLabel: UILabel!
     @IBOutlet weak var CreateAccountButton: UIButton!
     @IBOutlet weak var LoginButton: UIButton!
@@ -25,6 +27,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = QPColors.dunkelBlau
+        self.LoginButton.backgroundColor = QPColors.dunkelRot
+        self.CreateAccountButton.backgroundColor = QPColors.hellRot
+        self.LoginResponseLabel.textColor = UIColor.whiteColor()
+        qpointsImageView.image = UIImage(named: "QPointsWelcome")
         
         println("Internet? \(Reachability.isConnectedToNetwork())")
         
@@ -101,7 +108,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                         var apiMessage:String = responseDict["message"] as! String
                         var apiSuccess:Bool = responseDict["success"] as! Bool
                         if (apiSuccess == true) {
-                            var apiGender:Int = responseDict["gender"] as! Int
+                            var apiGender:Int = 0
+                            if responseDict["gender"] != nil {
+                                apiGender = responseDict["gender"] as! Int
+                            } else {
+                                apiGender = 0
+                            }
                             var interimPW:String = reconTask.reconPassword
                             var interimUser:String = reconTask.reconUser
                             dispatch_async(dispatch_get_main_queue(),{
@@ -113,11 +125,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                                 NSUserDefaults.standardUserDefaults().setObject(interimPW, forKey: PASSWORD_KEY)
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 self.deleteProgramData(responseDict)
+                                self.deleteMessageData()
                                 self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
                             });
                         } else {
                             dispatch_async(dispatch_get_main_queue(),{
-                                self.LoginResponseLabel.text = apiMessage + "\n\n   Drücken Sie auf 'Konto anlegen' um sich neu anzumelden"
+                                self.LoginResponseLabel.text = apiMessage + "\n\nDrücken Sie auf 'Konto anlegen' um sich neu anzumelden"
                                 self.LoginResponseLabel.hidden = false
                             });
                         }

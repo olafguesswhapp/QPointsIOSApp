@@ -15,7 +15,7 @@ let USERGENDER_KEY = "userGenderKey"
 let HASLAUNCHEDONCE_KEY = "hasLaunchedOnceKey"
 let HASBEENVERIFIED_KEY = "hasBeenVerifiedKey"
 
-let baseUrl = "http://qpoints.schedar.uberspace.de" // "http://localhost:3000"  "http://qpoints.schedar.uberspace.de"
+let baseUrl = "https://localhost:3000" // "http://qpoints.schedar.uberspace.de" 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().barTintColor = QPColors.dunkelBlau
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor() // Profile ICon
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
         // nur um LOGIN zu programmieren
 //        NSUserDefaults.standardUserDefaults().setBool(false, forKey: HASLAUNCHEDONCE_KEY)

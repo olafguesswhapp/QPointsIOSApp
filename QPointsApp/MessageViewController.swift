@@ -25,7 +25,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = QPColors.dunkelBlau
+        self.MessageTableView.backgroundColor = QPColors.dunkelBlau
         // Do any additional setup after loading the view.
         
         //In ViewDidLoad
@@ -34,11 +35,19 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         fetchedResultsController.performFetch(nil)
         
         self.MessageTableView.addSubview(self.refreshControl)
+        self.MessageTableView.separatorColor = UIColor.whiteColor()
         self.MessageTableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let brandView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 31))
+        brandView.contentMode = .ScaleAspectFit
+        let image = UIImage(named: "QPointsBrand")
+        brandView.image = image
+        self.navigationItem.titleView = brandView
+        
         self.MessageTableView.reloadData()
     }
     
@@ -60,24 +69,72 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections!.count
     }
-    
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
-        
     }
+    // HEADER
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 37
+    }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var headerLabel: UILabel = UILabel()
+        headerLabel.text = "   Meine Nachrichten"
+        headerLabel.backgroundColor = QPColors.dunkelRot
+        headerLabel.textColor = UIColor.whiteColor()
+        return headerLabel
+    }
+
+    // Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let thisMessage = fetchedResultsController.objectAtIndexPath(indexPath) as! MessageModel
         var cell: MessageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
+        cell.backgroundColor = QPColors.mittelGruen
+        var myBackView:UITableViewCell = UITableViewCell()
+        myBackView.backgroundColor = QPColors.hellGruen
+        cell.selectedBackgroundView = myBackView
+        cell.newsTitleLable.textColor = UIColor.whiteColor()
+        cell.programNameLabel.textColor = UIColor.whiteColor()
+        cell.newsDateLabel.textColor = UIColor.whiteColor()
         cell.newsTitleLable.text = thisMessage.newsTitle
         cell.programNameLabel.text = thisMessage.programName
+        cell.chevronLabel.textAlignment = .Right
+        cell.chevronLabel.sizeToFit()
+        cell.chevronLabel.text = "〉"
+        cell.chevronLabel.textColor = UIColor.whiteColor()
+        cell.accessoryType = UITableViewCellAccessoryType.None
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yy" // superset of OP's format
         let printDate = dateFormatter.stringFromDate(NSDate())
         cell.newsDateLabel.text = printDate
         println(thisMessage)
         return cell
+    }
+    // FOOTER
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let sectionInfo = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
+        var footerLabel: UILabel = UILabel()
+        if sectionInfo.numberOfObjects < 1 {
+            footerLabel.text = "Derzeit liegen keine Botschaften vor"
+        } else {
+            footerLabel.text = "Keine weiteren Botschaften"
+        }
+        footerLabel.backgroundColor = QPColors.dunkelBlau
+        footerLabel.textColor = UIColor.whiteColor()
+        footerLabel.font = UIFont(name: footerLabel.font.fontName, size: 12)
+        footerLabel.sizeToFit()
+        footerLabel.frame.origin.x += 10
+        footerLabel.frame.origin.y = 2
+        var resultFrame = CGRect(x: 0, y: 0,
+            width: footerLabel.frame.size.width + 10,
+            height: footerLabel.frame.size.height)
+        var footerView = UIView(frame: resultFrame)
+        footerView.addSubview(footerLabel)
+        return footerView
     }
     
     //UITableViewDelegate

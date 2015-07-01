@@ -24,6 +24,16 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let brandView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 31))
+        brandView.contentMode = .ScaleAspectFit
+        let image = UIImage(named: "QPointsBrand")
+        brandView.image = image
+        self.navigationItem.titleView = brandView
+        
+        self.view.backgroundColor = QPColors.dunkelBlau
+        self.SaveProfileUpdateButton.backgroundColor = QPColors.dunkelRot
+        self.SaveProfileUpdateButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
         controller = UIAlertController(title: "Warnung", message: "Bitte stellen Sie sicher, dass beide Passwort Eingaben identisch sind", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Done",
             style: UIAlertActionStyle.Default,
@@ -99,9 +109,13 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource,UIPickerVi
     }
     
     // UIPickerViewDelegate
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String {
-        return userGender[row]
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
+        {
+        var pickerLabel = UILabel()
+        pickerLabel.textColor = UIColor.whiteColor()
+        pickerLabel.text = userGender[row]
+        pickerLabel.textAlignment = NSTextAlignment.Center
+        return pickerLabel
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

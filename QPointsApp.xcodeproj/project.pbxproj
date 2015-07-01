@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90083B061B2D95D100B64510 /* QPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90083B051B2D95D100B64510 /* QPTabBarController.swift */; };
 		9008461C1AF3C0D700A45349 /* ReconciliationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */; };
 		9022F2131ADA309B00CE2E04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2121ADA309B00CE2E04 /* AppDelegate.swift */; };
 		9022F2161ADA309B00CE2E04 /* QPointsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9022F2141ADA309B00CE2E04 /* QPointsApp.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90083B051B2D95D100B64510 /* QPTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPTabBarController.swift; sourceTree = "<group>"; };
 		9008461B1AF3C0D700A45349 /* ReconciliationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReconciliationModel.swift; sourceTree = "<group>"; };
 		9022F20D1ADA309B00CE2E04 /* QPointsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QPointsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9022F2111ADA309B00CE2E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,14 +114,15 @@
 			isa = PBXGroup;
 			children = (
 				9022F2121ADA309B00CE2E04 /* AppDelegate.swift */,
-				9022F2171ADA309B00CE2E04 /* ViewController.swift */,
-				902F69EE1B21E32500E6BE37 /* MessageViewController.swift */,
-				902F69F61B231DB000E6BE37 /* MessageDetailViewController.swift */,
+				90083B051B2D95D100B64510 /* QPTabBarController.swift */,
 				9092BDA81AF6569C00085D4A /* QPLibrary.swift */,
-				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
-				902F69F21B21E9F200E6BE37 /* MessageCell.swift */,
+				9022F2171ADA309B00CE2E04 /* ViewController.swift */,
 				9022F2351ADA335200CE2E04 /* DetailViewController.swift */,
 				90D4FA8E1AE8C4BE002C7A1E /* RedeemViewController.swift */,
+				902F69EE1B21E32500E6BE37 /* MessageViewController.swift */,
+				902F69F61B231DB000E6BE37 /* MessageDetailViewController.swift */,
+				9022F2371ADA387E00CE2E04 /* ProgramCell.swift */,
+				902F69F21B21E9F200E6BE37 /* MessageCell.swift */,
 				902F69EC1B217FF000E6BE37 /* InternetRechable.swift */,
 				907084501ADC0BA5003D848C /* ScanCodeViewController.swift */,
 				906482A31B0B591B00E0545A /* ProfileViewController.swift */,
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90083B061B2D95D100B64510 /* QPTabBarController.swift in Sources */,
 				90A458A71AFCF70500EB0F1E /* LoginViewController.swift in Sources */,
 				9092BDA91AF6569C00085D4A /* QPLibrary.swift in Sources */,
 				9022F2181ADA309B00CE2E04 /* ViewController.swift in Sources */,

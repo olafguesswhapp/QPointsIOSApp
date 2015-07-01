@@ -15,6 +15,11 @@ class ProgramModel: NSManagedObject {
     @NSManaged var programNr: String
     @NSManaged var programName: String
     @NSManaged var programCompany: String
+    @NSManaged var address1: String
+    @NSManaged var address2: String
+    @NSManaged var zip: String
+    @NSManaged var city: String
+    @NSManaged var phone: String
     @NSManaged var programGoal: Int16
     @NSManaged var myCount: Int16
     @NSManaged var programsFinished: Int16

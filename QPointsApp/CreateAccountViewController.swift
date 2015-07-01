@@ -21,6 +21,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = QPColors.dunkelBlau
+        self.InputResponseLabel.textColor = UIColor.whiteColor()
+        self.CreateAccountButton.backgroundColor = QPColors.dunkelRot
+        self.CancelButton.backgroundColor = QPColors.hellRot
 
         // Do any additional setup after loading the view.
         CreateAccountButton.layer.cornerRadius = 5
