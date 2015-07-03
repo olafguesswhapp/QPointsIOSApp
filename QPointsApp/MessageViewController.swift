@@ -55,8 +55,18 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         if segue.identifier == "showMessageDetailSegue" {
             let detailVC: MessageDetailViewController = segue.destinationViewController as! MessageDetailViewController
             let indexPath = self.MessageTableView.indexPathForSelectedRow()
-            let thisTask = fetchedResultsController.objectAtIndexPath(indexPath!) as! MessageModel
-            detailVC.detailMessageModel = thisTask
+            let thisMessage = fetchedResultsController.objectAtIndexPath(indexPath!) as! MessageModel
+            thisMessage.newsStatus = true
+            detailVC.detailMessageModel = thisMessage
+            var context:NSManagedObjectContext = thisMessage.managedObjectContext!
+            var savingError: NSError?
+            if context.save(&savingError){
+                println("Successfully changed Status of Message")
+            } else {
+                if let error = savingError{
+                    println("Failed to save the context with error = \(error)")
+                }
+            }
         } 
     }
 
@@ -90,7 +100,15 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let thisMessage = fetchedResultsController.objectAtIndexPath(indexPath) as! MessageModel
         var cell: MessageCell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! MessageCell
-        cell.backgroundColor = QPColors.mittelGruen
+        if thisMessage.newsStatus == false {
+            cell.backgroundColor = QPColors.mittelGruen
+            cell.newsTitleLable.font = UIFont.boldSystemFontOfSize(17.0)
+            cell.programNameLabel.font = UIFont.boldSystemFontOfSize(20.0)
+        } else {
+            cell.backgroundColor = QPColors.hellGruen
+            cell.newsTitleLable.font = UIFont.systemFontOfSize(17.0)
+            cell.programNameLabel.font = UIFont.systemFontOfSize(20.0)
+        }
         var myBackView:UITableViewCell = UITableViewCell()
         myBackView.backgroundColor = QPColors.hellGruen
         cell.selectedBackgroundView = myBackView
@@ -139,6 +157,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        
         println(indexPath.row)
         performSegueWithIdentifier("showMessageDetailSegue", sender: self)
     }

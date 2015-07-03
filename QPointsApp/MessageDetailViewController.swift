@@ -45,6 +45,8 @@ class MessageDetailViewController: UIViewController {
         dateFormatter.dateFormat = "dd/MM/yy" // superset of OP's format
         let printDate = dateFormatter.stringFromDate(detailMessageModel.newsDate)
         self.dateLabel.text = printDate
+        
+        println("Status of News \(detailMessageModel.newsStatus)")
     }
 
     override func didReceiveMemoryWarning() {

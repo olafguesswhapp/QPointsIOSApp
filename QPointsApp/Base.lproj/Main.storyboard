@@ -1366,8 +1366,8 @@
         <image name="testIcon" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W4V-Qg-YX5"/>
         <segue reference="21q-9h-9qO"/>
-        <segue reference="zVw-4y-cH3"/>
+        <segue reference="W4V-Qg-YX5"/>
+        <segue reference="DcM-Zk-kVV"/>
     </inferredMetricsTieBreakers>
 </document>
